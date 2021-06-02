@@ -2,7 +2,7 @@
 Exploring NVIDIA GPU-Accelerated Ecosystem on Wind River Linux
 
 ## Overview
-	Illustration 1:
+	![](./1_Overview/Overview_1.jpg)
 ## Hardware (NVIDIA GPU, Intel-x86-64)
 	Illustration 1:
 ## Software (Based on Wind River Linux)
