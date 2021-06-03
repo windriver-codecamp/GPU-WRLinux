@@ -5,8 +5,8 @@ Exploring NVIDIA GPU-Accelerated Ecosystem on Wind River Linux
 <img src="./1_Overview/Overview_1.JPG" width="600">
 
 ## Hardware
-<img src="./2_Hardware/Hardware_1.JPG" width="600">
-<img src="./2_Hardware/Hardware_2.JPG" width="600">
+<img src="./2_Hardware/Hardware_1.JPG" width="500"><img src="./2_Hardware/Hardware_2.JPG" width="200">
+
 ## Software
 	Illustration 1:
 ### Wind River Linux
