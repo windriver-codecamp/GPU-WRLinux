@@ -125,7 +125,7 @@ Exploring NVIDIA GPU-Accelerated Ecosystem on Wind River Linux
 			Issues:
 			Solution:
 			References:
-#### PyTorch (TODO)
+#### PyTorch
 			Demo Video:
 				None
 
