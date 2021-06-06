@@ -80,10 +80,63 @@ Exploring NVIDIA GPU-Accelerated Ecosystem on Wind River Linux
 			Solution:
 			References:
 #### PyTorch
-			Setup Steps:
-			Issues:
-			Solution:
-			References:
+	Setup Steps:
+		1. Installing Anaconda3
+			$ mkdir /mnt/sdb/xhou/HOME
+			$ export HOME=/mnt/sdb/xhou/HOME
+			$ wget --no-check-certificate https://repo.anaconda.com/archive/Anaconda3-2021.05-Linux-x86_64.sh
+			$ bash Anaconda3-2021.05-Linux-x86_64.sh
+			$ source ~/.bashrc
+		2. Building&Installting PyTorch
+			$ conda create --name pytorch-build
+			$ conda activate pytorch-build
+			(pytorch-build) $ conda install astunparse numpy ninja pyyaml mkl mkl-include setuptools cmake cffi typing_extensions future six requests dataclasses
+			(pytorch-build) $ conda install -c pytorch magma-cuda112
+			(pytorch-build) $ git clone --recursive https://github.com/pytorch/pytorch
+			(pytorch-build) $ cd pytorch
+			(pytorch-build) $ git submodule sync
+			(pytorch-build) $ git submodule update --init --recursive
+			(pytorch-build) $ cat ~/cuda.env
+			export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64
+			export PATH=$PATH:/usr/local/cuda/bin
+			export CUDA_HOME="/usr/local/cuda"
+			export CUDA_NVCC_EXECUTABLE="/usr/local/cuda/bin/nvcc"
+			export CUDNN_INCLUDE_PATH="/usr/local/cuda/include/"
+			export CUDNN_LIBRARY_PATH="/usr/local/cuda/lib64/"
+			(pytorch-build) $ cat ~/pytorch_build.env
+			export LIBRARY_PATH="/usr/local/cuda/lib64"
+			export CMAKE_PREFIX_PATH=${CONDA_PREFIX:-"$(dirname $(which conda))/../"}
+			(pytorch-build) $ source ~/cuda.env
+			(pytorch-build) $ source ~/pytorch_build.env
+			## with CUDNN
+			(pytorch-build) $ export USE_CUDA=1 USE_CUDNN=1 USE_MKLDNN=1
+			## building branch master
+			(pytorch-build) $ python setup.py install # about 1.5hrs
+
+			(pytorch-build) $ python
+			Python 3.9.5 (default, May 18 2021, 19:34:48)
+			[GCC 7.3.0] :: Anaconda, Inc. on linux
+			Type "help", "copyright", "credits" or "license" for more information.
+			>>> import torch
+			>>> torch.cuda.current_device()
+			0
+			>>> torch.cuda.get_device_name(0)
+			'GeForce GTX 1650 SUPER'
+			>>>
+			>>> from torch.backends import cudnn
+			>>> cudnn.is_available()
+			True
+			>>>
+
+	Issues:
+		None
+
+	Solution:
+		None
+
+	References:
+		None
+
 #### Transfer Learning Toolkit (TODO)
 			Setup Steps:
 			Issues:
@@ -133,64 +186,17 @@ Exploring NVIDIA GPU-Accelerated Ecosystem on Wind River Linux
 		https://github.com/pytorch/examples/tree/master/word_language_model
 
 	Setup Steps:
-		1. Installing Anaconda3
-			$ mkdir /mnt/sdb/xhou/HOME
-			$ export HOME=/mnt/sdb/xhou/HOME
-			$ wget --no-check-certificate https://repo.anaconda.com/archive/Anaconda3-2021.05-Linux-x86_64.sh
-			$ bash Anaconda3-2021.05-Linux-x86_64.sh
-			$ source ~/.bashrc
-		2. Building&Installting PyTorch
-			$ conda create --name pytorch-build
-			$ conda activate pytorch-build
-			(pytorch-build) $ conda install astunparse numpy ninja pyyaml mkl mkl-include setuptools cmake cffi typing_extensions future six requests dataclasses
-			(pytorch-build) $ conda install -c pytorch magma-cuda112
-			(pytorch-build) $ git clone --recursive https://github.com/pytorch/pytorch
-			(pytorch-build) $ cd pytorch
-			(pytorch-build) $ git submodule sync
-			(pytorch-build) $ git submodule update --init --recursive
-			(pytorch-build) $ cat ~/cuda.env
-			export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64
-			export PATH=$PATH:/usr/local/cuda/bin
-			export CUDA_HOME="/usr/local/cuda"
-			export CUDA_NVCC_EXECUTABLE="/usr/local/cuda/bin/nvcc"
-			export CUDNN_INCLUDE_PATH="/usr/local/cuda/include/"
-			export CUDNN_LIBRARY_PATH="/usr/local/cuda/lib64/"
-			(pytorch-build) $ cat ~/pytorch_build.env
-			export LIBRARY_PATH="/usr/local/cuda/lib64"
-			export CMAKE_PREFIX_PATH=${CONDA_PREFIX:-"$(dirname $(which conda))/../"}
-			(pytorch-build) $ source ~/cuda.env
-			(pytorch-build) $ source ~/pytorch_build.env
-			## with CUDNN
-			(pytorch-build) $ export USE_CUDA=1 USE_CUDNN=1 USE_MKLDNN=1
-			## building branch master
-			(pytorch-build) $ python setup.py install # about 1.5hrs
-
-			(pytorch-build) $ python
-			Python 3.9.5 (default, May 18 2021, 19:34:48)
-			[GCC 7.3.0] :: Anaconda, Inc. on linux
-			Type "help", "copyright", "credits" or "license" for more information.
-			>>> import torch
-			>>> torch.cuda.current_device()
-			0
-			>>> torch.cuda.get_device_name(0)
-			'GeForce GTX 1650 SUPER'
-			>>>
-			>>> from torch.backends import cudnn
-			>>> cudnn.is_available()
-			True
-			>>>
-		3. Example Code
-			(pytorch-build) $ git clone https://github.com/pytorch/examples.git
-			(pytorch-build) $ cd examples/word_language_model
-			(pytorch-build) $ python main.py --cuda --emsize 650 --nhid 650 --dropout 0.5 --epochs 40 --tied # 40 epoches, 141 minutes
-			(pytorch-build) $ python generate.py --cuda --words 100
-			| Generated 0/100 words
-			(pytorch-build) $ cat generated.txt
-			to the present of stabilized fountains , because they did not do so by the time they did contribute to
-			the personal structure . Additionally , the rate of the entire event was often survives at projects of homes .
-			<eos> The work records different as of 2009 . The front music guides erected all the style of several "
-			<unk> " and " <unk> " <unk> ( proper water ) . In 2007 , Pflueger created the " More
-			coded balanced " at this point and recorded a primary event played in a US 2 , which was the
+		(pytorch-build) $ git clone https://github.com/pytorch/examples.git
+		(pytorch-build) $ cd examples/word_language_model
+		(pytorch-build) $ python main.py --cuda --emsize 650 --nhid 650 --dropout 0.5 --epochs 40 --tied # 40 epoches, 141 minutes
+		(pytorch-build) $ python generate.py --cuda --words 100
+		| Generated 0/100 words
+		(pytorch-build) $ cat generated.txt
+		to the present of stabilized fountains , because they did not do so by the time they did contribute to
+		the personal structure . Additionally , the rate of the entire event was often survives at projects of homes .
+		<eos> The work records different as of 2009 . The front music guides erected all the style of several "
+		<unk> " and " <unk> " <unk> ( proper water ) . In 2007 , Pflueger created the " More
+		coded balanced " at this point and recorded a primary event played in a US 2 , which was the
 
 	Issues:
 		None
