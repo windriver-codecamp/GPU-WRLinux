@@ -136,7 +136,42 @@ Exploring NVIDIA GPU-Accelerated Ecosystem on Wind River Linux
 
 	References:
 		None
+#### MXNet
+	Setup Steps:
+		1. CUDA&cuDNN
+			They are CUDA 11.2 and cuDNN 8.2, skips installing&setups here
+		2. Anaconda
+			Skips installing, only setups
+			$ conda create --name mxnet-binary
+			$ conda activate mxnet-binary
+		3. NCCL
+			$ wget https://developer.nvidia.com/compute/machine-learning/nccl/secure/2.8.3/agnostic/x64/nccl_2.8.3-1+cuda11.2_x86_64.txz
+			$ xz -d nccl_2.8.3-1+cuda11.2_x86_64.txz
+			$ tar xf nccl_2.8.3-1+cuda11.2_x86_64.txz
+			# deploy to directory of CUDA
+			$ cp nccl_2.8.3-1+cuda11.2_x86_64/include/nccl* /usr/local/cuda/include/
+			$ cp -P nccl_2.8.3-1+cuda11.2_x86_64/lib/libnccl* /usr/local/cuda/lib64/
+			$ chmod a+r /usr/local/cuda/include/nccl* /usr/local/cuda/lib64/libnccl*
+		4. Installing MXNet with Binary
+			# version with CUDA 11.2
+			$ pip install mxnet-cu112
+			# try with
+			$ python
+			>>> import mxnet as mx
+			>>> a = mx.nd.ones((2, 3), mx.gpu())
+			>>> b = a * 2 + 1
+			>>> b.asnumpy()
+			array([[ 3.,  3.,  3.],
+				[ 3.,  3.,  3.]], dtype=float32)
 
+	Issues:
+		None
+
+	Solution:
+		None
+
+	References:
+		None
 #### Transfer Learning Toolkit (TODO)
 			Setup Steps:
 			Issues:
@@ -206,6 +241,80 @@ Exploring NVIDIA GPU-Accelerated Ecosystem on Wind River Linux
 
 	References:
 		None
+#### MXNet
+	Demo Video:
+		None
+
+	Demo Source Codes:
+		https://github.com/apache/incubator-mxnet/tree/master/example/gluon/super_resolution
+
+	Setup Steps:
+		1. Getting Source
+			$ git clone --recursive https://github.com/apache/incubator-mxnet.git mxnet
+			$ cd mxnet/example/gluon/super_resolution
+			## have an update
+			$ cat 0001-Update-super_resolution.py.patch
+			From f4305b7944ab61a5b9a18a8bd627578279d9442f Mon Sep 17 00:00:00 2001
+			From: test <test@test.com>
+			Date: Sun, 6 Jun 2021 11:35:39 +0000
+			Subject: [PATCH] Update super_resolution.py
+			
+			---
+			example/gluon/super_resolution/super_resolution.py | 2 +-
+			1 file changed, 1 insertion(+), 1 deletion(-)
+			
+			diff --git a/example/gluon/super_resolution/super_resolution.py b/example/gluon/super_resolution/super_resolution.py
+			index 52bfc2241..4a3e8d92a 100644
+			--- a/example/gluon/super_resolution/super_resolution.py
+			+++ b/example/gluon/super_resolution/super_resolution.py
+			@@ -156,7 +156,7 @@ class SuperResolutionNet(gluon.HybridBlock):
+					return x
+			
+			net = SuperResolutionNet(upscale_factor)
+			-metric = mx.gluon.metric.MSE()
+			+metric = mx.metric.MSE()
+			
+			def test(ctx):
+				val_data.reset()
+			--
+			2.31.1
+			
+			$ git am 0001-Update-super_resolution.py.patch
+		2. Training and Trying
+			## Training
+			$ time python super_resolution.py --epochs 200 --use-gpu
+			Namespace(upscale_factor=3, batch_size=4, test_batch_size=100, epochs=200, lr=0.001, use_gpu=True, seed=123, resolve_img=None)
+			Directory /mnt/sdb/xhou/HOME/.mxnet/datasets/BSDS500 already exists, skipping.
+			To force download and extraction, delete the directory and re-run.
+			[08:32:10] ../src/base.cc:80: cuDNN lib mismatch: linked-against version 8200 != compiled-against version 8100.  Set MXNET_CUDNN_LIB_CHECKING=0 to quiet this warning.
+			[08:32:12] ../src/operator/nn/./cudnn/./cudnn_algoreg-inl.h:97: Running performance tests to find the best convolution algorithm, this can take a while... (set the environment variable MXNET_CUDNN_AUTOTUNE_DEFAULT to 0 to disable)
+			training mse at epoch 0: mse=0.020209
+			validation avg psnr: 20.432425
+			......
+			training mse at epoch 199: mse=0.004085
+			validation avg psnr: 23.290054
+			
+			real    6m36.315s
+			user    15m1.850s
+			sys 0m16.327s
+			## Trying
+			$ python super_resolution.py --resolve_img test.jpeg
+The original picture:
+
+<img src="./3_Software/5_Applications/MXNet-test-resolved.png" width="290">
+
+and the enhanced one:
+
+<img src="./3_Software/5_Applications/MXNet-test-resolved.png" width="870">
+
+	Issues:
+		None
+
+	Solution:
+		None
+
+	References:
+		https://github.com/apache/incubator-mxnet/tree/master/example/gluon/super_resolution
 ## Q/A
 #### How to verify the GPU works well on Wind River Linux?
 #### How about GPU performance comparisons between Wind River Linux and Ubuntu?
