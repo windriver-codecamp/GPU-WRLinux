@@ -1,0 +1,30 @@
+tensorflow run on cuda
+
+1. "Hello, TensorFlow!" -- a simple example
+
+intel-x86-64:~$ python3
+Python 3.9.2 (default, May  8 2021, 05:14:08) 
+[GCC 10.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 
+>>> import tensorflow as tf
+>>> tf.compat.v1.disable_eager_execution()
+>>> hello = tf.constant('Hello, TensorFlow!')
+>>> sess = tf.compat.v1.Session()
+2021-06-15 09:13:55.186887: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-06-15 09:13:55.187253: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1733] Found device 0 with properties: 
+pciBusID: 0000:01:00.0 name: GeForce GTX 1650 SUPER computeCapability: 7.5
+coreClock: 1.755GHz coreCount: 20 deviceMemorySize: 3.82GiB deviceMemoryBandwidth: 178.84GiB/s
+2021-06-15 09:13:55.187301: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-06-15 09:13:55.187613: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-06-15 09:13:55.187871: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1871] Adding visible gpu devices: 0
+2021-06-15 09:13:55.187903: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1258] Device interconnect StreamExecutor with strength 1 edge matrix:
+2021-06-15 09:13:55.187919: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1264]      0 
+2021-06-15 09:13:55.187923: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1277] 0:   N 
+2021-06-15 09:13:55.187992: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-06-15 09:13:55.188301: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-06-15 09:13:55.188552: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1418] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 2623 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1650 SUPER, pci bus id: 0000:01:00.0, compute capability: 7.5)
+>>> print(sess.run(hello))
+2021-06-15 09:13:59.858639: I tensorflow/core/platform/profile_utils/cpu_utils.cc:114] CPU Frequency: 3591560000 Hz
+b'Hello, TensorFlow!'
+>>> 
