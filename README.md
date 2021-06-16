@@ -9,11 +9,14 @@ Exploring NVIDIA GPU-Accelerated Ecosystem on Wind River Linux
 
 ## Software
 ### Wind River Linux Kernel and Device Driver
-<img src="./3_Software/2_Kernel_Device_Driver/Kerenl_Device_Driver_1.JPG" width="600">
+<img src="./3_Software/2_Kernel_Device_Driver/Kernel_Device_Driver_1.JPG" width="600">
+
 ### X Windows and OpenGL
 <img src="./3_Software/3_X_Windows_Desktop/X11_OpenGL_1.JPG" width="600">
+
 ### NVIDIA Driver Userspace
 <img src="./3_Software/4_Toolkit_SDK/Nvidia_Driver_Userspace_1.JPG" width="600">
+
 ### Kernel and Device Drivers
 		Overview Picture:
 		Setup Steps:
