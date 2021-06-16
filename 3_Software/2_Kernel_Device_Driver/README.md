@@ -1,10 +1,9 @@
+# How to build and deploy WR Linux and NVIDIA Driver to Intel-x86-64 host?
 ## Setup steps
-
-### Build Image
+### Build Wind River Linux Kernel and Rootfs
 
 ```
 $ /lpg-build/cdc/fast_prod/WRLINUX_MASTER_WR/MASTER_WR_GIT/wrlinux-10/setup.sh --machines=intel-x86-64 --distros=wrlinux-graphics --templates=feature/chromium,feature/xfce,feature/linux-yocto-dev,feature/userspace-next,feature/toolchain-next --layers=meta-browser --dl-layers --accept-eula=yes
-
 $ source environment-setup-x86_64-wrlinuxsdk-linux 
 $ source oe-init-build-env
 
@@ -12,12 +11,9 @@ $ vi conf/local.conf
 
 IMAGE_INSTALL_append = " libjpeg-turbo v4l-utils apt autoconf autoconf-archive automake binutils bison build-compare ccache chrpath cmake createrepo-c dejagnu desktop-file-utils diffstat distcc dmidecode dnf dosfstools dpkg dwarfsrcfiles e2fsprogs elfutils expect file flex gcc gdb git glide gnu-config go intltool json-c libcomps libdnf libedit libmodulemd librepo libtool m4 make makedevs meson mtools nasm ninja opkg opkg-utils orc patch patchelf perl prelink pseudo quilt rpm rsync ruby run-postinsts squashfs-tools strace subversion unifdef xmlto util-linux python3-pip python3-numpy python3-pkg-resources python3-setuptools libgcc make xz libcrypto libffi liblzma libssl libtirpc libmpc mpfr libunwind kernel-devsrc libmpc-dev gcc-plugins ncurses"
 
-
 EXTRA_IMAGE_FEATURES ?= "debug-tweaks tools-sdk tools-debug"
 
-
 $ vi ../layers/oe-core/meta/recipes-graphics/xorg-xserver/xserver-xorg.inc
-
 
 ...
 
@@ -48,10 +44,14 @@ $ bitbake wrlinux-image-std-sato
 
 ```
 
-## Deploy Images to the target
+## Deploy WR Linux kernel and rootfs to Intel-x86-64 host
 
+### Deploy Kernel and rootfs to a SSD
 ```
 $ dd if=wrlinux-image-std-sato-intel-x86-64.wic of=/dev/sdd
+```
+### Resize the partition on the SSD
+```
 $ parted /dev/sdd
 GNU Parted 3.3
 Using /dev/sdd
@@ -108,10 +108,11 @@ The filesystem on /dev/sdd2 is now 29297777 (4k) blocks long.
 
 ```
 
-## Boot up target and run the following commands to prepare environment
+### Install the SSD to the Intel-x86-64 host and boot it up 
 
-### Compile Nvidia GPU drivers and deploy
+## Download and compile NVIDIA Device Drivers on the Intel-x86-64 host
 
+### Prepair kernel build environment
 ```
 $ cd /usr/src/kernel
 
@@ -122,10 +123,13 @@ root@intel-x86-64:/usr/src/kernel# make scripts prepare
 scripts/Makefile.build:421: warning: overriding recipe for target 'modules.order'
 Makefile:1451: warning: ignoring old recipe for target 'modules.order'
 warning: Cannot use CONFIG_STACK_VALIDATION=y, please install libelf-dev, libelf-devel or elfutils-libelf-devel
-
-root@intel-x86-64:/2021cc# export https_proxy="147.11.252.42:9090"
+```
+### Download NVIDIA Device Driver
+```
 root@intel-x86-64:/2021cc# wget https://us.download.nvidia.com/XFree86/Linux-x86_64/460.73.01/NVIDIA-Linux-x86_64-460.73.01.run
-
+```
+### Install NVIDIA Device Driver
+```
 $ systemctl stop lxdm
 
 Disable default Nvidia driver used in kernel by running ./NVIDIA-Linux-x86_64-460.73.01.run firstly.
@@ -139,8 +143,6 @@ ERROR: The Nouveau kernel driver is currently in use by your system.  This drive
   For some distributions, Nouveau can be disabled by adding a file in the modprobe configuration directory.  Would you like nvidia-installer to attempt to create this modprobe file for you?             
 
                                                                    Yes                                                                No   
-
-
 Select “Yes” and “reboot”
 
  One or more modprobe configuration files to disable Nouveau have been written.  For some distributions, this may be sufficient to disable Nouveau; other distributions may require modification of the  
@@ -154,7 +156,6 @@ $ systemctl stop lxdm
 
 $ ./NVIDIA-Linux-x86_64-460.73.01.run --kernel-source-path /usr/src/kernel
 
-
 Install NVIDIA's 32-bit compatibility libraries?
 Select “No”
 
@@ -164,8 +165,9 @@ Would you like to run the nvidia-xconfig utility to automatically update your X 
 Select “Yes”
 ```
 
-# References
-https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#runfile-nouveau
+## References
+
+* https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#runfile-nouveau
 
 
 
