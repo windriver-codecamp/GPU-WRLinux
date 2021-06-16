@@ -18,163 +18,17 @@ Exploring NVIDIA GPU-Accelerated Ecosystem on Wind River Linux
 <img src="./3_Software/4_Toolkit_SDK/Nvidia_Driver_Userspace_1.JPG" width="600">
 
 ## Setup Steps
-### How to build and deploy Wind River Linux and NVIDIA Driver?
-
 * [How to build and deploy WR Linux and NVIDIA Driver?](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/2_Kernel_Device_Driver/README.md)
-
-### How to start XFCE desktop?
-
 * [How to start XFCE desktop and verify NVIDIA GPU working well?](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/3_X_Windows_Desktop/README.md)
-
-### CUDA Installation (TODO)
-
-* [How to install CUDA?](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/3_X_Windows_Desktop/README.md)
-
-### CUDA-X Installation (TODO)
-
-* [How to install CUDA-X?](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/3_X_Windows_Desktop/README.md)
-
-### Unreal Engine Installation (TODO)
-
-* [How to install Unreal Engine?](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/3_X_Windows_Desktop/README.md)
-
-#### Unity
-	Setup Steps:
-	1. register an account on unity
-	https://id.unity.com/en/conversations/aec46371-1052-4108-afdf-c7f8312edfb2018f?view=register
-
-	2. Download Unity Editor
-
-	http://beta.unity3d.com/download/fe82a0e88406/LinuxEditorInstaller/Unity.tar.xz
-	tar xf Unity.tar.xz
-
-	3. Download Unity Hub
-	https://public-cdn.cloud.unity3d.com/hub/prod/UnityHub.AppImage?_gl=1*8s7rkd*_ga*OTMwMjEzMTk4LjE2MjIwODY0ODc.*_ga_1S78EFL1W5*MTYyMjUzODA2MC42LjEuMTYyMjUzODM5NS4w&_ga=2.51340841.1006021791.1622517514-930213198.1622086487
-
-	4. Run Unity Hub and login
-	./UnityHub.AppImage
-
-	5. Active new license
-	License Management --> Active new license
-
-	6. Install Unity Editor
-	Installs --> Locate, select Unity Editor (tar the Unity.tar.xz)
-
-	7. Run projects
-	Projects --> New --> 3D --> create  
-
-	Issues: Failed to login with company website.
-	Solution: Use WIFI from telphone.
-	References: https://blog.csdn.net/qq_30448401/article/details/104576125
-
-#### Video Codec SDK (TODO)
-			Setup Steps:
-			Issues:
-			Solution:
-			References:
-#### TensorFlow
-			Setup Steps:
-			Issues:
-			Solution:
-			References:
-#### PyTorch
-	Setup Steps:
-		1. Installing Anaconda3
-			$ mkdir /mnt/sdb/xhou/HOME
-			$ export HOME=/mnt/sdb/xhou/HOME
-			$ wget --no-check-certificate https://repo.anaconda.com/archive/Anaconda3-2021.05-Linux-x86_64.sh
-			$ bash Anaconda3-2021.05-Linux-x86_64.sh
-			$ source ~/.bashrc
-		2. Building&Installting PyTorch
-			$ conda create --name pytorch-build
-			$ conda activate pytorch-build
-			(pytorch-build) $ conda install astunparse numpy ninja pyyaml mkl mkl-include setuptools cmake cffi typing_extensions future six requests dataclasses
-			(pytorch-build) $ conda install -c pytorch magma-cuda112
-			(pytorch-build) $ git clone --recursive https://github.com/pytorch/pytorch
-			(pytorch-build) $ cd pytorch
-			(pytorch-build) $ git submodule sync
-			(pytorch-build) $ git submodule update --init --recursive
-			(pytorch-build) $ cat ~/cuda.env
-			export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64
-			export PATH=$PATH:/usr/local/cuda/bin
-			export CUDA_HOME="/usr/local/cuda"
-			export CUDA_NVCC_EXECUTABLE="/usr/local/cuda/bin/nvcc"
-			export CUDNN_INCLUDE_PATH="/usr/local/cuda/include/"
-			export CUDNN_LIBRARY_PATH="/usr/local/cuda/lib64/"
-			(pytorch-build) $ cat ~/pytorch_build.env
-			export LIBRARY_PATH="/usr/local/cuda/lib64"
-			export CMAKE_PREFIX_PATH=${CONDA_PREFIX:-"$(dirname $(which conda))/../"}
-			(pytorch-build) $ source ~/cuda.env
-			(pytorch-build) $ source ~/pytorch_build.env
-			## with CUDNN
-			(pytorch-build) $ export USE_CUDA=1 USE_CUDNN=1 USE_MKLDNN=1
-			## building branch master
-			(pytorch-build) $ python setup.py install # about 1.5hrs
-
-			(pytorch-build) $ python
-			Python 3.9.5 (default, May 18 2021, 19:34:48)
-			[GCC 7.3.0] :: Anaconda, Inc. on linux
-			Type "help", "copyright", "credits" or "license" for more information.
-			>>> import torch
-			>>> torch.cuda.current_device()
-			0
-			>>> torch.cuda.get_device_name(0)
-			'GeForce GTX 1650 SUPER'
-			>>>
-			>>> from torch.backends import cudnn
-			>>> cudnn.is_available()
-			True
-			>>>
-
-	Issues:
-		None
-
-	Solution:
-		None
-
-	References:
-		None
-#### MXNet
-	Setup Steps:
-		1. CUDA&cuDNN
-			They are CUDA 11.2 and cuDNN 8.2, skips installing&setups here
-		2. Anaconda
-			Skips installing, only setups
-			$ conda create --name mxnet-binary
-			$ conda activate mxnet-binary
-		3. NCCL
-			$ wget https://developer.nvidia.com/compute/machine-learning/nccl/secure/2.8.3/agnostic/x64/nccl_2.8.3-1+cuda11.2_x86_64.txz
-			$ xz -d nccl_2.8.3-1+cuda11.2_x86_64.txz
-			$ tar xf nccl_2.8.3-1+cuda11.2_x86_64.txz
-			# deploy to directory of CUDA
-			$ cp nccl_2.8.3-1+cuda11.2_x86_64/include/nccl* /usr/local/cuda/include/
-			$ cp -P nccl_2.8.3-1+cuda11.2_x86_64/lib/libnccl* /usr/local/cuda/lib64/
-			$ chmod a+r /usr/local/cuda/include/nccl* /usr/local/cuda/lib64/libnccl*
-		4. Installing MXNet with Binary
-			# version with CUDA 11.2
-			$ pip install mxnet-cu112
-			# try with
-			$ python
-			>>> import mxnet as mx
-			>>> a = mx.nd.ones((2, 3), mx.gpu())
-			>>> b = a * 2 + 1
-			>>> b.asnumpy()
-			array([[ 3.,  3.,  3.],
-				[ 3.,  3.,  3.]], dtype=float32)
-
-	Issues:
-		None
-
-	Solution:
-		None
-
-	References:
-		None
-#### Transfer Learning Toolkit (TODO)
-			Setup Steps:
-			Issues:
-			Solution:
-			References:
+* [CUDA installation and verification](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/4_Toolkit_SDK/CUDA/README.md)
+* [How to install CUDA-X?](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/4_Toolkit_SDK/CUDA-X/README.md)
+* [Unreal Engine Installation](https://github.com/charleshardy/GPU-WRLinux/tree/main/3_Software/4_Toolkit_SDK/UnrealEngine#README.md)
+* [Unity Installation](https://github.com/charleshardy/GPU-WRLinux/tree/main/3_Software/4_Toolkit_SDK/Unity#README.md)
+* [Video Codec SDK Installation (TODO)](https://github.com/charleshardy/GPU-WRLinux/tree/main/3_Software/4_Toolkit_SDK/VideoCodecSDK#README.md)
+* [TensorFlow Installation](https://github.com/charleshardy/GPU-WRLinux/tree/main/3_Software/4_Toolkit_SDK/TensorFlow#README.md)
+* [PyTorch Installation](https://github.com/charleshardy/GPU-WRLinux/tree/main/3_Software/4_Toolkit_SDK/PyTorch#README.md)
+* [MXNet Installation](https://github.com/charleshardy/GPU-WRLinux/tree/main/3_Software/4_Toolkit_SDK/MXNet#README.md)
+* [Transfer Learning Toolkit Installation (TODO)](https://github.com/charleshardy/GPU-WRLinux/tree/main/3_Software/4_Toolkit_SDK/TransferLearningToolkit#README.md)
 ### Applications
 #### CUDA examples
 			Demo Video 1:
