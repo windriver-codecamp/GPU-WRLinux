@@ -58,6 +58,7 @@ user    15m1.850s
 sys 0m16.327s
 ## Trying
 $ python super_resolution.py --resolve_img test.jpeg
+```
 
 The original picture:
 
@@ -67,7 +68,6 @@ and the enhanced one:
 
 <img src="./3_Software/5_Applications/MXNet/MXNet-test-resolved.png" width="870">
 
-```
 ## Issues:
 > None
 
