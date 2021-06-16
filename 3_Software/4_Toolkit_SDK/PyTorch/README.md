@@ -2,12 +2,15 @@
 
 ## Setup Steps:
 1. Installing Anaconda3
+```
 			$ mkdir /mnt/sdb/xhou/HOME
 			$ export HOME=/mnt/sdb/xhou/HOME
 			$ wget --no-check-certificate https://repo.anaconda.com/archive/Anaconda3-2021.05-Linux-x86_64.sh
 			$ bash Anaconda3-2021.05-Linux-x86_64.sh
 			$ source ~/.bashrc
+```
 2. Building&Installting PyTorch
+```
 			$ conda create --name pytorch-build
 			$ conda activate pytorch-build
 			(pytorch-build) $ conda install astunparse numpy ninja pyyaml mkl mkl-include setuptools cmake cffi typing_extensions future six requests dataclasses
@@ -47,7 +50,7 @@
 			>>> cudnn.is_available()
 			True
 			>>>
-
+```
 ### Issues:
 		None
 
