@@ -251,7 +251,7 @@ PACKAGES =+ "${PN}-sdl \
              ${PN}-extension-dbe \
              ${PN}-module-libint10 \
              ${PN}-module-libafb \
-             ${PN}-module-*libwfb  \
+             ${PN}-module-libwfb  \
              ${PN}-module-libmfb \
              ${PN}-module-libcfb \
              ${PN}-module-exa \
