@@ -1,6 +1,9 @@
-tensorflow run on cuda
+/****
+**** run tensorflow on cuda *****
+****/
 
-1. "Hello, TensorFlow!" -- a simple example
+"Hello, TensorFlow!" -- a simple example
+
 
 intel-x86-64:~$ python3
 Python 3.9.2 (default, May  8 2021, 05:14:08) 
