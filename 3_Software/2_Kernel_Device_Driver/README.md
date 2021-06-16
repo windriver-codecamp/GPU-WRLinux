@@ -112,5 +112,63 @@ The filesystem on /dev/sdd2 is now 29297777 (4k) blocks long.
 
 ### Compile Nvidia GPU drivers and deploy
 
+```
+$ cd /usr/src/kernel
+
+$ make scripts prepare
+
+root@intel-x86-64:/usr/src/kernel# make scripts prepare
+...
+scripts/Makefile.build:421: warning: overriding recipe for target 'modules.order'
+Makefile:1451: warning: ignoring old recipe for target 'modules.order'
+warning: Cannot use CONFIG_STACK_VALIDATION=y, please install libelf-dev, libelf-devel or elfutils-libelf-devel
+
+root@intel-x86-64:/2021cc# export https_proxy="147.11.252.42:9090"
+root@intel-x86-64:/2021cc# wget https://us.download.nvidia.com/XFree86/Linux-x86_64/460.73.01/NVIDIA-Linux-x86_64-460.73.01.run
+
+$ systemctl stop lxdm
+
+Disable default Nvidia driver used in kernel by running ./NVIDIA-Linux-x86_64-460.73.01.run firstly.
+
+
+$ ./NVIDIA-Linux-x86_64-460.73.01.run --kernel-source-path /usr/src/kernel
+
+ERROR: The Nouveau kernel driver is currently in use by your system.  This driver is incompatible with the NVIDIA driver, and must be disabled before proceeding.  Please consult the NVIDIA driver     
+         README and your Linux distribution's documentation for details on how to correctly disable the Nouveau kernel driver.
+
+  For some distributions, Nouveau can be disabled by adding a file in the modprobe configuration directory.  Would you like nvidia-installer to attempt to create this modprobe file for you?             
+
+                                                                   Yes                                                                No   
+
+
+Select “Yes” and “reboot”
+
+ One or more modprobe configuration files to disable Nouveau have been written.  For some distributions, this may be sufficient to disable Nouveau; other distributions may require modification of the  
+  initial ramdisk.  Please reboot your system and attempt NVIDIA driver installation again.  Note if you later wish to re-enable Nouveau, you will need to delete these files:
+  /etc/modprobe.d/nvidia-installer-disable-nouveau.conf
+  
+Run the following commands again
+
+$ systemctl stop lxdm
+
+
+$ ./NVIDIA-Linux-x86_64-460.73.01.run --kernel-source-path /usr/src/kernel
+
+
+Install NVIDIA's 32-bit compatibility libraries?
+Select “No”
+
+Would you like to run the nvidia-xconfig utility to automatically update your X configuration file so that the NVIDIA X driver will be used when you restart X?  Any pre-existing X configuration file
+  will be backed up.  
+
+Select “Yes”
+```
+
+# References
+https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#runfile-nouveau
+
+
+
+
 
 
