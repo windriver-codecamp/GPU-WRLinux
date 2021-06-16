@@ -167,7 +167,7 @@ Section "Screen"
 EndSection
 
 ```
-## Issues
+### Issues
 
 ```
 Not work and dig further
@@ -185,7 +185,7 @@ Please consult the The X.Org Foundation support
 	 at http://wiki.x.org
  for help. 
 ```
-### Solution
+#### Solution
 Add libwfb supports in WR Linux
 https://git.yoctoproject.org/cgit.cgi/poky/plain/meta/recipes-graphics/xorg-xserver/xserver-xorg.inc
 
