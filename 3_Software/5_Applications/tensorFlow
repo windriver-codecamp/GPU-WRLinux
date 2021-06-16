@@ -4,7 +4,7 @@
 
 "Hello, TensorFlow!" -- a simple example
 
-----hello.py:
+/////////// hello.py /////////////
 
 import tensorflow as tf
 tf.compat.v1.disable_eager_execution()
@@ -13,7 +13,7 @@ sess = tf.compat.v1.Session()
 print(sess.run(hello))
 
 
-or open a terminal:
+//////// or open a terminal //////
 
 intel-x86-64:~$ python3
 Python 3.9.2 (default, May  8 2021, 05:14:08) 
