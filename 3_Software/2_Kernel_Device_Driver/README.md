@@ -1,4 +1,4 @@
-# How to build and deploy WR Linux and NVIDIA Driver to Intel-x86-64 host?
+# How to build and deploy WR Linux and NVIDIA Driver?
 ## Setup steps
 ### Build Wind River Linux Kernel and Rootfs
 
