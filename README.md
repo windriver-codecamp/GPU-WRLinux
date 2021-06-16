@@ -29,7 +29,7 @@ Exploring NVIDIA GPU-Accelerated Ecosystem on Wind River Linux
 * [PyTorch Installation](https://github.com/charleshardy/GPU-WRLinux/tree/main/3_Software/4_Toolkit_SDK/PyTorch#README.md)
 * [MXNet Installation](https://github.com/charleshardy/GPU-WRLinux/tree/main/3_Software/4_Toolkit_SDK/MXNet#README.md)
 * [Transfer Learning Toolkit Installation (TODO)](https://github.com/charleshardy/GPU-WRLinux/tree/main/3_Software/4_Toolkit_SDK/TransferLearningToolkit#README.md)
-### Applications
+### Demo
 #### CUDA examples
 			Demo Video 1:
 			Demo Source Codes:
@@ -167,6 +167,8 @@ and the enhanced one:
 
 	References:
 		https://github.com/apache/incubator-mxnet/tree/master/example/gluon/super_resolution
-## Q/A
-#### How to verify the GPU works well on Wind River Linux?
-#### How about GPU performance comparisons between Wind River Linux and Ubuntu?
+## FAQ
+* [How about GPU performance comparisons between Wind River Linux and Ubuntu?](https://github.com/charleshardy/GPU-WRLinux/blob/main/4_QA/README.md)
+* [How to verify the GPU works well on Wind River Linux?](https://github.com/charleshardy/GPU-WRLinux/blob/main/4_QA/README.md)
+* [Can NVIDIA GPU run on any ARM based boards?](https://github.com/charleshardy/GPU-WRLinux/blob/main/4_QA/README.md)
+
