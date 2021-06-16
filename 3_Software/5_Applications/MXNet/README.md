@@ -62,11 +62,11 @@ $ python super_resolution.py --resolve_img test.jpeg
 
 The original picture:
 
-<img src="./3_Software/5_Applications/MXNet/MXNet-test-resolved.png" width="290">
+<img src="./MXNet-test-resolved.png" width="290">
 
 and the enhanced one:
 
-<img src="./3_Software/5_Applications/MXNet/MXNet-test-resolved.png" width="870">
+<img src="./MXNet-test-resolved.png" width="870">
 
 ## Issues:
 > None
