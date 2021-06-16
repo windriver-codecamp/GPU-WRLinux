@@ -164,6 +164,32 @@ Would you like to run the nvidia-xconfig utility to automatically update your X 
 
 Select “Yes”
 ```
+## Issues
+
+:bomb: At the first time of running "./NVIDIA-Linux-x86_64-460.73.01.run --kernel-source-path /usr/src/kernel", the following error will occured
+
+```
+ERROR: The Nouveau kernel driver is currently in use by your system.  This driver is incompatible with the NVIDIA driver, and must be disabled before proceeding.  Please consult the NVIDIA driver     
+         README and your Linux distribution's documentation for details on how to correctly disable the Nouveau kernel driver.
+
+  For some distributions, Nouveau can be disabled by adding a file in the modprobe configuration directory.  Would you like nvidia-installer to attempt to create this modprobe file for you?             
+
+                                                                   Yes                                                                No   
+Select “Yes” and “reboot”
+
+ One or more modprobe configuration files to disable Nouveau have been written.  For some distributions, this may be sufficient to disable Nouveau; other distributions may require modification of the  
+  initial ramdisk.  Please reboot your system and attempt NVIDIA driver installation again.  Note if you later wish to re-enable Nouveau, you will need to delete these files:
+  /etc/modprobe.d/nvidia-installer-disable-nouveau.conf
+  
+```
+### Solution
+```
+Run the following commands again
+
+$ systemctl stop lxdm
+$ ./NVIDIA-Linux-x86_64-460.73.01.run --kernel-source-path /usr/src/kernel
+```
+
 
 ## References
 
