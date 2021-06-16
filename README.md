@@ -17,17 +17,16 @@ Exploring NVIDIA GPU-Accelerated Ecosystem on Wind River Linux
 ### NVIDIA Driver Userspace Component
 <img src="./3_Software/4_Toolkit_SDK/Nvidia_Driver_Userspace_1.JPG" width="600">
 
-### Kernel and Device Drivers
-		Overview Picture:
-		Setup Steps:
-		Issues:
-		Solution:
-		References:
-### X Windows Desktop (XFCE)
-		Setup Steps:
-		Issues:
-		Solution:
-		References:
+## Setup Steps
+### How to build and deploy Wind River Linux and NVIDIA Driver?
+
+* [How to build and deploy WR Linux and NVIDIA Driver?](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/2_Kernel_Device_Driver/README.md)
+
+### How to start XFCE desktop?
+
+* [How to start XFCE desktop?](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/3_X_Windows_Desktop/README.md)
+
+
 ### Toolkit and SDK (CUDA, CUDA-X, Game Engines, etc.)
 #### CUDA
 			Setup Steps:
