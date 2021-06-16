@@ -1,4 +1,4 @@
-# How to start XFCE desktop?
+# How to start XFCE desktop and verify NVIDIA GPU working well?
 
 ## Setup steps
 
@@ -378,5 +378,484 @@ python populate_packages_prepend() {
 ```
 ```
 root@intel-x86-64:/usr/lib64/xorg/modules# scp lliu2@128.224.153.48:/buildarea2/lliu2/2021cc/dell_pc/CDNext_20210508/build/tmp-glibc/work/corei7-64-wrs-linux/xserver-xorg/2_1.20.10-r0/image/usr/lib64/xorg/modules/libwfb.so .
+$ bitbake xserver-xorg
+```
+## How to verify if NVIDIA GPU working well?
+* cat the version of nvidia driver
+```
+$ cat /proc/driver/nvidia/version
+
+root@intel-x86-64:/NVIDIA-Linux-x86_64-460.73.01# cat /proc/driver/nvidia/version
+NVRM version: NVIDIA UNIX x86_64 Kernel Module  460.73.01  Thu Apr  1 21:40:36 UTC 2021
+GCC version:  gcc version 10.2.0 (GCC) 
+```
+* Add glmark2 for testing
+```
+[lliu2@pek-lpgtest7302 build]$ bitbake glmark2
+WARNING: Host distribution "rhel-8.3" has not been validated with this version of the build system; you may possibly experience unexpected failures. It is recommended that you use a tested distribution.
+Loading cache: 100% |#######################################################################################################################################################################| Time: 0:00:01
+Loaded 8378 entries from dependency cache.
+Parsing recipes: 100% |#####################################################################################################################################################################| Time: 0:00:03
+Parsing of 3353 .bb files complete (3350 cached, 3 parsed). 8381 targets, 5430 skipped, 0 masked, 0 errors.
+WARNING: glmark2 is not whitelisted, figuring out PNWHITELIST...
+ERROR: Nothing PROVIDES 'glmark2'
+glmark2 was skipped: Not supported in this configuration by Wind River. To override, add to your local.conf:
+PNWHITELIST_openembedded-layer += 'glmark2'
+
+You may also have to add: BB_NO_NETWORK = '0'
+
+Summary: There were 2 WARNING messages shown.
+Summary: There was 1 ERROR message shown, returning a non-zero exit code.
+[lliu2@pek-lpgtest7302 build]$ vi conf/local.conf 
+[lliu2@pek-lpgtest7302 build]$ cat conf/local.conf 
+#
+# This file is your local configuration file and is where all local user settings
+# are placed. The comments in this file give some guide to the options a new user
+# to the system might want to change but pretty much any configuration option can
+# be set in this file. More adventurous users can look at local.conf.extended
+# which contains other examples of configuration which can be placed in this file
+# but new users likely won't need any of them initially.
+#
+# Lines starting with the '#' character are commented out and in some cases the
+# default values are provided as comments to show people example syntax. Enabling
+# the option is a question of removing the # character and making any change to the
+# variable as required.
+
+#
+# Network Control
+#
+# Disable bitbake from being able to access the network
+BB_NO_NETWORK ?= '0'
+
+# Only allow downloads from PREMIRRORs, not search the main SRC_URI or MIRRORS.
+# If you have enabled download (dl-layers), use this to restrict fetch to those
+# layers. This also has a side effect of telling the system to ensure the
+# fetched repositories from the local download layer (pre)mirrors are
+# up-to-date.
+BB_FETCH_PREMIRRORONLY ?= '${@d.getVar('BB_NO_NETWORK') or 0}'
+
+#
+# Wind River Linux Templates
+#
+# The following variables control the template inclusion mechanism.
+#
+# Specify templates you wish to use in a space separated list.
+WRTEMPLATE ?= "feature/chromium feature/xfce feature/linux-yocto-dev feature/userspace-next feature/toolchain-next"
+
+# If you want to disable one or more templates
+# Note: this matches the 'end' of any templates that were found.. so you can do
+# things like:
+#
+#  default (skip all default templates)
+#  feature/foobar (skip all layers feature/foobar)
+#  wr-base/feature/foobar (skip only feature/foobar in wr-base)
+#WRTEMPLATE_SKIP = "feautre/item3 feature/item4 ..."
+
+# Selectively enable or disable the template 'image.inc' additions to a given
+# image recipe.
+# (the default value is 1)
+#WRTEMPLATE_IMAGE_pn-<recipe> = "0"
+
+# Disable or enable processing of the special 'bsp-pkgs.*' template pieces.
+# (the default value is 1)
+#WRTEMPLATE_BSP_PKGS = "0"
+
+#
+# Machine Selection
+#
+# You need to select a specific machine to target the build with.
+# Some machines are emulated, usually the name starts with qemu, these can boot
+# and run in the QEMU emulator:
+#
+# 32 bit Intel Core 2 CPU (and later) with MMX, SSE, SSE2, SSE3, and SSSE3 instruction set support. Supports a moderately wide range of drivers that should boot and be usable on "typical" hardware.
+#MACHINE ?= "intel-core2-32"
+# 64 bit Intel Core i7 CPU (and later) with MMX, SSE, SSE2, SSE3, and SSSE3 instruction set support. Supports a moderately wide range of drivers that should boot and be usable on "typical" hardware.
+#MACHINE ?= "intel-corei7-64"
+# 64 bit Intel Skylake CPU (and later) with MMX, SSE, SSE2, SSE3, SSE4.1, SSE4.2, AVX, and AVX2 instruction set support. Supports a moderately wide range of drivers that should boot and be usable on "typical" hardware.
+#MACHINE ?= "intel-skylake-64"
+# Intel X86 (64bit) PCs and servers
+#MACHINE ?= "intel-x86-64"
+# ARMv7 system on QEMU
+#MACHINE ?= "qemuarm"
+# ARMv8 system on QEMU
+#MACHINE ?= "qemuarm64"
+# ARMv5 system on QEMU
+#MACHINE ?= "qemuarmv5"
+# a MIPS system on QEMU
+#MACHINE ?= "qemumips"
+# a MIPS64 system on QEMU
+#MACHINE ?= "qemumips64"
+# a PPC system on QEMU
+#MACHINE ?= "qemuppc"
+# a PPC system on QEMU
+#MACHINE ?= "qemuppc64"
+# a generic riscv32
+#MACHINE ?= "qemuriscv32"
+# a generic riscv64
+#MACHINE ?= "qemuriscv64"
+# x86 system on QEMU
+#MACHINE ?= "qemux86"
+# x86-64 system on QEMU
+#MACHINE ?= "qemux86-64"
+#
+# This sets the default machine if no other machine has been selected:
+MACHINE ??= "intel-x86-64"
+
+#
+# Linux Kernel Type
+#
+# The kernel type is selected by the recipe that provides the kernel.
+# By default, this recipe is selected by the DISTRO.
+#
+# If you want to override the default kernel, you must select the desired
+# recipe via PREFERRED_PROVIDER_virtual/kernel.
+#
+# To select a specific kernel recipe, uncomment the line below
+# and set the value.
+#
+# Typical values include: linux-yocto, linux-yocto-rt, and linux-yocto-tiny
+#
+#PREFERRED_PROVIDER_virtual/kernel = "linux-yocto"
+
+#
+# Where to place downloads
+#
+# During a first build the system will download many different source code tarballs
+# from various upstream projects. This can take a while, particularly if your network
+# connection is slow. These are all stored in DL_DIR. When wiping and rebuilding you
+# can preserve this directory to speed up this part of subsequent builds. This directory
+# is safe to share between multiple builds on the same machine too.
+#
+# The default is a downloads directory under TOPDIR which is the build directory.
+#
+#DL_DIR ?= "${TOPDIR}/downloads"
+
+#
+# Where to place shared-state files
+#
+# BitBake has the capability to accelerate builds based on previously built output.
+# This is done using "shared state" files which can be thought of as cache objects
+# and this option determines where those files are placed.
+#
+# You can wipe out TMPDIR leaving this directory intact and the build would regenerate
+# from these files if no changes were made to the configuration. If changes were made
+# to the configuration, only shared state files where the state was still valid would
+# be used (done using checksums).
+#
+# The default is a sstate-cache directory under TOPDIR.
+#
+#SSTATE_DIR ?= "${TOPDIR}/sstate-cache"
+
+#
+# Where to place the build output
+#
+# This option specifies where the bulk of the building work should be done and
+# where BitBake should place its temporary files and output. Keep in mind that
+# this includes the extraction and compilation of many applications and the toolchain
+# which can use Gigabytes of hard disk space.
+#
+# The default is a tmp directory under TOPDIR.
+#
+#TMPDIR = "${TOPDIR}/tmp"
+
+#
+# Default policy config
+#
+# The distribution setting controls which policy settings are used as defaults.
+# The default value is fine for general Yocto project use, at least initially.
+# Ultimately when creating custom policy, people will likely end up subclassing 
+# these defaults.
+#
+# OpenEmbedded
+#DISTRO ?= "anaconda"
+# OpenEmbedded
+#DISTRO ?= "nodistro"
+# Wind River Linux development
+#DISTRO ?= "wrlinux"
+# Wind River Linuxtiny development
+#DISTRO ?= "wrlinux-graphics"
+# Wind River Linuxtiny development
+#DISTRO ?= "wrlinux-installer"
+# Wind River Linuxtiny development
+#DISTRO ?= "wrlinux-tiny"
+#
+# This sets the default distro if no other distro has been selected:
+DISTRO ??= "wrlinux-graphics"
+
+#
+# Package Management configuration
+#
+# This variable lists which packaging formats to enable. Multiple package backends
+# can be enabled at once and the first item listed in the variable will be used
+# to generate the root filesystems.
+# Options are:
+#  - 'package_deb' for debian style deb files
+#  - 'package_ipk' for ipk files are used by opkg (a debian style embedded package manager)
+#  - 'package_rpm' for rpm style packages
+# E.g.: PACKAGE_CLASSES ?= "package_rpm package_deb package_ipk"
+# We default to rpm:
+PACKAGE_CLASSES ?= "package_rpm"
+
+#
+# SDK target architecture
+#
+# This variable specifies the architecture to build SDK items for and means
+# you can build the SDK packages for architectures other than the machine you are
+# running the build on (i.e. building i686 packages on an x86_64 host).
+# Supported values are i686 and x86_64
+#SDKMACHINE ?= "i686"
+
+#
+# Extra image configuration defaults
+#
+# The EXTRA_IMAGE_FEATURES variable allows extra packages to be added to the generated
+# images. Some of these options are added to certain image types automatically. The
+# variable can contain the following options:
+#  "dbg-pkgs"       - add -dbg packages for all installed packages
+#                     (adds symbol information for debugging/profiling)
+#  "src-pkgs"       - add -src packages for all installed packages
+#                     (adds source code for debugging)
+#  "dev-pkgs"       - add -dev packages for all installed packages
+#                     (useful if you want to develop against libs in the image)
+#  "ptest-pkgs"     - add -ptest packages for all ptest-enabled packages
+#                     (useful if you want to run the package test suites)
+#  "tools-sdk"      - add development tools (gcc, make, pkgconfig etc.)
+#  "tools-debug"    - add debugging tools (gdb, strace)
+#  "eclipse-debug"  - add Eclipse remote debugging support
+#  "tools-profile"  - add profiling tools (oprofile, lttng, valgrind)
+#  "tools-testapps" - add useful testing tools (ts_print, aplay, arecord etc.)
+#  "debug-tweaks"   - make an image suitable for development
+#                     e.g. ssh root access has a blank password
+# There are other application targets that can be used here too, see
+# meta/classes/image.bbclass and meta/classes/core-image.bbclass for more details.
+# We default to enabling the debugging tweaks.
+EXTRA_IMAGE_FEATURES ?= "debug-tweaks tools-sdk tools-debug"
+
+#
+# Additional image features
+#
+# The following is a list of additional classes to use when building images which
+# enable extra features. Some available options which can be included in this variable
+# are:
+#   - 'buildstats' collect build statistics
+#   - 'image-mklibs' to reduce shared library files size for an image
+#   - 'image-prelink' in order to prelink the filesystem image
+# NOTE: if listing mklibs & prelink both, then make sure mklibs is before prelink
+# NOTE: mklibs also needs to be explicitly enabled for a given image, see local.conf.extended
+USER_CLASSES ?= "buildstats image-mklibs image-prelink"
+
+#
+# Additional rootfs image types
+#
+# The following is a partial list of additional image filesystem types that
+# may be supported by the configured machine;
+#   - 'tar.gz' to create a gzip compressed tarball of the image
+#   - 'tar.bz2' to create a bz2 compressed tarball of the image
+#   - 'ext4' to create an ext4 image
+#
+# NOTE:
+# Due to the way the OpenEmbedded build system processes this variable,
+# you cannot update its contents by using _append or _prepend. You must use
+# the += operator to add one or more options to the IMAGE_FSTYPES variable.
+IMAGE_FSTYPES += "tar.bz2"
+
+# The following options will build a companion 'debug filesystem' in addition
+# to the normal deployable filesystem.  This companion system allows a
+# debugger to know the symbols and related sources.  It can be used to
+# debug a remote 'production' system without having to add the debug symbols
+# and sources to remote system.  If IMAGE_FSTYPES_DEBUGFS is not defined, it
+# defaults to IMAGE_FSTYPES.
+#IMAGE_GEN_DEBUGFS = "1"
+#IMAGE_FSTYPES_DEBUGFS = "tar.bz2"
+
+# The network based PR service host and port
+# Uncomment the following lines to enable PRservice.
+# Set PRSERV_HOST to 'localhost:0' to automatically
+# start local PRService.
+# Set to other values to use remote PRService.
+#PRSERV_HOST = "localhost:0"
+
+#
+# Runtime testing of images
+#
+# The build system can test booting virtual machine images under qemu (an emulator)
+# after any root filesystems are created and run tests against those images. It can also
+# run tests against any SDK that are built. To enable this uncomment these lines.
+# See classes/test{image,sdk}.bbclass for further details.
+#IMAGE_CLASSES += "testimage testsdk"
+#TESTIMAGE_AUTO_qemuall = "1"
+# Note: test image requires sshd and scp support on the target, this can be added by
+# adding one of the following two lines.
+#IMAGE_INSTALL_append = " openssh-sshd openssh-scp"
+IMAGE_INSTALL_append = " libjpeg-turbo v4l-utils apt autoconf autoconf-archive automake binutils bison build-compare ccache chrpath cmake createrepo-c dejagnu desktop-file-utils diffstat distcc dmidecode dnf dosfstools dpkg dwarfsrcfiles e2fsprogs elfutils expect file flex gcc gdb git glide gnu-config go intltool json-c libcomps libdnf libedit libmodulemd librepo libtool m4 make makedevs meson mtools nasm ninja opkg opkg-utils orc patch patchelf perl prelink pseudo quilt rpm rsync ruby run-postinsts squashfs-tools strace subversion unifdef xmlto util-linux python3-pip python3-numpy python3-pkg-resources python3-setuptools libgcc make xz libcrypto libffi liblzma libssl libtirpc libmpc mpfr libunwind kernel-devsrc libmpc-dev gcc-plugins ncurses"
+
+#
+# Interactive shell configuration
+#
+# Under certain circumstances the system may need input from you and to do this it
+# can launch an interactive shell. It needs to do this since the build is
+# multithreaded and needs to be able to handle the case where more than one parallel
+# process may require the user's attention. The default is iterate over the available
+# terminal types to find one that works.
+#
+# Examples of the occasions this may happen are when resolving patches which cannot
+# be applied, to use the devshell or the kernel menuconfig
+#
+# Supported values are auto, gnome, xfce, rxvt, screen, konsole (KDE 3.x only), none
+# Note: currently, Konsole support only works for KDE 3.x due to the way
+# newer Konsole versions behave
+#OE_TERMINAL = "auto"
+# By default disable interactive patch resolution (tasks will just fail instead):
+PATCHRESOLVE = "noop"
+
+#
+# Disk Space Monitoring during the build
+#
+# Monitor the disk space during the build. If there is less that 1GB of space or less
+# than 100K inodes in any key build location (TMPDIR, DL_DIR, SSTATE_DIR), gracefully
+# shutdown the build. If there is less that 100MB or 1K inodes, perform a hard abort
+# of the build. The reason for this is that running completely out of space can corrupt
+# files and damages the build in ways which may not be easily recoverable.
+# It's necesary to monitor /tmp, if there is no space left the build will fail
+# with very exotic errors.
+BB_DISKMON_DIRS ??= "\
+    STOPTASKS,${TMPDIR},1G,100K \
+    STOPTASKS,${DL_DIR},1G,100K \
+    STOPTASKS,${SSTATE_DIR},1G,100K \
+    STOPTASKS,/tmp,100M,100K \
+    ABORT,${TMPDIR},100M,1K \
+    ABORT,${DL_DIR},100M,1K \
+    ABORT,${SSTATE_DIR},100M,1K \
+    ABORT,/tmp,10M,1K"
+
+#
+# Shared-state files from other locations
+#
+# As mentioned above, shared state files are prebuilt cache data objects which can
+# used to accelerate build time. This variable can be used to configure the system
+# to search other mirror locations for these objects before it builds the data itself.
+#
+# This can be a filesystem directory, or a remote url such as http or ftp. These
+# would contain the sstate-cache results from previous builds (possibly from other
+# machines). This variable works like fetcher MIRRORS/PREMIRRORS and points to the
+# cache locations to check for the shared objects.
+# NOTE: if the mirror uses the same structure as SSTATE_DIR, you need to add PATH
+# at the end as shown in the examples below. This will be substituted with the
+# correct path within the directory structure.
+#SSTATE_MIRRORS ?= "\
+#file://.* http://someserver.tld/share/sstate/PATH;downloadfilename=PATH \n \
+#file://.* file:///some/local/dir/sstate/PATH"
+#
+# Make sstate can be downloaded from network when BB_NO_NETWORK is set to 1
+#SSTATE_MIRROR_ALLOW_NETWORK ?= "1"
+
+# Select the default init manager
+# use systemd as the default init manager
+DISTRO_FEATURES_append = " systemd"
+DISTRO_FEATURES_BACKFILL_CONSIDERED += "sysvinit"
+VIRTUAL-RUNTIME_init_manager = "systemd"
+VIRTUAL-RUNTIME_initscripts = "systemd-compat-units"
+KERNEL_FEATURES_append = " cfg/systemd.scc"
+
+# use sysvinit as the default init manager
+#DISTRO_FEATURES_append = " sysvinit"
+#DISTRO_FEATURES_BACKFILL_CONSIDERED += "systemd"
+#VIRTUAL-RUNTIME_init_manager = "sysvinit"
+#VIRTUAL-RUNTIME_initscripts = "initscripts"
+
+#
+# Qemu configuration
+#
+# By default qemu will build with a builtin VNC server where graphical output can be
+# seen. The two lines below enable the SDL backend too. By default libsdl2-native will
+# be built, if you want to use your host's libSDL instead of the minimal libsdl built
+# by libsdl2-native then uncomment the ASSUME_PROVIDED line below.
+PACKAGECONFIG_append_pn-qemu-system-native = " sdl"
+PACKAGECONFIG_append_pn-nativesdk-qemu = " sdl"
+#ASSUME_PROVIDED += "libsdl2-native"
+
+# CONF_VERSION is increased each time build/conf/ changes incompatibly and is used to
+# track the version of this file when it was generated. This can safely be ignored if
+# this doesn't mean anything to you.
+CONF_VERSION = "1"
+
+# The overrides osv-wrlinux will enable wrlinux specific bbappend
+OVERRIDES_append = ":osv-wrlinux"
+
+# Add WRLinux uninative support
+require wrlinux-distro/conf/distro/include/wrlinux-uninative.inc
+
+# Exclude buildtools dir from pseudo database to fix do_package failure
+PSEUDO_IGNORE_PATHS .= ",/buildarea2/lliu2/2021cc/dell_pc/CDNext_20210508/bin"
+
+# Add known layers to whitelist
+require conf/wrlinux-whitelist.inc
+
+PNWHITELIST_openembedded-layer += 'glmark2'
+[lliu2@pek-lpgtest7302 build]$
+
+NOTE: Executing Tasks
+WARNING: glmark2-2021.02+AUTOINC+4b2bbe8035-r0 do_fetch: glmark2 is not supported by Wind River Linux. Check 'Externally downloadable 3rd party components' in EULA for more information. You can set WRLINUX_SUPPORTED_RECIPE_pn-glmark2 = '2' to ignore the warning at your own risk
+NOTE: Tasks Summary: Attempted 1680 tasks of which 1666 didn't need to be rerun and all succeeded.
+
+Summary: There were 2 WARNING messages shown.
+[lliu2@pek-lpgtest7302 build]$
+
+root@intel-x86-64:~# scp lliu2@128.224.153.48:/buildarea2/lliu2/2021cc/dell_pc/CDNext_20210508/build/tmp-glibc/work/corei7-64-wrs-linux/glmark2/2021.02+AUTOINC+4b2bbe8035-r0/deploy-rpms/corei7_64/glmark2-2021.02+0+4b2bbe8035-r0.corei7_64.rpm .
+root@intel-x86-64:~# rpm -ivh glmark2-2021.02+0+4b2bbe8035-r0.corei7_64.rpm
+Verifying...                          ################################# [100%]
+Preparing...                          ################################# [100%]
+Updating / installing...
+   1:glmark2-2021.02+0+4b2bbe8035-r0  ################################# [100%]
+root@intel-x86-64:~# 
+```
+
+```
+sh-5.1# glmark2-es2
+=======================================================
+    glmark2 2021.02
+=======================================================
+    OpenGL Information
+    GL_VENDOR:     NVIDIA Corporation
+    GL_RENDERER:   GeForce GTX 1650 SUPER/PCIe/SSE2
+    GL_VERSION:    OpenGL ES 3.2 NVIDIA 460.73.01
+=======================================================
+[build] use-vbo=false: FPS: 7591 FrameTime: 0.132 ms
+[build] use-vbo=true: FPS: 11405 FrameTime: 0.088 ms
+[texture] texture-filter=nearest: FPS: 11165 FrameTime: 0.090 ms
+[texture] texture-filter=linear: FPS: 11138 FrameTime: 0.090 ms
+[texture] texture-filter=mipmap: FPS: 11136 FrameTime: 0.090 ms
+[shading] shading=gouraud: FPS: 10291 FrameTime: 0.097 ms
+[shading] shading=blinn-phong-inf: FPS: 10313 FrameTime: 0.097 ms
+[shading] shading=phong: FPS: 10102 FrameTime: 0.099 ms
+[shading] shading=cel: FPS: 10155 FrameTime: 0.098 ms
+[bump] bump-render=high-poly: FPS: 8380 FrameTime: 0.119 ms
+[bump] bump-render=normals: FPS: 11589 FrameTime: 0.086 ms
+[bump] bump-render=height: FPS: 11415 FrameTime: 0.088 ms
+[effect2d] kernel=0,1,0;1,-4,1;0,1,0;: FPS: 9397 FrameTime: 0.106 ms
+[effect2d] kernel=1,1,1,1,1;1,1,1,1,1;1,1,1,1,1;: FPS: 7061 FrameTime: 0.142 ms
+[pulsar] light=false:quads=5:texture=false: FPS: 11037 FrameTime: 0.091 ms
+[desktop] blur-radius=5:effect=blur:passes=1:separable=true:windows=4: FPS: 5122 FrameTime: 0.195 ms
+[desktop] effect=shadow:windows=4: FPS: 7726 FrameTime: 0.129 ms
+[buffer] columns=200:interleave=false:update-dispersion=0.9:update-fraction=0.5:update-method=map: FPS: 1372 FrameTime: 0.729 ms
+[buffer] columns=200:interleave=false:update-dispersion=0.9:update-fraction=0.5:update-method=subdata: FPS: 1567 FrameTime: 0.638 ms
+[buffer] columns=200:interleave=true:update-dispersion=0.9:update-fraction=0.5:update-method=map: FPS: 1618 FrameTime: 0.618 ms
+[ideas] speed=duration: FPS: 9685 FrameTime: 0.103 ms
+[jellyfish] <default>: FPS: 8542 FrameTime: 0.117 ms
+[terrain] <default>: FPS: 970 FrameTime: 1.031 ms
+[shadow] <default>: FPS: 7917 FrameTime: 0.126 ms
+[refract] <default>: FPS: 2503 FrameTime: 0.400 ms
+[conditionals] fragment-steps=0:vertex-steps=0: FPS: 11040 FrameTime: 0.091 ms
+[conditionals] fragment-steps=5:vertex-steps=0: FPS: 10873 FrameTime: 0.092 ms
+[conditionals] fragment-steps=0:vertex-steps=5: FPS: 10975 FrameTime: 0.091 ms
+[function] fragment-complexity=low:fragment-steps=5: FPS: 10923 FrameTime: 0.092 ms
+[function] fragment-complexity=medium:fragment-steps=5: FPS: 10874 FrameTime: 0.092 ms
+[loop] fragment-loop=false:fragment-steps=5:vertex-steps=5: FPS: 10855 FrameTime: 0.092 ms
+[loop] fragment-steps=5:fragment-uniform=false:vertex-steps=5: FPS: 10871 FrameTime: 0.092 ms
+[loop] fragment-steps=5:fragment-uniform=true:vertex-steps=5: FPS: 10760 FrameTime: 0.093 ms
+=======================================================
+                                  glmark2 Score: 8677 
+=======================================================
+sh-5.1# 
 ```
 
