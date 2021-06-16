@@ -34,30 +34,43 @@ Exploring NVIDIA GPU-Accelerated Ecosystem on Wind River Linux
 ```
      Demo Video (TODO)
 ```
+* [Details](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/5_Applications/MXNet/README.md)
+
 #### CUDA-X Example (NeMo)
 ```
      Demo Video (TODO)
 ```
+* [Details](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/5_Applications/MXNet/README.md)
+
 #### Unreal Engine Demo (Metahuman)
 ```
      Demo Video (TODO)
 ```
+* [Details](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/5_Applications/MXNet/README.md)
+
 #### Unity App (TODO)
 ```
      Demo Video (TODO)
 ```
+* [Details](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/5_Applications/MXNet/README.md)
+
 #### Tensorflow (TODO)
 ```
      Demo Video (TODO)
 ```
+* [Details](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/5_Applications/MXNet/README.md)
+
 #### PyTorch
 ```
      Demo Video (TODO)
 ```
+* [Details](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/5_Applications/PyTorch/README.md)
+
 #### MXNet
 ```
      Demo Video (TODO)
 ```
+* [Details](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/5_Applications/MXNet/README.md)
 
 ## FAQ
 * [How about GPU performance comparisons between Wind River Linux and Ubuntu?](https://github.com/charleshardy/GPU-WRLinux/blob/main/4_QA/README.md)
