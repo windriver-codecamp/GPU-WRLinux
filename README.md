@@ -24,25 +24,20 @@ Exploring NVIDIA GPU-Accelerated Ecosystem on Wind River Linux
 
 ### How to start XFCE desktop?
 
-* [How to start XFCE desktop?](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/3_X_Windows_Desktop/README.md)
+* [How to start XFCE desktop and verify NVIDIA GPU working well?](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/3_X_Windows_Desktop/README.md)
 
+### CUDA Installation (TODO)
 
-### Toolkit and SDK (CUDA, CUDA-X, Game Engines, etc.)
-#### CUDA
-			Setup Steps:
-			Issues:
-			Solution:
-			References:
-#### CUDA-X
-			Setup Steps:
-			Issues:
-			Solution:
-			References:
-#### Unreal Engine
-			Setup Steps:
-			Issues:
-			Solution:
-			References:
+* [How to install CUDA?](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/3_X_Windows_Desktop/README.md)
+
+### CUDA-X Installation (TODO)
+
+* [How to install CUDA-X?](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/3_X_Windows_Desktop/README.md)
+
+### Unreal Engine Installation (TODO)
+
+* [How to install Unreal Engine?](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/3_X_Windows_Desktop/README.md)
+
 #### Unity
 	Setup Steps:
 	1. register an account on unity
