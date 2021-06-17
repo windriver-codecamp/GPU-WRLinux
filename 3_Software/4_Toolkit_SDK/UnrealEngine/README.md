@@ -1161,10 +1161,4 @@ Summary: There was 1 ERROR message shown, returning a non-zero exit code.
 ### References
 
 * https://docs.unrealengine.com/en-US/SharingAndReleasing/Linux/BeginnerLinuxDeveloper/SettingUpAnUnrealWorkflow/index.html
-
-## UE Verification
-
-```
-
-
-```
+* 
