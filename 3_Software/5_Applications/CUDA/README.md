@@ -2,6 +2,8 @@
 > None
 
 ## Run CUDA Examples Steps
+
+### Find all execuable cuda sample binaries
 ```
 root@intel-x86-64:/usr/local/cuda-11.2/samples# find . -executable -type f | sort > /tmp/e
 root@intel-x86-64:/usr/local/cuda-11.2/samples# cat /tmp/e
@@ -297,78 +299,14 @@ root@intel-x86-64:/usr/local/cuda-11.2/samples# cat /tmp/e
 ./bin/x86_64/linux/release/vectorAdd_nvrtc
 ./bin/x86_64/linux/release/warpAggregatedAtomicsCG
 ./bin/x86_64/linux/release/watershedSegmentationNPP
-root@intel-x86-64:/usr/local/cuda-11.2/samples#
-root@intel-x86-64:/usr/local/cuda-11.2/samples# sh -x /tmp/e 
+```
+### CUDA All of CUDA Examples 
+
+The outputs were as below.
+
+```
+root@intel-x86-64:/usr/local/cuda-11.2/samples# sh -x /tmp/e
 + ./0_Simple/UnifiedMemoryStreams/UnifiedMemoryStreams
-GPU Device 0: "Turing" with compute capability 7.5
-
-Executing tasks on host / device
-Task [0], thread [0] executing on device (940)
-Task [3], thread [2] executing on device (915)
-Task [2], thread [3] executing on device (641)
-Task [1], thread [1] executing on device (654)
-Task [4], thread [2] executing on device (865)
-Task [5], thread [0] executing on device (679)
-Task [6], thread [3] executing on device (858)
-Task [7], thread [1] executing on device (183)
-Task [8], thread [1] executing on device (375)
-Task [9], thread [0] executing on device (633)
-Task [10], thread [2] executing on device (966)
-Task [11], thread [3] executing on host (64)
-Task [12], thread [3] executing on device (139)
-Task [13], thread [1] executing on device (992)
-Task [14], thread [0] executing on device (571)
-Task [15], thread [3] executing on device (831)
-Task [16], thread [1] executing on device (481)
-Task [17], thread [0] executing on device (684)
-Task [18], thread [2] executing on device (736)
-Task [19], thread [1] executing on device (617)
-Task [20], thread [0] executing on device (911)
-Task [21], thread [3] executing on device (676)
-Task [22], thread [1] executing on device (700)
-Task [23], thread [3] executing on host (64)
-Task [24], thread [1] executing on device (756)
-Task [25], thread [2] executing on device (826)
-Task [26], thread [0] executing on device (512)
-Task [27], thread [3] executing on device (178)
-Task [28], thread [2] executing on device (883)
-Task [29], thread [0] executing on device (565)
-Task [30], thread [1] executing on device (576)
-Task [31], thread [3] executing on device (602)
-Task [32], thread [2] executing on device (851)
-Task [33], thread [0] executing on device (894)
-Task [34], thread [3] executing on device (160)
-Task [35], thread [0] executing on device (600)
-Task [36], thread [1] executing on device (557)
-Task [37], thread [2] executing on device (113)
-Task [38], thread [1] executing on device (814)
-Task [39], thread [0] executing on device (594)
-All Done!
-+ ./0_Simple/asyncAPI/asyncAPI
-[./0_Simple/asyncAPI/asyncAPI] - Starting...
-GPU Device 0: "Turing" with compute capability 7.5
-
-CUDA device [GeForce GTX 1650 SUPER]
-time spent executing by the GPU: 11.52
-time spent by CPU in CUDA calls: 0.02
-CPU executed 93514 iterations while waiting for GPU to finish
-+ ./0_Simple/bf16TensorCoreGemm/bf16TensorCoreGemm
-Initializing...
-GPU Device 0: "Turing" with compute capability 7.5
-
-bf16TensorCoreGemm requires requires SM 8.0 or higher to use Tensor Cores.  Exiting...
-+ ./0_Simple/binaryPartitionCG/binaryPartitionCG
-GPU Device 0: "Turing" with compute capability 7.5
-
-
-Launching 100 blocks with 1024 threads...
-
-Array size = 102400 Num of Odds = 50945 Sum of Odds = 1272565 Sum of Evens 1233938
-...
-```
-## CUDA Examples Running Outputs
-
-```
 GPU Device 0: "Turing" with compute capability 7.5
 
 Executing tasks on host / device
