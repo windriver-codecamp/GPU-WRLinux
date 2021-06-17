@@ -29,7 +29,3 @@
 * https://github.com/nvidia/cudalibrarysamples
 * https://developer.nvidia.com/nvidia-sdk-manager
 
-```
-Nvidia Nsight developer tools
-
-```
