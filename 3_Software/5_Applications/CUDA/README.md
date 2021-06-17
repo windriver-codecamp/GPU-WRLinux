@@ -1,7 +1,7 @@
 ## Demo Video:
 > None
 
-## Run CUDA Demo Steps
+## Run CUDA Examples Steps
 ```
 root@intel-x86-64:/usr/local/cuda-11.2/samples# find . -executable -type f | sort > /tmp/e
 root@intel-x86-64:/usr/local/cuda-11.2/samples# cat /tmp/e
