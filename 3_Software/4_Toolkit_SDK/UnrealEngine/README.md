@@ -3,8 +3,169 @@
 ## Setup Steps
 
 ```
-
+TODO
 ```
+
+### Install Quixel Bridge
+```
+intel-x86-64:~$ ./Bridge.AppImage 
+dlopen(): error loading libfuse.so.2
+
+AppImages require FUSE to run. 
+You might still be able to extract the contents of this AppImage 
+if you run it with the --appimage-extract option. 
+See https://github.com/AppImage/AppImageKit/wiki/FUSE 
+for more information
+intel-x86-64:~$ 
+
+
+lliu2@pek-lpgtest7302 build]$ bitbake fuse
+
+
+[lliu2@pek-lpgtest7302 corei7_64]$ scp libfuse2-2.9.9-r0.corei7_64.rpm fuse-utils-2.9.9-r0.corei7_64.rpm root@128.224.162.144:/
+The authenticity of host '128.224.162.144 (128.224.162.144)' can't be established.
+ECDSA key fingerprint is SHA256:vMWhEaKsgSUGgCpPD3Gj0/lY+8RgID401JSubIjUCU0.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '128.224.162.144' (ECDSA) to the list of known hosts.
+libfuse2-2.9.9-r0.corei7_64.rpm                                                                                                                                          100%   73KB   9.5MB/s   00:00    
+fuse-utils-2.9.9-r0.corei7_64.rpm                                                                                                                                        100%   25KB 697.2KB/s   00:00    
+[lliu2@pek-lpgtest7302 corei7_64]$ 
+
+
+intel-x86-64:/# rpm -ivh libfuse2-2.9.9-r0.corei7_64.rpm 
+Verifying...                          ################################# [100%]
+Preparing...                          ################################# [100%]
+Updating / installing...
+   1:libfuse2-2.9.9-r0                ################################# [100%]
+%post(libfuse2-2.9.9-r0.corei7_64): scriptlet start
+%post(libfuse2-2.9.9-r0.corei7_64): execv(/bin/sh) pid 1465
++ set -e
++ '[' x = x ']'
++ '[' -x /sbin/ldconfig ']'
++ /sbin/ldconfig
+%post(libfuse2-2.9.9-r0.corei7_64): waitpid(1465) rc 1465 status 0
+intel-x86-64:/# rpm -ivh lib
+lib/                                  lib64/                                libfuse2-2.9.9-r0.corei7_64.rpm       libsdl-1.2-0-1.2.15-r3.corei7_64.rpm  
+intel-x86-64:/# rpm -ivh fuse-utils-2.9.9-r0.corei7_64.rpm 
+Verifying...                          ################################# [100%]
+Preparing...                          ################################# [100%]
+Updating / installing...
+   1:fuse-utils-2.9.9-r0              ################################# [100%]
+intel-x86-64:/# rpm -ivh libfuse2-2.9.9-r0.corei7_64.rpm 
+Verifying...                          ################################# [100%]
+Preparing...                          ################################# [100%]
+	package libfuse2-2.9.9-r0.corei7_64 is already installed
+intel-x86-64:/# 
+
+intel-x86-64:~$ ./Bridge.AppImage 
+/tmp/.mount_BridgeeWL7ef/megascans-bridge: error while loading shared libraries: libcups.so.2: cannot open shared object file: No such file or directory
+[lliu2@pek-lpgtest7302 build]$ bitbake cups
+…
+[lliu2@pek-lpgtest7302 corei7_64]$ scp libcups2-2.3.3-r0.corei7_64.rpm root@128.224.162.144:/
+libcups2-2.3.3-r0.corei7_64.rpm 
+[lliu2@pek-lpgtest7302 corei7_64]$ scp cups-2.3.3-r0.corei7_64.rpm root@128.224.162.144:/
+cups-2.3.3-r0.corei7_64.rpm  
+
+intel-x86-64:/# rpm -ivh libcups2-2.3.3-r0.corei7_64.rpm 
+Verifying...                          ################################# [100%]
+Preparing...                          ################################# [100%]
+Updating / installing...
+   1:libcups2-2.3.3-r0                ################################# [100%]
+%post(libcups2-2.3.3-r0.corei7_64): scriptlet start
+%post(libcups2-2.3.3-r0.corei7_64): execv(/bin/sh) pid 1571
++ set -e
++ '[' x = x ']'
++ '[' -x /sbin/ldconfig ']'
++ /sbin/ldconfig
+%post(libcups2-2.3.3-r0.corei7_64): waitpid(1571) rc 1571 status 0
+intel-x86-64:/# rpm -ivh cups-2.3.3-r0.corei7_64.rpm 
+Verifying...                          ################################# [100%]
+Preparing...                          ################################# [100%]
+%prein(cups-2.3.3-r0.corei7_64): scriptlet start
+%prein(cups-2.3.3-r0.corei7_64): execv(/bin/sh) pid 1574
++ set -e
++ OPT=
++ SYSROOT=
++ test x '!=' x
++ test x = x
++ GROUPADD_PARAM='--system lpadmin'
++ USERADD_PARAM=
++ GROUPMEMS_PARAM=
+++ echo --system lpadmin
+++ tr -d '[:space:]'
++ test x--systemlpadmin '!=' x
++ echo 'Running groupadd commands...'
+Running groupadd commands...
+++ echo '--system lpadmin'
+++ cut -d ';' -f 1
+++ sed -e 's#[ \t]*$##'
++ opts='--system lpadmin'
+++ echo '--system lpadmin'
+++ cut -d ';' -f 2-
+++ sed -e 's#[ \t]*$##'
++ remaining='--system lpadmin'
++ test 'x--system lpadmin' '!=' x
++ perform_groupadd '' ' --system lpadmin'
++ local rootdir=
++ local 'opts= --system lpadmin'
++ bbnote 'cups: Performing groupadd with [ --system lpadmin]'
++ echo 'NOTE: cups: Performing groupadd with [ --system lpadmin]'
+NOTE: cups: Performing groupadd with [ --system lpadmin]
+++ echo ' --system lpadmin'
+++ awk '{ print $NF }'
++ local groupname=lpadmin
+++ grep '^lpadmin:' /etc/group
+++ true
++ local group_exists=
++ test x = x
++ eval flock -x /etc -c '"' groupadd '$opts"'
+++ flock -x /etc -c ' groupadd  --system lpadmin'
+++ grep '^lpadmin:' /etc/group
++ group_exists=lpadmin:x:977:
++ test xlpadmin:x:977: = x
++ test 'x--system lpadmin' = 'x--system lpadmin'
++ break
+++ echo
+++ tr -d '[:space:]'
++ test x '!=' x
+++ echo
+++ tr -d '[:space:]'
++ test x '!=' x
+%prein(cups-2.3.3-r0.corei7_64): waitpid(1574) rc 1574 status 0
+Updating / installing...
+   1:cups-2.3.3-r0                    ################################# [100%]
+%post(cups-2.3.3-r0.corei7_64): scriptlet start
+%post(cups-2.3.3-r0.corei7_64): execv(/bin/sh) pid 1605
++ set -e
++ systemctl
++ OPTS=
++ '[' -n '' ']'
++ '[' enable = enable ']'
++ for service in org.cups.cupsd.socket org.cups.cupsd.path org.cups.cupsd.service org.cups.cups-lpd.socket
++ systemctl enable org.cups.cupsd.socket
+Created symlink /etc/systemd/system/sockets.target.wants/org.cups.cupsd.socket → /lib/systemd/system/org.cups.cupsd.socket.
++ for service in org.cups.cupsd.socket org.cups.cupsd.path org.cups.cupsd.service org.cups.cups-lpd.socket
++ systemctl enable org.cups.cupsd.path
+Created symlink /etc/systemd/system/multi-user.target.wants/org.cups.cupsd.path → /lib/systemd/system/org.cups.cupsd.path.
++ for service in org.cups.cupsd.socket org.cups.cupsd.path org.cups.cupsd.service org.cups.cups-lpd.socket
++ systemctl enable org.cups.cupsd.service
+Created symlink /etc/systemd/system/printer.target.wants/org.cups.cupsd.service → /lib/systemd/system/org.cups.cupsd.service.
++ for service in org.cups.cupsd.socket org.cups.cupsd.path org.cups.cupsd.service org.cups.cups-lpd.socket
++ systemctl enable org.cups.cups-lpd.socket
+Created symlink /etc/systemd/system/sockets.target.wants/org.cups.cups-lpd.socket → /lib/systemd/system/org.cups.cups-lpd.socket.
++ '[' -z '' ']'
++ systemctl daemon-reload
++ systemctl preset org.cups.cupsd.socket org.cups.cupsd.path org.cups.cupsd.service org.cups.cups-lpd.socket
++ '[' enable = enable ']'
++ systemctl --no-block restart org.cups.cupsd.socket org.cups.cupsd.path org.cups.cupsd.service org.cups.cups-lpd.socket
+%post(cups-2.3.3-r0.corei7_64): waitpid(1605) rc 1605 status 0
+
+intel-x86-64:/# su root
+intel-x86-64:/# reboot
+
+intel-x86-64:~$ ./Bridge.AppImage 
+```
+
 
 ### Issues
 * Failed to start UE4Editor for the reason of permission
