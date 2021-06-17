@@ -1040,13 +1040,89 @@ $ ./NVIDIA-Linux-x86_64-460.73.01.run --kernel-source-path /usr/src/kernel
 [  325.574106] nvidia-nvlink: Unregistered the Nvlink Core, major device number 244
 
 ```
+* What's the DRM inside?
+
+```
+First scenario : you run a graphic application written with OpenInventor, without using to the X Window System, and you don't have a graphic card. The program flow would be quite similar to : 
+Your application
+  ↓ (uses functions of)
+OpenInventor
+  ↓ (calls functions declared by)
+OpenGL
+  ↓ (redirects function calls to implementation defined by)
+Mesa
+  ↓ (implemented OpenGL functions to be run on the CPU)
+[Probably] Operating System rendering API
+  ↓
+3D Images on your screen
+What happens here is called "software rendering" : the graphics command are not handled by any graphic hardware, but instead by your usual CPU, the processor that generally runs software. 
+Second scenario : now imagine that with the same conditions as above, you have a graphic card. The flow would look more like this : 
+Your application
+  ↓ (uses functions of)
+OpenInventor
+  ↓ (calls functions declared by)
+OpenGL
+  ↓ (redirects function calls to implementation defined by)
+Proprietary Drivers
+  ↓ (converts OpenGL commands to GPU commands)
+Graphic Card
+  ↓
+3D Images on your screen
+What happens now is called "hardware acceleration", usually faster than the first scenario.
+Third scenario : now let's introduce the X Window System flow, or at least how I think it is, based on the few Wikipedia lines I read.
+Let's forget about the graphic hardware and API for a while. The flow should look like :
+Your application (X Window System sees it as an "X Client")
+  ↓ (sends requests defined by the X Window System Core Protocol)
+X Server
+  ↓ (convert your request to graphic commands)
+[Probably] Operating System rendering API
+  ↓
+Windows or 2D images on your screen
+Note that when using the X Window System, your screen and the computer from which you run your application may not be "directly" connected, but could be connected through a network.
+Fourth scenario : suppose you want to add fancy 3D graphic renderings to your X Client application from the previous example. It seems to me that the X Window System is not originally able to do this, or at least it would necessitate much convoluted code to perform the equivalent of an OpenGL API function.
+Luckily you can use GLX to add support for OpenGL commands to the system. You now have :
+Your application
+  ↓ (sends graphic requests defined by the "GLX extension to the X Protocol")
+X Server with the GLX extension
+  ↓ (convert your request to OpenGL commands)
+OpenGL
+  ↓ (redirects function calls to implementation defined by)
+ ...
+Now you can reconnect that last arrow to the one after "OpenGL" in the first scenario : you can get 3D images on your screen !
+Finally about what I think understand of the DRI :
+It seems to allow Mesa to have access to the GPU, so that would modify the flow of our first scenario into :
+...
+  ↓
+Mesa
+  ↓ (forwards OpenGL commands)
+DRI
+  ↓ (converts OpenGL commands to GPU commands)
+Graphic Card
+  ↓
+3D Images on your screen
+And it also seems to short-circuit the flow when using GLX, given the condition that its server and client are on the same computer, and that you have a GPU. In that case the graph of our fourth scenario would simply become :
+Your application
+  ↓ (sends graphic requests defined by the "GLX extension to the X Protocol")
+DRI
+  ↓ ("catches" OpenGL commands and converts them to GPU commands)
+Graphic Card
+  ↓
+3D Images on your screen
+That's it !
+Now keep in mind that I'm not an expert in Unix environments, so my best advice is to study the documentation of each of those APIs to know precisely what they can do.
+Combining the previous chart into a single one might make things easier to understand. I let this as an exercice to you!
+```
 
 
 ## References
 
 * https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#runfile-nouveau
-
-
+* https://www.daimajiaoliu.com/daima/4794f5557100418
+* https://softwareengineering.stackexchange.com/questions/164997/what-is-the-relationship-between-opengl-glx-dri-and-mesa3d
+* https://en.wikipedia.org/wiki/X.Org_Server#/media/File:Schema_of_the_layers_of_the_graphical_user_interface.svg
+* https://en.wikipedia.org/wiki/Direct_Rendering_Manager#/media/File:DRM_architecture.svg
+* https://en.wikipedia.org/wiki/Direct_Rendering_Manager
+* https://www.intel.com/content/dam/www/public/us/en/documents/white-papers/inside-linux-graphics-paper.pdf
 
 
 
