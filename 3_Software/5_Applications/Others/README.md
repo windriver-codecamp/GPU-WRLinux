@@ -41,29 +41,19 @@ ModuleNotFoundError: No module named 'xdg'
 #### Solution
 
 ```
-bitbake xdg-utils
+$ bitbake pyxdg
 ```
 ```
-root@intel-x86-64:/mnt/sdd/lliu2# scp lliu2@128.224.153.48:/buildarea2/lliu2/2021cc/dell_pc/CDNext_20210508/build/tmp-glibc/work/corei7-64-wrs-linux/xdg-utils/1.1.3-r0/deploy-rpms/corei7_64/xdg-utils-1.1.3-r0.corei7_64.rpm .
+root@intel-x86-64:/mnt/sdd/lliu2# scp lliu2@128.224.153.48:/buildarea2/lliu2/2021cc/dell_pc/CDNext_20210508/build/tmp-glibc/work/corei7-64-wrs-linux/pyxdg/0.26-r0/deploy-rpms/corei7_64/pyxdg-0.26-r0.corei7_64.rpm .
 lliu2@128.224.153.48's password: 
-xdg-utils-1.1.3-r0.corei7_64.rpm                                                                                                                                         100%   33KB   2.3MB/s   00:00    
-root@intel-x86-64:/mnt/sdd/lliu2# rpm -ivh xdg-utils-1.1.3-r0.corei7_64.rpm 
-error: Failed dependencies:
-	xprop is needed by xdg-utils-1.1.3-r0.corei7_64
-root@intel-x86-64:/mnt/sdd/lliu2# scp lliu2@128.224.153.48:/buildarea2/lliu2/2021cc/dell_pc/CDNext_20210508/build/tmp-glibc/work/corei7-64-wrs-linux/xprop/1_1.2.5-r0/deploy-rpms/corei7_64/xprop-1.2.5-r0.corei7_64.rpm .
-lliu2@128.224.153.48's password: 
-xprop-1.2.5-r0.corei7_64.rpm                                                                                                                                             100%   23KB   2.3MB/s   00:00    
-root@intel-x86-64:/mnt/sdd/lliu2# rpm -ivh xprop-1.2.5-r0.corei7_64.rpm
+pyxdg-0.26-r0.corei7_64.rpm                                                                                                                                              100%   74KB   4.1MB/s   00:00    
+root@intel-x86-64:/mnt/sdd/lliu2# rpm -ivh pyxdg-0.26-r0.corei7_64.rpm 
 Verifying...                          ################################# [100%]
 Preparing...                          ################################# [100%]
 Updating / installing...
-   1:xprop-1:1.2.5-r0                 ################################# [100%]
-root@intel-x86-64:/mnt/sdd/lliu2# rpm -ivh xdg-utils-1.1.3-r0.corei7_64.rpm 
-Verifying...                          ################################# [100%]
-Preparing...                          ################################# [100%]
-Updating / installing...
-   1:xdg-utils-1.1.3-r0               ################################# [100%]
-root@intel-x86-64:/mnt/sdd/lliu2#
+   1:pyxdg-0.26-r0                    ################################# [100%]
+root@intel-x86-64:/mnt/sdd/lliu2# 
+
 ```
 
 ## NVIDIA Nsight Graphics (TODO)
