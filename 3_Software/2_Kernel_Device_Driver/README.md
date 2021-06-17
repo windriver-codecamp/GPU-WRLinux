@@ -1,4 +1,4 @@
-# How to build and deploy WR Linux and NVIDIA Driver?
+# How to build and deploy WR Linux Kernel and NVIDIA Driver?
 ## Setup steps
 ### Build Wind River Linux Kernel and Rootfs
 
