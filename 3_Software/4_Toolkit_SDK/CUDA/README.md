@@ -41,12 +41,11 @@ root@intel-x86-64:/# source ~/.bashrc
 root@intel-x86-64:/# cat ~/.bashrc
 export PATH=$PATH:/usr/local/cuda-11.2/bin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-11.2/lib64
-export CUDA_HOME=$CUDA_HOME:/usr/local/cuda
-```
-```
-root@intel-x86-64:~# cat /etc/profile | grep -i cuda
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-11.2/targets/x86_64-linux/lib
+export CUDA_HOME=$CUDA_HOME:/usr/local/cuda
+
 ```
+
                          
 ### Build CUDA examples 
 
