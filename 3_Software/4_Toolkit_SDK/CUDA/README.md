@@ -1,17 +1,16 @@
 # How to install CUDA and verify?
 
 ## Setup steps (CUDA Toolkit Installation)
-
+### Download CUDA Toolkit
 ```
+Go to https://developer.nvidia.com/cuda-11.2.2-download-archive?target_os=Linux&target_arch=x86_64&target_distro=Ubuntu&target_version=2004&target_type=runfilelocal
+
 CUDA Toolkit (CUDA Toolkit 11.2 Update 2 Downloads)
+
 wget https://developer.download.nvidia.com/compute/cuda/11.2.2/local_installers/cuda_11.2.2_460.32.03_linux.run
-
-sudo sh cuda_11.2.2_460.32.03_linux.run
-
-https://developer.nvidia.com/cuda-11.2.2-download-archive?target_os=Linux&target_arch=x86_64&target_distro=Ubuntu&target_version=2004&target_type=runfilelocal
-
-root@intel-x86-64:/# sh ./cuda_11.2.2_460.32.03_linux.run 
-
+```
+### Install CUDA
+```
 root@intel-x86-64:/# sh ./cuda_11.2.2_460.32.03_linux.run 
 ===========
 = Summary =
@@ -32,6 +31,10 @@ To install the driver using this installer, run the following command, replacing
 
 Logfile is /var/log/cuda-installer.log
 root@intel-x86-64:/#
+```
+
+### Set up CUDA environment
+```
 root@intel-x86-64:/# vi /var/log/cuda-installer.log 
 root@intel-x86-64:/# vi ~/.bashrc
 root@intel-x86-64:/# source ~/.bashrc
@@ -39,6 +42,11 @@ root@intel-x86-64:/# cat ~/.bashrc
 export PATH=$PATH:/usr/local/cuda-11.2/bin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-11.2/lib64
 export CUDA_HOME=$CUDA_HOME:/usr/local/cuda
+```
+                         
+### Build CUDA examples 
+
+```
 root@intel-x86-64:/# which nvcc
 root@intel-x86-64:/# nvcc --version
 nvcc: NVIDIA (R) Cuda compiler driver
@@ -76,7 +84,11 @@ mkdir -p ../../bin/x86_64/linux/release
 cp vectorAdd ../../bin/x86_64/linux/release
 make[1]: Leaving directory '/usr/local/cuda-11.2/samples/0_Simple/vectorAdd'
 …
+```
 
+### Running CUDA examples
+
+```
 root@intel-x86-64:/usr/local/cuda-11.2/samples/1_Utilities/deviceQuery# ./deviceQuery 
 ./deviceQuery Starting...
 
@@ -130,6 +142,8 @@ UnifiedMemoryPerf  bandwidthTest  deviceQuery  deviceQueryDrv  p2pBandwidthLaten
 root@intel-x86-64:/usr/local/cuda-11.2/samples/1_Utilities# cd ..
 root@intel-x86-64:/usr/local/cuda-11.2/samples# ls
 0_Simple  1_Utilities  2_Graphics  3_Imaging  4_Finance  5_Simulations	6_Advanced  7_CUDALibraries  EULA.txt  Makefile  bin  common
+```
+```
 root@intel-x86-64:/usr/local/cuda-11.2/samples# cd 0_Simple/
 root@intel-x86-64:/usr/local/cuda-11.2/samples/0_Simple# ls
 UnifiedMemoryStreams  cppIntegration	      immaTensorCoreGemm  simpleAWBarrier		simpleCubemapTexture  simpleOccupancy		 simpleTemplates_nvrtc	     systemWideAtomics
@@ -143,6 +157,8 @@ clock_nvrtc	      globalToShmemAsyncCopy  memMapIPCDrv	  simpleCooperativeGroups
 root@intel-x86-64:/usr/local/cuda-11.2/samples/0_Simple# cd asyncAPI/
 root@intel-x86-64:/usr/local/cuda-11.2/samples/0_Simple/asyncAPI# ls
 Makefile  NsightEclipse.xml  asyncAPI  asyncAPI.cu  asyncAPI.o	readme.txt
+```
+```
 root@intel-x86-64:/usr/local/cuda-11.2/samples/0_Simple/asyncAPI# ./asyncAPI 
 [./asyncAPI] - Starting...
 GPU Device 0: "Turing" with compute capability 7.5
@@ -151,6 +167,9 @@ CUDA device [GeForce GTX 1650 SUPER]
 time spent executing by the GPU: 11.47
 time spent by CPU in CUDA calls: 0.03
 CPU executed 92476 iterations while waiting for GPU to finish
+
+```
+```
 root@intel-x86-64:/usr/local/cuda-11.2/samples/0_Simple/asyncAPI# cd ..
 root@intel-x86-64:/usr/local/cuda-11.2/samples/0_Simple# ls
 UnifiedMemoryStreams  cppIntegration	      immaTensorCoreGemm  simpleAWBarrier		simpleCubemapTexture  simpleOccupancy		 simpleTemplates_nvrtc	     systemWideAtomics
@@ -164,6 +183,8 @@ clock_nvrtc	      globalToShmemAsyncCopy  memMapIPCDrv	  simpleCooperativeGroups
 root@intel-x86-64:/usr/local/cuda-11.2/samples/0_Simple# cd matrixMulCUBLAS/
 root@intel-x86-64:/usr/local/cuda-11.2/samples/0_Simple/matrixMulCUBLAS# ls
 Makefile  NsightEclipse.xml  matrixMulCUBLAS  matrixMulCUBLAS.cpp  matrixMulCUBLAS.o  readme.txt
+```
+```
 root@intel-x86-64:/usr/local/cuda-11.2/samples/0_Simple/matrixMulCUBLAS# ./matrixMulCUBLAS 
 [Matrix Multiply CUBLAS] - Starting...
 GPU Device 0: "Turing" with compute capability 7.5
@@ -200,6 +221,8 @@ MC_EstimatePiQ		boundSegmentsNPP			   conjugateGradientCudaGraphs	cuSolverRf		  
 root@intel-x86-64:/usr/local/cuda-11.2/samples/7_CUDALibraries# cd batchCUBLAS/
 root@intel-x86-64:/usr/local/cuda-11.2/samples/7_CUDALibraries/batchCUBLAS# ls
 Makefile  NsightEclipse.xml  batchCUBLAS  batchCUBLAS.cpp  batchCUBLAS.h  batchCUBLAS.o  readme.txt
+```
+```
 root@intel-x86-64:/usr/local/cuda-11.2/samples/7_CUDALibraries/batchCUBLAS# ./batchCUBLAS 
 batchCUBLAS Starting...
 
@@ -262,32 +285,17 @@ Test Summary
 0 error(s)
 ```
 
+## FAQ
+* How to uninstall/reinstall CUDA?
+```
+Uninstall cuda
+root@wind-OptiPlex-9020:/usr/local/cuda-11.2/bin# ./cuda-uninstaller
+```
+```
+Reinstall cuda
+# sh cuda_11.2.2_460.32.03_linux.run 
+```
+
 ### References
 
 * https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#recommended-post
-
-## CUDA Verification
-
-```
-export PATH=/usr/local/cuda-11.3/bin${PATH:+:${PATH}}
-
-/usr/local/cuda-11.3/
-
-
-export PATH=/usr/local/cuda-11.3/bin${PATH:+:${PATH}}
-
-export LD_LIBRARY_PATH=/usr/local/cuda-11.3/lib64\
-                         ${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
-
-export LD_LIBRARY_PATH=/usr/local/cuda-11.3/lib\
-                         ${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
-
-
-root@wind-OptiPlex-9020:/home/wind/2021CodingCamp# /usr/bin/nvidia-persistenced --verbose
-nvidia-persistenced failed to initialize. Check syslog for more details.
-root@wind-OptiPlex-9020:/home/wind/2021CodingCamp# vi /var/log/syslog
-root@wind-OptiPlex-9020:/home/wind/2021CodingCamp# ls /var/run/nvidia-persistenced
-nvidia-persistenced.pid  socket
-/usr/local/cuda-11.2/samples/
-
-```
