@@ -5,7 +5,7 @@
 ## NeMo (TODO)
 ### Setup Steps
 ## cuDNN (TODO)
-## ### Setup Steps
+### Setup Steps
 ## DALI (Data Loading Library) (TODO)
 ## CuBLAS (Installed TODO)
 ## cuSPARSE (Installed TODO)
