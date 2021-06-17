@@ -3,7 +3,7 @@
 
 ## Run CUDA Examples Steps
 
-### Find all execuable cuda sample binaries
+### 1. Find all execuable cuda sample binaries
 ```
 root@intel-x86-64:/usr/local/cuda-11.2/samples# find . -executable -type f | sort > /tmp/e
 root@intel-x86-64:/usr/local/cuda-11.2/samples# cat /tmp/e
@@ -300,7 +300,7 @@ root@intel-x86-64:/usr/local/cuda-11.2/samples# cat /tmp/e
 ./bin/x86_64/linux/release/warpAggregatedAtomicsCG
 ./bin/x86_64/linux/release/watershedSegmentationNPP
 ```
-### CUDA All of CUDA Examples 
+### 2. CUDA All of CUDA Examples 
 
 The outputs were as below.
 
