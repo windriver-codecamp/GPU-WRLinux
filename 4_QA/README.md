@@ -1,4 +1,4 @@
-2. How about GPU performance comparisons between Wind River Linux and Ubuntu?
+1. How about GPU performance comparisons between Wind River Linux and Ubuntu?
 * On Ubuntu:
 ```
 root@wind-OptiPlex-9020:/home/wind# nvidia-smi 
