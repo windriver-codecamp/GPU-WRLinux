@@ -935,6 +935,237 @@ To install kernel source code on the target host
 ```
 root@intel-x86-64:~# rpm -ivh /kernel-devsrc-1.0-r0.intel_x86_64.rpm
 ```
+* X does not start up
+```
+[lliu2@pek-lpgtest7302 build]$ cat ~/Xorg.0.log 
+[   332.475] 
+X.Org X Server 1.20.10
+X Protocol Version 11, Revision 0
+[   332.479] Build Operating System: Linux 
+[   332.480] Current Operating System: Linux intel-x86-64 5.12.0-rc8-yoctodev-standard #1 SMP PREEMPT Sun Apr 25 06:53:32 UTC 2021 x86_64
+[   332.480] Kernel command line: BOOT_IMAGE=/bzImage root=PARTUUID=a092d5df-5b0c-4100-bc2b-ac93acc2003f rootwait rootfstype=ext4 console=ttyS0,115200 console=tty0
+[   332.483] Build Date: 25 April 2021  07:39:04AM
+[   332.484]  
+[   332.486] Current version of pixman: 0.40.0
+[   332.488] 	Before reporting problems, check http://wiki.x.org
+	to make sure that you have the latest version.
+[   332.488] Markers: (--) probed, (**) from config file, (==) default setting,
+	(++) from command line, (!!) notice, (II) informational,
+	(WW) warning, (EE) error, (NI) not implemented, (??) unknown.
+[   332.493] (==) Log file: "/var/log/Xorg.0.log", Time: Fri May  7 07:05:12 2021
+[   332.494] (++) Using config file: "/root/xorg.conf.new"
+[   332.496] (==) Using system config directory "/usr/share/X11/xorg.conf.d"
+[   332.496] (==) ServerLayout "X.org Configured"
+[   332.496] (**) |-->Screen "Screen0" (0)
+[   332.496] (**) |   |-->Monitor "Monitor0"
+[   332.496] (**) |   |-->Device "Card0"
+[   332.496] (**) |-->Input Device "Mouse0"
+[   332.496] (**) |-->Input Device "Keyboard0"
+[   332.496] (==) Automatically adding devices
+[   332.496] (==) Automatically enabling devices
+[   332.496] (==) Automatically adding GPU devices
+[   332.496] (==) Max clients allowed: 256, resource mask: 0x1fffff
+[   332.496] (WW) The directory "/usr/share/fonts/X11/misc/" does not exist.
+[   332.496] 	Entry deleted from font path.
+[   332.496] (WW) The directory "/usr/share/fonts/X11/TTF/" does not exist.
+[   332.496] 	Entry deleted from font path.
+[   332.496] (WW) The directory "/usr/share/fonts/X11/OTF/" does not exist.
+[   332.496] 	Entry deleted from font path.
+[   332.496] (WW) The directory "/usr/share/fonts/X11/Type1/" does not exist.
+[   332.496] 	Entry deleted from font path.
+[   332.496] (WW) The directory "/usr/share/fonts/X11/100dpi/" does not exist.
+[   332.496] 	Entry deleted from font path.
+[   332.496] (WW) The directory "/usr/share/fonts/X11/75dpi/" does not exist.
+[   332.496] 	Entry deleted from font path.
+[   332.496] (WW) The directory "/usr/share/fonts/X11/misc/" does not exist.
+[   332.496] 	Entry deleted from font path.
+[   332.496] (WW) The directory "/usr/share/fonts/X11/TTF/" does not exist.
+[   332.496] 	Entry deleted from font path.
+[   332.496] (WW) The directory "/usr/share/fonts/X11/OTF/" does not exist.
+[   332.496] 	Entry deleted from font path.
+[   332.496] (WW) The directory "/usr/share/fonts/X11/Type1/" does not exist.
+[   332.496] 	Entry deleted from font path.
+[   332.496] (WW) The directory "/usr/share/fonts/X11/100dpi/" does not exist.
+[   332.496] 	Entry deleted from font path.
+[   332.496] (WW) The directory "/usr/share/fonts/X11/75dpi/" does not exist.
+[   332.496] 	Entry deleted from font path.
+[   332.496] (**) FontPath set to:
+	
+[   332.496] (**) ModulePath set to "/usr/lib64/xorg/modules"
+[   332.496] (WW) Hotplugging is on, devices using drivers 'kbd', 'mouse' or 'vmmouse' will be disabled.
+[   332.496] (WW) Disabling Mouse0
+[   332.496] (WW) Disabling Keyboard0
+[   332.496] (II) Loader magic: 0x555a68ca6d00
+[   332.496] (II) Module ABI versions:
+[   332.496] 	X.Org ANSI C Emulation: 0.4
+[   332.496] 	X.Org Video Driver: 24.1
+[   332.496] 	X.Org XInput driver : 24.1
+[   332.496] 	X.Org Server Extension : 10.0
+[   332.497] (--) using VT number 1
+
+[   332.497] (II) systemd-logind: logind integration requires -keeptty and -keeptty was not provided, disabling logind integration
+[   332.497] (II) xfree86: Adding drm device (/dev/dri/card0)
+[   332.498] (--) PCI:*(1@0:0:0) 10de:2187:7377:1501 rev 161, Mem @ 0xf6000000/16777216, 0xe0000000/268435456, 0xf0000000/33554432, I/O @ 0x0000e000/128, BIOS @ 0x????????/131072
+[   332.498] (II) Open ACPI successful (/var/run/acpid.socket)
+[   332.498] (II) "glx" will be loaded. This was enabled by default and also specified in the config file.
+[   332.498] (II) LoadModule: "glxservernvidia"
+[   332.498] (WW) Warning, couldn't open module glxservernvidia
+[   332.498] (EE) Failed to load module "glxservernvidia" (module does not exist, 0)
+[   332.498] (II) LoadModule: "glx"
+[   332.498] (II) Loading /usr/lib64/xorg/modules/extensions/libglx.so
+[   332.500] (II) Module glx: vendor="X.Org Foundation"
+[   332.500] 	compiled for 1.20.10, module version = 1.0.0
+[   332.500] 	ABI class: X.Org Server Extension, version 10.0
+[   332.500] (II) LoadModule: "modesetting"
+[   332.500] (II) Loading /usr/lib64/xorg/modules/drivers/modesetting_drv.so
+[   332.500] (II) Module modesetting: vendor="X.Org Foundation"
+[   332.500] 	compiled for 1.20.10, module version = 1.20.10
+[   332.500] 	Module class: X.Org Video Driver
+[   332.500] 	ABI class: X.Org Video Driver, version 24.1
+[   332.500] (II) modesetting: Driver for Modesetting Kernel Drivers: kms
+[   332.513] (WW) Falling back to old probe method for modesetting
+[   332.513] (EE) Screen 0 deleted because of no matching config section.
+[   332.513] (II) UnloadModule: "modesetting"
+[   332.513] (EE) Device(s) detected, but none match those in the config file.
+[   332.513] (EE) 
+Fatal server error:
+[   332.513] (EE) no screens found(EE) 
+[   332.513] (EE) 
+Please consult the The X.Org Foundation support 
+	 at http://wiki.x.org
+ for help. 
+[   332.513] (EE) Please also check the log file at "/var/log/Xorg.0.log" for additional information.
+[   332.513] (EE) 
+[   332.542] (EE) Server terminated with error (1). Closing log file.
+[lliu2@pek-lpgtest7302 build]$ 
+
+
+(EE) Failed to load /usr/lib64/xorg/modules/drivers/nvidia_drv.so: /usr/lib64/xorg/modules/drivers/nvidia_drv.so: undefined symbol: noPanoramiXExtension
+
+root@intel-x86-64:~# startx -- -verbose 5 -logverbose 5
+xauth:  file /root/.serverauth.1282 does not exist
+
+
+X.Org X Server 1.20.10
+X Protocol Version 11, Revision 0
+Build Operating System: Linux 
+Current Operating System: Linux intel-x86-64 5.12.0-rc8-yoctodev-standard #1 SMP PREEMPT Sun Apr 25 06:53:32 UTC 2021 x86_64
+Kernel command line: BOOT_IMAGE=/bzImage root=PARTUUID=a092d5df-5b0c-4100-bc2b-ac93acc2003f rootwait rootfstype=ext4 console=ttyS0,115200 console=tty0
+Build Date: 25 April 2021  07:39:04AM
+ 
+Current version of pixman: 0.40.0
+	Before reporting problems, check http://wiki.x.org
+	to make sure that you have the latest version.
+Markers: (--) probed, (**) from config file, (==) default setting,
+	(++) from command line, (!!) notice, (II) informational,
+	(WW) warning, (EE) error, (NI) not implemented, (??) unknown.
+(==) Log file: "/var/log/Xorg.0.log", Time: Fri May  7 09:17:53 2021
+(==) Using config file: "/etc/X11/xorg.conf"
+(==) Using system config directory "/usr/share/X11/xorg.conf.d"
+(==) ServerLayout "Layout0"
+(**) |-->Screen "Screen0" (0)
+(**) |   |-->Monitor "Monitor0"
+(**) |   |-->Device "nvidia"
+(**) |-->Input Device "Keyboard0"
+(**) |-->Input Device "Mouse0"
+(==) Automatically adding devices
+(==) Automatically enabling devices
+(==) Automatically adding GPU devices
+(==) Max clients allowed: 256, resource mask: 0x1fffff
+(WW) `fonts.dir' not found (or not valid) in "/usr/share/fonts/ttf".
+	Entry deleted from font path.
+	(Run 'mkfontdir' on "/usr/share/fonts/ttf").
+(WW) The directory "/usr/share/fonts/X11/misc/" does not exist.
+	Entry deleted from font path.
+(WW) The directory "/usr/share/fonts/X11/TTF/" does not exist.
+	Entry deleted from font path.
+(WW) The directory "/usr/share/fonts/X11/OTF/" does not exist.
+	Entry deleted from font path.
+(WW) The directory "/usr/share/fonts/X11/Type1/" does not exist.
+	Entry deleted from font path.
+(WW) The directory "/usr/share/fonts/X11/100dpi/" does not exist.
+	Entry deleted from font path.
+(WW) The directory "/usr/share/fonts/X11/75dpi/" does not exist.
+	Entry deleted from font path.
+(**) FontPath set to:
+	
+(**) ModulePath set to "/usr/lib/nvidia,/usr/lib64/xorg/modules"
+(WW) Hotplugging is on, devices using drivers 'kbd', 'mouse' or 'vmmouse' will be disabled.
+(WW) Disabling Keyboard0
+(WW) Disabling Mouse0
+(II) Loader magic: 0x555f8bb63d00
+(II) Module ABI versions:
+	X.Org ANSI C Emulation: 0.4
+	X.Org Video Driver: 24.1
+	X.Org XInput driver : 24.1
+	X.Org Server Extension : 10.0
+(--) using VT number 2
+
+(II) systemd-logind: logind integration requires -keeptty and -keeptty was not provided, disabling logind integration
+(--) PCI:*(1@0:0:0) 10de:2187:7377:1501 rev 161, Mem @ 0xf6000000/16777216, 0xe0000000/268435456, 0xf0000000/33554432, I/O @ 0x0000e000/128, BIOS @ 0x????????/131072
+(II) Open ACPI successful (/var/run/acpid.socket)
+(II) "glx" will be loaded. This was enabled by default and also specified in the config file.
+(II) LoadModule: "modesetting"
+(II) Loading /usr/lib64/xorg/modules/drivers/modesetting_drv.so
+(II) Module modesetting: vendor="X.Org Foundation"
+	compiled for 1.20.10, module version = 1.20.10
+	Module class: X.Org Video Driver
+	ABI class: X.Org Video Driver, version 24.1
+(II) LoadModule: "glx"
+(II) Loading /usr/lib64/xorg/modules/extensions/libglx.so
+(II) Module glx: vendor="X.Org Foundation"
+	compiled for 1.20.10, module version = 1.0.0
+	ABI class: X.Org Server Extension, version 10.0
+(II) LoadModule: "nvidia"
+(II) Loading /usr/lib64/xorg/modules/drivers/nvidia_drv.so
+(EE) Failed to load /usr/lib64/xorg/modules/drivers/nvidia_drv.so: /usr/lib64/xorg/modules/drivers/nvidia_drv.so: undefined symbol: noPanoramiXExtension
+(EE) Failed to load module "nvidia" (loader failed, 0)
+(II) modesetting: Driver for Modesetting Kernel Drivers: kms
+(WW) Falling back to old probe method for modesetting
+(WW) Falling back to old probe method for modesetting
+(EE) No devices detected.
+(EE) 
+Fatal server error:
+(EE) no screens found(EE) 
+(EE) 
+Please consult the The X.Org Foundation support 
+	 at http://wiki.x.org
+ for help. 
+(EE) Please also check the log file at "/var/log/Xorg.0.log" for additional information.
+(EE) 
+(EE) Server terminated with error (1). Closing log file.
+^Cxinit: giving up
+xinit: unable to connect to X server: Connection refused
+xinit: unexpected signal 2
+```
+#### Solution
+To add related missing package for the host, as below
+```
+PACKAGES =+ "${PN}-sdl \
+             ${PN}-fbdev \
+             ${PN}-xvfb \
+             ${PN}-utils \
+             ${PN}-xephyr \
+             ${PN}-xwayland \
+             ${PN}-multimedia-modules \
+             ${PN}-extension-dri \
+             ${PN}-extension-dri2 \
+             ${PN}-extension-glx \
+             ${PN}-extension-record \
+             ${PN}-extension-extmod \
+             ${PN}-extension-dbe \
+             ${PN}-module-libint10 \
+             ${PN}-module-libafb \
+             ${PN}-module-libwfb  \
+             ${PN}-module-libmfb \
+             ${PN}-module-libcfb \
+             ${PN}-module-exa \
+             ${PN}-module-wfb \
+             ${PN}-module-xaa \
+             ${PN}-module-libxf1bpp \
+             ${PN}-module-libxf4bpp \
+             xf86-video-modesetting"
+```
 
 ### FQA
 * How to find the boot up process graphic related?
