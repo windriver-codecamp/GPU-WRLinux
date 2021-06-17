@@ -858,4 +858,8 @@ sh-5.1# glmark2-es2
 =======================================================
 sh-5.1# 
 ```
+### References
+* http://us.download.nvidia.com/XFree86/Linux-x86_64/460.73.01/README/index.html
+* https://www.genivi.org/
+* https://docs.nvidia.com/drive/drive_os_5.1.6.1L/nvvib_docs/index.html#page/DRIVE_OS_Linux_SDK_Development_Guide/Appendix/install_manual.html
 
