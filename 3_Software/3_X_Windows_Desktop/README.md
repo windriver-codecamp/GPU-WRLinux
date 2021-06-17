@@ -858,7 +858,8 @@ sh-5.1# glmark2-es2
 =======================================================
 sh-5.1# 
 ```
-### Issue
+### Issues
+
 * ERROR: An error occurred while performing the step: "Building kernel modules". See /var/log/nvidia-installer.log for details. 
 #### Solution
 cat /var/log/nvidia-installer.log and add the following item to the file of "/etc/X11/xorg.conf".
@@ -867,8 +868,131 @@ Section "Module"
     Load "modesetting"
 EndSection
 ```
+* Failed to build NVIDIA Driver as missing Kernel source code
+```
+ERROR: Unable to find the kernel source tree for the currently running kernel.  Please make sure you have installed the kernel source files for your kernel and that they are properly configured; on   
+         Red Hat Linux systems, for example, be sure you have the 'kernel-source' or 'kernel-devel' RPM installed.  If you know the correct kernel source files are installed, you may specify the kernel 
+         source path with the '--kernel-source-path' command line option.
+```
+
+```
+nvidia-installer log file '/var/log/nvidia-installer.log'
+creation time: Fri May  7 10:48:27 2021
+installer version: 460.73.01
+
+PATH: /usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
+
+nvidia-installer command line:
+    ./nvidia-installer
+    --kernel-source-path
+    /usr/src/kernel
+
+Unable to load: nvidia-installer ncurses v6 user interface
+
+Using: nvidia-installer ncurses user interface
+-> Detected 8 CPUs online; setting concurrency level to 8.
+-> Installing NVIDIA driver version 460.73.01.
+-> Performing CC sanity check with CC="/usr/bin/cc".
+-> Performing CC check.
+-> Using the kernel source path '/usr/src/kernel' as specified by the '--kernel-source-path' commandline option.
+-> Kernel source path: '/usr/src/kernel'
+-> Kernel output path: '/usr/src/kernel'
+-> Performing Compiler check.
+-> Performing Dom0 check.
+-> Performing Xen check.
+-> Performing PREEMPT_RT check.
+-> Performing vgpu_kvm check.
+-> Cleaning kernel module build directory.
+   executing: 'cd ./kernel; /usr/bin/make -k -j8 clean NV_EXCLUDE_KERNEL_MODULES="" SYSSRC="/usr/src/kernel" SYSOUT="/usr/src/kernel"'...
+   rm -f -r conftest
+   make[1]: Entering directory '/lib/modules/5.12.0-rc8-yoctodev-standard/build'
+   make[1]: Leaving directory '/lib/modules/5.12.0-rc8-yoctodev-standard/build'
+-> Building kernel modules
+   executing: 'cd ./kernel; /usr/bin/make -k -j8  NV_EXCLUDE_KERNEL_MODULES="" SYSSRC="/usr/src/kernel" SYSOUT="/usr/src/kernel"'...
+   make[1]: Entering directory '/lib/modules/5.12.0-rc8-yoctodev-standard/build'
+     SYMLINK /tmp/selfgz549/NVIDIA-Linux-x86_64-460.73.01/kernel/nvidia/nv-kernel.o
+     SYMLINK /tmp/selfgz549/NVIDIA-Linux-x86_64-460.73.01/kernel/nvidia-modeset/nv-modeset-kernel.o
+    CONFTEST: hash__remap_4k_pfn
+    CONFTEST: set_pages_uc
+    CONFTEST: list_is_first
+    CONFTEST: set_memory_uc
+    CONFTEST: set_memory_array_uc
+    CONFTEST: set_pages_array_uc
+    CONFTEST: acquire_console_sem
+    CONFTEST: console_lock
+    CONFTEST: ioremap_cache
+    CONFTEST: ioremap_wc
+    CONFTEST: acpi_walk_namespace
+    CONFTEST: sg_alloc_table
+    CONFTEST: pci_get_domain_bus_and_slot
+    CONFTEST: get_num_physpages
+    CONFTEST: efi_enabled
+    CONFTEST: pde_data
+```
+
+#### Solution
+To install kernel source code on the target host
+```
+root@intel-x86-64:~# rpm -ivh /kernel-devsrc-1.0-r0.intel_x86_64.rpm
+```
+
+### FQA
+* How to find the boot up process graphic related?
+```
+root@intel-x86-64:/etc/X11/xinit# systemctl get-default
+graphical.target
+root@intel-x86-64:/etc/X11/xinit# runlevel
+N 5
+root@intel-x86-64:/etc/X11/xinit# systemctl list-units --type target
+  UNIT                  LOAD   ACTIVE SUB    DESCRIPTION                  
+  basic.target          loaded active active Basic System                 
+  getty.target          loaded active active Login Prompts                
+  graphical.target      loaded active active Graphical Interface          
+  local-fs-pre.target   loaded active active Local File Systems (Pre)     
+  local-fs.target       loaded active active Local File Systems           
+  multi-user.target     loaded active active Multi-User System            
+  network-online.target loaded active active Network is Online            
+  network-pre.target    loaded active active Network (Pre)                
+  network.target        loaded active active Network                      
+  nss-lookup.target     loaded active active Host and Network Name Lookups
+  paths.target          loaded active active Paths                        
+  remote-fs.target      loaded active active Remote File Systems          
+  rpcbind.target        loaded active active RPC Port Mapper              
+  slices.target         loaded active active Slices                       
+  sockets.target        loaded active active Sockets                      
+  sound.target          loaded active active Sound Card                   
+  swap.target           loaded active active Swap                         
+  sysinit.target        loaded active active System Initialization        
+  time-set.target       loaded active active System Time Set              
+  time-sync.target      loaded active active System Time Synchronized     
+  timers.target         loaded active active Timers                       
+
+LOAD   = Reflects whether the unit definition was properly loaded.
+ACTIVE = The high-level unit activation state, i.e. generalization of SUB.
+SUB    = The low-level unit activation state, values depend on unit type.
+21 loaded units listed. Pass --all to see loaded but inactive units, too.
+To show all installed unit files use 'systemctl list-unit-files'.
+
+```
+* How to replace "Nouveau kernel driver" running by default?
+```
+The Nouveau kernel driver is currently in use by your system.  This driver is incompatible with the NVIDIA driver, and must be disabled before proceeding.  Please consult the NVIDIA driver     
+         README and your Linux distribution's documentation for details on how to correctly disable the Nouveau kernel driver.
+
+
+For some distributions, Nouveau can be disabled by adding a file in the modprobe configuration directory.  Would you like nvidia-installer to attempt to create this modprobe file for you? 
+
+
+One or more modprobe configuration files to disable Nouveau have been written.  For some distributions, this may be sufficient to disable Nouveau; other distributions may require modification of the  
+  initial ramdisk.  Please reboot your system and attempt NVIDIA driver installation again.  Note if you later wish to re-enable Nouveau, you will need to delete these files:
+  /etc/modprobe.d/nvidia-installer-disable-nouveau.conf
+
+  ERROR: Installation has failed.  Please see the file '/var/log/nvidia-installer.log' for details.  You may find suggestions on fixing installation problems in the README available on the Linux driver 
+         download page at www.nvidia.com.
+```
+
 ### References
 * http://us.download.nvidia.com/XFree86/Linux-x86_64/460.73.01/README/index.html
 * https://www.genivi.org/
 * https://docs.nvidia.com/drive/drive_os_5.1.6.1L/nvvib_docs/index.html#page/DRIVE_OS_Linux_SDK_Development_Guide/Appendix/install_manual.html
-
+* https://opensource.com/article/20/5/systemd-startup
