@@ -5280,4 +5280,6 @@ Rocks_SegmentsWithContrastingBoundaries_8Way_512x512_8u succeeded.
 root@intel-x86-64:/usr/local/cuda-11.2/samples# 
 
 ```
+### Issues
+* There are errors in the outputs of few CUDA examples. We can dig them further if needed.  
 
