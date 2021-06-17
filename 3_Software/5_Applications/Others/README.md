@@ -1,3 +1,71 @@
+## A screen recorder application on Wind River Linux (kazam)
+```
+wget https://launchpadlibrarian.net/182631125/kazam-1.4.5.tar.gz
+```
+### Issue 
+* Failed to install kazam
+```
+ModuleNotFoundError: No module named 'DistUtilsExtra'
+```
+#### Solution
+
+```
+[lliu2@pek-lpgtest7302 build]$ bitbake python3-distutils-extra
+```
+```
+root@intel-x86-64:/mnt/sdd/lliu2# scp lliu2@128.224.153.48:/buildarea2/lliu2/2021cc/dell_pc/CDNext_20210508/build/tmp-glibc/work/corei7-64-wrs-linux/python3-distutils-extra/2.39-r0/deploy-rpms/corei7_64/python3-distutils-extra-2.39-r0.corei7_64.rpm .
+lliu2@128.224.153.48's password: 
+python3-distutils-extra-2.39-r0.corei7_64.rpm                                                                                                                            100%   31KB   1.5MB/s   00:00    
+root@intel-x86-64:/mnt/sdd/lliu2# ls
+NVIDIA-Linux-x86_64-460.73.01  NVIDIA-Linux-x86_64-460.73.01.run  NVIDIA_CUDA-11.2_Samples  kazam-1.4.5  kazam-1.4.5.tar.gz  python3-distutils-extra-2.39-r0.corei7_64.rpm
+root@intel-x86-64:/mnt/sdd/lliu2# rpm -ivh python3-distutils-extra-2.39-r0.corei7_64.rpm 
+```
+
+
+* Failed to run kazam
+```
+root@intel-x86-64:/mnt/sdd/lliu2/kazam-1.4.5/bin# ./kazam 
+/mnt/sdd/lliu2/kazam-1.4.5/bin/./kazam:32: PyGIWarning: Gtk was imported without specifying a version first. Use gi.require_version('Gtk', '3.0') before import to ensure that the right version gets loaded.
+  from gi.repository import Gtk
+WARNING Kazam - Running from local directory, AppIndicator icons could be missing.
+WARNING Kazam - Failed to correctly detect operating system.
+Traceback (most recent call last):
+  File "/mnt/sdd/lliu2/kazam-1.4.5/bin/./kazam", line 146, in <module>
+    from kazam.app import KazamApp
+  File "../kazam/app.py", line 35, in <module>
+    from kazam.backend.prefs import *
+  File "../kazam/backend/prefs.py", line 26, in <module>
+    from xdg.BaseDirectory import xdg_config_home
+ModuleNotFoundError: No module named 'xdg'
+```
+#### Solution
+
+```
+bitbake xdg-utils
+```
+```
+root@intel-x86-64:/mnt/sdd/lliu2# scp lliu2@128.224.153.48:/buildarea2/lliu2/2021cc/dell_pc/CDNext_20210508/build/tmp-glibc/work/corei7-64-wrs-linux/xdg-utils/1.1.3-r0/deploy-rpms/corei7_64/xdg-utils-1.1.3-r0.corei7_64.rpm .
+lliu2@128.224.153.48's password: 
+xdg-utils-1.1.3-r0.corei7_64.rpm                                                                                                                                         100%   33KB   2.3MB/s   00:00    
+root@intel-x86-64:/mnt/sdd/lliu2# rpm -ivh xdg-utils-1.1.3-r0.corei7_64.rpm 
+error: Failed dependencies:
+	xprop is needed by xdg-utils-1.1.3-r0.corei7_64
+root@intel-x86-64:/mnt/sdd/lliu2# scp lliu2@128.224.153.48:/buildarea2/lliu2/2021cc/dell_pc/CDNext_20210508/build/tmp-glibc/work/corei7-64-wrs-linux/xprop/1_1.2.5-r0/deploy-rpms/corei7_64/xprop-1.2.5-r0.corei7_64.rpm .
+lliu2@128.224.153.48's password: 
+xprop-1.2.5-r0.corei7_64.rpm                                                                                                                                             100%   23KB   2.3MB/s   00:00    
+root@intel-x86-64:/mnt/sdd/lliu2# rpm -ivh xprop-1.2.5-r0.corei7_64.rpm
+Verifying...                          ################################# [100%]
+Preparing...                          ################################# [100%]
+Updating / installing...
+   1:xprop-1:1.2.5-r0                 ################################# [100%]
+root@intel-x86-64:/mnt/sdd/lliu2# rpm -ivh xdg-utils-1.1.3-r0.corei7_64.rpm 
+Verifying...                          ################################# [100%]
+Preparing...                          ################################# [100%]
+Updating / installing...
+   1:xdg-utils-1.1.3-r0               ################################# [100%]
+root@intel-x86-64:/mnt/sdd/lliu2#
+```
+
 ## NVIDIA Nsight Graphics (TODO)
 ```
 NVIDIA® Nsight™ Graphics is a standalone developer tool that enables you to debug, profile, and export frames built with Direct3D (11, 12, DXR), Vulkan (1.2, NV Vulkan Ray Tracing Extension), OpenGL, OpenVR, and the Oculus SDK.
