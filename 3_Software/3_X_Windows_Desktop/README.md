@@ -858,6 +858,15 @@ sh-5.1# glmark2-es2
 =======================================================
 sh-5.1# 
 ```
+### Issue
+* ERROR: An error occurred while performing the step: "Building kernel modules". See /var/log/nvidia-installer.log for details. 
+#### Solution
+cat /var/log/nvidia-installer.log and add the following item to the file of "/etc/X11/xorg.conf".
+```
+Section "Module"
+    Load "modesetting"
+EndSection
+```
 ### References
 * http://us.download.nvidia.com/XFree86/Linux-x86_64/460.73.01/README/index.html
 * https://www.genivi.org/
