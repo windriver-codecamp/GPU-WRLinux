@@ -34,7 +34,7 @@ Exploring NVIDIA GPU-Accelerated Ecosystem on Wind River Linux
 ```
      Demo Video (TODO)
 ```
-* [Details](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/5_Applications/MXNet/README.md)
+* [Details](https://github.com/charleshardy/GPU-WRLinux/tree/main/3_Software/5_Applications/CUDA#README.md)
 
 ### CUDA-X Example (NeMo)
 ```
