@@ -1,4 +1,4 @@
-1. How about GPU performance comparisons between Wind River Linux and Ubuntu?
+## 1. How about GPU performance comparisons between Wind River Linux and Ubuntu?
 * On Ubuntu:
 ```
 root@wind-OptiPlex-9020:/home/wind# nvidia-smi 
@@ -185,7 +185,7 @@ Comparing CUBLAS Matrix Multiply with CPU results: PASS
 sudo /usr/local/cuda-X.Y/bin/uninstall_cuda_X.Y.pl
 ```
 
-2. Can NVIDIA GPU run on any ARM based boards?
+## 2. Can NVIDIA GPU run on any ARM based boards?
 
 We tried to bring the NVIDIA Graphic Card in intel-socfpga-64 (ARM64) BSP target but failed.
 
@@ -3489,4 +3489,4 @@ NVRM: GPU 0000:01:00.0: rm_init_adapter failed, device minor number 0
 * https://www.intel.com/content/dam/www/programmable/us/en/pdfs/literature/ug/ug_s10_pcie_avmm.pdf
 * https://www.intel.com/content/dam/www/programmable/us/en/pdfs/literature/ug/ug_s10_pcie_avmm.pdf
 
-4. How to verify the GPU works well on Wind River Linux?
+### 3. How to verify the GPU works well on Wind River Linux?
