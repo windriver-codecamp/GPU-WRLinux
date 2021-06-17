@@ -5281,5 +5281,5 @@ root@intel-x86-64:/usr/local/cuda-11.2/samples#
 
 ```
 ### Issues
-* There are errors in the outputs of few CUDA examples. We can dig them further if needed.  
+* There are errors in the outputs of few CUDA examples. We'll dig them further if needed.  
 
