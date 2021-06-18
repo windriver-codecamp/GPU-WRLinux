@@ -88,7 +88,9 @@ Type "help", "copyright", "credits" or "license" for more information.
 '2.5.0'
 >>> tf.__path__
 ['/usr/lib64/python3.9/site-packages/tensorflow', '/usr/lib/python3.9/site-packages/tensorflow_estimator/python/estimator/api/_v2', '/home/test/.local/lib/python3.9/site-packages/tensorboard/summary/_tf', '/usr/lib64/python3.9/site-packages/tensorflow', '/usr/lib64/python3.9/site-packages/tensorflow/_api/v2']
->>> 
+
+
+
 
 
 ## Setup Steps (jupyterlab)
