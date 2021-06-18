@@ -117,7 +117,7 @@ python3 keras-elephone.py
 
 <img src="./example2/integrated_gradients_3_1.png" width="300">
 
-<img src="./example2/integrated_gradients_9_1.png" width="600">
+<img src="./example2/integrated_gradients_9_1.png" width="900">
 
 ### Issues
 
