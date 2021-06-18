@@ -1,10 +1,14 @@
 # Unreal Engine Installation
 
 ## Setup Steps
+### Download UnrealEngine
+1. Be an Unreal Engine subscriber
+2. Get a GitHub account
+3. Have associated your GitHub account with your Unreal Engine account as described on the UE4 on GitHub page
+4. Download UnrealEngine-release.zip from https://github.com/EpicGames/UnrealEngine
+6. Copy UnrealEngine-release.zip to Intel-x86-64 host
+### Build UnrealEngine
 
-```
-TODO
-```
 
 ### Install Quixel Bridge
 ```
