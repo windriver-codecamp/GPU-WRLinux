@@ -5,7 +5,6 @@
             import tensorflow as tf
             tf.__version__    
 
-
 intel-x86-64:~$ uname -a
 Linux intel-x86-64 5.12.0-yoctodev-standard #1 SMP PREEMPT Sat May 8 03:46:47 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
 intel-x86-64:~$ 
