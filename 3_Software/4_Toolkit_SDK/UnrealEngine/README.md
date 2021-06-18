@@ -6,7 +6,7 @@
 2. Get a GitHub account
 3. Have associated your GitHub account with your Unreal Engine account as described on the UE4 on GitHub page
 4. Download UnrealEngine-release.zip from https://github.com/EpicGames/UnrealEngine
-6. Copy UnrealEngine-release.zip to Intel-x86-64 host
+6. Copy UnrealEngine-release.zip to the Intel-x86-64 host
 ### Build UnrealEngine
 
 
