@@ -5,6 +5,7 @@
 
 ### 1. Find all execuable cuda sample binaries
 ```
+root@intel-x86-64:~# cd /usr/local/cuda-11.2/samples
 root@intel-x86-64:/usr/local/cuda-11.2/samples# find . -executable -type f | sort > /tmp/e
 root@intel-x86-64:/usr/local/cuda-11.2/samples# cat /tmp/e
 ./0_Simple/UnifiedMemoryStreams/UnifiedMemoryStreams
