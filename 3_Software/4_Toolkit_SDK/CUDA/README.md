@@ -33,7 +33,7 @@ Logfile is /var/log/cuda-installer.log
 root@intel-x86-64:/#
 ```
 
-### Set up CUDA environment
+### Setup CUDA environment
 ```
 root@intel-x86-64:/# vi /var/log/cuda-installer.log 
 root@intel-x86-64:/# vi ~/.bashrc
