@@ -29,7 +29,7 @@ Fri Jun 18 01:59:14 2021
 root@intel-x86-64:~#
 ```
 ```
-root@intel-x86-64:~# cat /usr/local/cuda-11.2/version.json 
+root@intel-x86-64:~# cat /usr/local/cuda/version.json 
 {
    "cuda" : {
       "name" : "CUDA SDK",
