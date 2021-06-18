@@ -4,7 +4,7 @@
             python3
             import tensorflow as tf
             tf.__version__   
-            tf.test.is_gpu_available()   ----> True 
+            tf.test.is_gpu_available()   ---->  physical GPU (device: 0, name: GeForce GTX 1650 SUPER, pci bus id: 0000:01:00.0, compute capability: 7.5) True 
             
             
     intel-x86-64:~$ uname -a
