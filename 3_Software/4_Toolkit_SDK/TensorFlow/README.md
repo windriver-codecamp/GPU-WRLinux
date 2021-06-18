@@ -4,9 +4,7 @@
             python3
             import tensorflow as tf
             tf.__version__    
-
-
-
+            
 
 intel-x86-64:~$ uname -a
 Linux intel-x86-64 5.12.0-yoctodev-standard #1 SMP PREEMPT Sat May 8 03:46:47 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
@@ -91,7 +89,11 @@ Type "help", "copyright", "credits" or "license" for more information.
 '2.5.0'
 >>> tf.__path__
 ['/usr/lib64/python3.9/site-packages/tensorflow', '/usr/lib/python3.9/site-packages/tensorflow_estimator/python/estimator/api/_v2', '/home/test/.local/lib/python3.9/site-packages/tensorboard/summary/_tf', '/usr/lib64/python3.9/site-packages/tensorflow', '/usr/lib64/python3.9/site-packages/tensorflow/_api/v2']
->>> 
+>>>   
+
+
+
+
 
 
 ## Setup Steps (jupyterlab)
