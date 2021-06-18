@@ -108,8 +108,6 @@ Epoch 15/15
 Test loss: 0.02429191768169403
 Test accuracy: 0.9922999739646912
 ```
-
-```
 ## TensorFlow Example 2
 ### Run example 2
 ```
