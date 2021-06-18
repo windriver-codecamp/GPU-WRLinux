@@ -4,21 +4,20 @@
             python3
             import tensorflow as tf
             tf.__version__    
-            
-intel-x86-64:~$ uname -a
-Linux intel-x86-64 5.12.0-yoctodev-standard #1 SMP PREEMPT Sat May 8 03:46:47 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
-intel-x86-64:~$ 
-intel-x86-64:~$ pip3 install tensorflow-gpu
-Defaulting to user installation because normal site-packages is not writeable
-Requirement already satisfied: tensorflow-gpu in /usr/lib64/python3.9/site-packages (2.5.0)
-Requirement already satisfied: termcolor~=1.1.0 in /usr/lib/python3.9/site-packages (from tensorflow-gpu) (1.1.0)
-Collecting h5py~=3.1.0
+ intel-x86-64:~$ uname -a
+ Linux intel-x86-64 5.12.0-yoctodev-standard #1 SMP PREEMPT Sat May 8 03:46:47 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
+ intel-x86-64:~$ 
+ intel-x86-64:~$ pip3 install tensorflow-gpu
+ Defaulting to user installation because normal site-packages is not writeable
+ Requirement already satisfied: tensorflow-gpu in /usr/lib64/python3.9/site-packages (2.5.0)
+ Requirement already satisfied: termcolor~=1.1.0 in /usr/lib/python3.9/site-packages (from tensorflow-gpu) (1.1.0)
+ Collecting h5py~=3.1.0
   Downloading h5py-3.1.0-cp39-cp39-manylinux1_x86_64.whl (4.4 MB)
      |████████████████████████████████| 4.4 MB 1.5 MB/s 
-Requirement already satisfied: wrapt~=1.12.1 in ./.local/lib/python3.9/site-packages (from tensorflow-gpu) (1.12.1)
-Requirement already satisfied: six~=1.15.0 in /usr/lib64/python3.9/site-packages (from tensorflow-gpu) (1.15.0)
-Requirement already satisfied: google-pasta~=0.2 in /usr/lib/python3.9/site-packages (from tensorflow-gpu) (0.2.0)
-Requirement already satisfied: keras-preprocessing~=1.1.2 in /usr/lib/python3.9/site-packages (from tensorflow-gpu) (1.1.2)
+ Requirement already satisfied: wrapt~=1.12.1 in ./.local/lib/python3.9/site-packages (from tensorflow-gpu) (1.12.1)
+ Requirement already satisfied: six~=1.15.0 in /usr/lib64/python3.9/site-packages (from tensorflow-gpu) (1.15.0)
+ Requirement already satisfied: google-pasta~=0.2 in /usr/lib/python3.9/site-packages (from tensorflow-gpu) (0.2.0)
+ Requirement already satisfied: keras-preprocessing~=1.1.2 in /usr/lib/python3.9/site-packages (from tensorflow-gpu) (1.1.2)
 Requirement already satisfied: keras-nightly~=2.5.0.dev in /usr/lib/python3.9/site-packages (from tensorflow-gpu) (2.5.0.dev2021032900)
 Requirement already satisfied: flatbuffers~=1.12.0 in /usr/lib/python3.9/site-packages (from tensorflow-gpu) (1.12)
 Requirement already satisfied: absl-py~=0.10 in ./.local/lib/python3.9/site-packages (from tensorflow-gpu) (0.12.0)
