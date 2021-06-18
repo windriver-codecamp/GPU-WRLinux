@@ -11,7 +11,9 @@
 ```
 # unzip UnrealEngine-release.zip
 # cd UnrealEngine-release
-# UnrealEngine-release# ./Setup.sh
+UnrealEngine-release# ./Setup.sh
+UnrealEngine-release# ./GenerateProjectFiles.sh
+UnrealEngine-release# make
 ```
 ### Start Unreal Editor
 ```
@@ -29,11 +31,10 @@ if you run it with the --appimage-extract option.
 See https://github.com/AppImage/AppImageKit/wiki/FUSE 
 for more information
 intel-x86-64:~$ 
-
-
+```
+```
 lliu2@pek-lpgtest7302 build]$ bitbake fuse
-
-
+...
 [lliu2@pek-lpgtest7302 corei7_64]$ scp libfuse2-2.9.9-r0.corei7_64.rpm fuse-utils-2.9.9-r0.corei7_64.rpm root@128.224.162.144:/
 The authenticity of host '128.224.162.144 (128.224.162.144)' can't be established.
 ECDSA key fingerprint is SHA256:vMWhEaKsgSUGgCpPD3Gj0/lY+8RgID401JSubIjUCU0.
@@ -1332,6 +1333,6 @@ Summary: There was 1 ERROR message shown, returning a non-zero exit code.
 
 
 ### References
-
+* https://www.ue4community.wiki/legacy/building-on-linux-qr8t0si2
 * https://docs.unrealengine.com/en-US/SharingAndReleasing/Linux/BeginnerLinuxDeveloper/SettingUpAnUnrealWorkflow/index.html
 * 
