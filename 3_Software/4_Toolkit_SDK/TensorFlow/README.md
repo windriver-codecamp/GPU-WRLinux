@@ -1,4 +1,4 @@
-# How to install Tensorflow?
+# How to install Tensorflow-gpu?   GPU!!!!!
     step1: pip3 install tensorflow-gpu
     setp2: check the tensorflow version:
             python3
