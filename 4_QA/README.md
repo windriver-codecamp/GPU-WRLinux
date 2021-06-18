@@ -1,5 +1,5 @@
 ## 1. How about GPU performance comparisons between Wind River Linux and Ubuntu?
-* On Ubuntu:
+### On Ubuntu:
 ```
 root@wind-OptiPlex-9020:/home/wind# nvidia-smi 
 Tue May 11 01:43:03 2021       
@@ -184,6 +184,79 @@ Comparing CUBLAS Matrix Multiply with CPU results: PASS
 
 sudo /usr/local/cuda-X.Y/bin/uninstall_cuda_X.Y.pl
 ```
+### On Wind River Linux
+```
+# nvidia-smi 
+Fri Jun 18 05:51:54 2021       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 460.73.01    Driver Version: 460.73.01    CUDA Version: 11.2     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  GeForce GTX 165...  Off  | 00000000:01:00.0 Off |                  N/A |
+| 29%   31C    P8     3W / 100W |    433MiB /  3878MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|    0   N/A  N/A       452      G   /usr/bin/X                        428MiB |
+|    0   N/A  N/A       624      G   xfwm4                               2MiB |
++-----------------------------------------------------------------------------+
+```
+```
+sh-5.1# glmark2-es2
+=======================================================
+    glmark2 2021.02
+=======================================================
+    OpenGL Information
+    GL_VENDOR:     NVIDIA Corporation
+    GL_RENDERER:   GeForce GTX 1650 SUPER/PCIe/SSE2
+    GL_VERSION:    OpenGL ES 3.2 NVIDIA 460.73.01
+=======================================================
+[build] use-vbo=false: FPS: 7591 FrameTime: 0.132 ms
+[build] use-vbo=true: FPS: 11405 FrameTime: 0.088 ms
+[texture] texture-filter=nearest: FPS: 11165 FrameTime: 0.090 ms
+[texture] texture-filter=linear: FPS: 11138 FrameTime: 0.090 ms
+[texture] texture-filter=mipmap: FPS: 11136 FrameTime: 0.090 ms
+[shading] shading=gouraud: FPS: 10291 FrameTime: 0.097 ms
+[shading] shading=blinn-phong-inf: FPS: 10313 FrameTime: 0.097 ms
+[shading] shading=phong: FPS: 10102 FrameTime: 0.099 ms
+[shading] shading=cel: FPS: 10155 FrameTime: 0.098 ms
+[bump] bump-render=high-poly: FPS: 8380 FrameTime: 0.119 ms
+[bump] bump-render=normals: FPS: 11589 FrameTime: 0.086 ms
+[bump] bump-render=height: FPS: 11415 FrameTime: 0.088 ms
+[effect2d] kernel=0,1,0;1,-4,1;0,1,0;: FPS: 9397 FrameTime: 0.106 ms
+[effect2d] kernel=1,1,1,1,1;1,1,1,1,1;1,1,1,1,1;: FPS: 7061 FrameTime: 0.142 ms
+[pulsar] light=false:quads=5:texture=false: FPS: 11037 FrameTime: 0.091 ms
+[desktop] blur-radius=5:effect=blur:passes=1:separable=true:windows=4: FPS: 5122 FrameTime: 0.195 ms
+[desktop] effect=shadow:windows=4: FPS: 7726 FrameTime: 0.129 ms
+[buffer] columns=200:interleave=false:update-dispersion=0.9:update-fraction=0.5:update-method=map: FPS: 1372 FrameTime: 0.729 ms
+[buffer] columns=200:interleave=false:update-dispersion=0.9:update-fraction=0.5:update-method=subdata: FPS: 1567 FrameTime: 0.638 ms
+[buffer] columns=200:interleave=true:update-dispersion=0.9:update-fraction=0.5:update-method=map: FPS: 1618 FrameTime: 0.618 ms
+[ideas] speed=duration: FPS: 9685 FrameTime: 0.103 ms
+[jellyfish] <default>: FPS: 8542 FrameTime: 0.117 ms
+[terrain] <default>: FPS: 970 FrameTime: 1.031 ms
+[shadow] <default>: FPS: 7917 FrameTime: 0.126 ms
+[refract] <default>: FPS: 2503 FrameTime: 0.400 ms
+[conditionals] fragment-steps=0:vertex-steps=0: FPS: 11040 FrameTime: 0.091 ms
+[conditionals] fragment-steps=5:vertex-steps=0: FPS: 10873 FrameTime: 0.092 ms
+[conditionals] fragment-steps=0:vertex-steps=5: FPS: 10975 FrameTime: 0.091 ms
+[function] fragment-complexity=low:fragment-steps=5: FPS: 10923 FrameTime: 0.092 ms
+[function] fragment-complexity=medium:fragment-steps=5: FPS: 10874 FrameTime: 0.092 ms
+[loop] fragment-loop=false:fragment-steps=5:vertex-steps=5: FPS: 10855 FrameTime: 0.092 ms
+[loop] fragment-steps=5:fragment-uniform=false:vertex-steps=5: FPS: 10871 FrameTime: 0.092 ms
+[loop] fragment-steps=5:fragment-uniform=true:vertex-steps=5: FPS: 10760 FrameTime: 0.093 ms
+=======================================================
+                                  glmark2 Score: 8677 
+=======================================================
+sh-5.1#
+```	
 
 ## 2. Can NVIDIA GPU run on any ARM based boards?
 
