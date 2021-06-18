@@ -2,6 +2,32 @@
 > None
 
 ## Run CUDA Examples Steps
+### 1. Get CUDA installed information
+```
+root@intel-x86-64:~# nvidia-smi 
+Fri Jun 18 01:59:14 2021       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 460.73.01    Driver Version: 460.73.01    CUDA Version: 11.2     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  GeForce GTX 165...  Off  | 00000000:01:00.0  On |                  N/A |
+| 29%   31C    P8     5W / 100W |    337MiB /  3878MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|    0   N/A  N/A       452      G   /usr/bin/X                        332MiB |
+|    0   N/A  N/A       624      G   xfwm4                               2MiB |
++-----------------------------------------------------------------------------+
+root@intel-x86-64:~#
+```
 
 ### 1. Find all execuable cuda sample binaries
 ```
