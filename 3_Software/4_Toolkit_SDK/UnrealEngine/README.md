@@ -1,13 +1,13 @@
 # Unreal Engine Installation
 
 ## Setup Steps
-### Download UnrealEngine
+### Download Unreal Engine
 1. Be an Unreal Engine subscriber
 2. Get a GitHub account
 3. Have associated your GitHub account with your Unreal Engine account as described on the UE4 on GitHub page
 4. Download UnrealEngine-release.zip from https://github.com/EpicGames/UnrealEngine
 6. Copy UnrealEngine-release.zip to the Intel-x86-64 host
-### Build UnrealEngine
+### Build Unreal Engine
 ```
 # unzip UnrealEngine-release.zip
 # cd UnrealEngine-release
