@@ -114,9 +114,13 @@ Test accuracy: 0.9922999739646912
 python3 keras-elephone.py 
 ```
 ### Results
+
 <img src="./example2/integrated_gradients_3_1.png" width="300">
+
 <img src="./example2/integrated_gradients_9_1.png" width="300">
+
 ### Issues
+
 * TODO
 
 ## References
