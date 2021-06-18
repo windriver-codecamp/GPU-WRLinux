@@ -8,7 +8,15 @@
 4. Download UnrealEngine-release.zip from https://github.com/EpicGames/UnrealEngine
 6. Copy UnrealEngine-release.zip to the Intel-x86-64 host
 ### Build UnrealEngine
-
+```
+# unzip UnrealEngine-release.zip
+# cd UnrealEngine-release
+# UnrealEngine-release# ./Setup.sh
+```
+### Start Unreal Editor
+```
+UnrealEngine-release/Engine/Binaries/Linux# ./UE4Editor
+```
 
 ### Install Quixel Bridge
 ```
