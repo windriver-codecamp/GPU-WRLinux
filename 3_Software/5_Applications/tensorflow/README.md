@@ -28,13 +28,11 @@ please see the picutre about loss and accurent.
 
 
 
-
-
 ```
 ## TensorFlow Example 2
 ### Run example 2
 ```
-python3 keras-elephone.py 
+/home/test/.local/bin/jupyter-lab keras-elephone.py 
 ```
 ### Results
 
