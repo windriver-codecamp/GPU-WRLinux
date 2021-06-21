@@ -7,13 +7,13 @@
 /home/test/.local/bin/jupyter-lab training.py
 ```
 ### Result
-```
+
 
 <img src="./example1/loss-1-before.png" width="300">
 
 <img src="./example1/loss-1-after.png" width="300">
 
-```
+
 ### Issues
 ```
 
