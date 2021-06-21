@@ -11,9 +11,9 @@
 
 please see the picutre about loss and accurent.
 
-<img src="./example2/integrated_gradients_3_1.png" width="300">
+<img src="./example1/loss-1-before.png" width="300">
 
-<img src="./example2/integrated_gradients_3_1.png" width="300">
+<img src="./example1/loss-1-after.png" width="300">
 
 
 ```
