@@ -124,10 +124,6 @@
     2021-06-18 11:43:23.564469: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1418] Created TensorFlow device (/device:GPU:0 with 2425 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1650 SUPER, pci bus id: 0000:01:00.0, compute capability: 7.5)
     True
     >>> 
-### References 
-* https://www.tensorflow.org/install/gpu
-
-
 
 
 ## Setup Steps (jupyterlab)
@@ -159,6 +155,6 @@ test@intel-x86-64:~$ /home/test/.local/bin/jupyter-lab
 ```
 
 ### References
-
+* https://www.tensorflow.org/install/gpu
 * https://jupyter.org/install.html
 
