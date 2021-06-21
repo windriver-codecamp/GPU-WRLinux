@@ -15,6 +15,16 @@ please see the picutre about loss and accurent.
 
 <img src="./example1/loss-1-after.png" width="300">
 
+### Issues
+
+* TODO
+
+## References
+* https://www.tensorflow.org/tensorboard/scalars_and_keras
+
+
+
+
 
 ```
 ## TensorFlow Example 2
