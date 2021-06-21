@@ -11,6 +11,10 @@
 
 please see the picutre about loss and accurent.
 
+<img src="./example2/integrated_gradients_3_1.png" width="300">
+
+<img src="./example2/integrated_gradients_3_1.png" width="300">
+
 
 ```
 ## TensorFlow Example 2
