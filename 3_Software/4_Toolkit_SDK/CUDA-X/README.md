@@ -4,6 +4,12 @@
 ### Setup Steps
 ## NeMo (TODO)
 ### Setup Steps
+```
+1. git clone https://github.com/NVIDIA/NeMo
+   cd NeMo/
+2. Comment out lines that contain “${PIP} uninstall”
+3. ./reinstall.sh
+```
 ## cuDNN (TODO)
 ### Setup Steps
 ## DALI (Data Loading Library) (TODO)
