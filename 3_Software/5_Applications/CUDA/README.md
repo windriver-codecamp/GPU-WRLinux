@@ -39,6 +39,8 @@ root@intel-x86-64:~#
 ```
 ### 1. Show a CUDA example
 ```
+root@intel-x86-64:~# cd /usr/local/cuda-11.2/samples
+root@intel-x86-64:/usr/local/cuda-11.2/samples/0_Simple/matrixMul# cat  matrixMul.cu ## As below
 ```
 
 ```cpp
@@ -375,11 +377,23 @@ int main(int argc, char **argv) {
 }
 
 ```
+```
+root@intel-x86-64:/usr/local/cuda-11.2/samples/0_Simple/matrixMul# ./matrixMul
+[Matrix Multiply Using CUDA] - Starting...
+GPU Device 0: "Turing" with compute capability 7.5
+
+MatrixA(320,320), MatrixB(640,320)
+Computing result using CUDA Kernel...
+done
+Performance= 495.82 GFlop/s, Time= 0.264 msec, Size= 131072000 Ops, WorkgroupSize= 1024 threads/block
+Checking computed result for correctness: Result = PASS
+
+NOTE: The CUDA Samples are not meant for performancemeasurements. Results may vary when GPU Boost is enabled.
+root@intel-x86-64:/usr/local/cuda-11.2/samples/0_Simple/matrixMul#
+```
 
 
-
-
-### 1. Find all execuable cuda sample binaries
+### 2. Find all execuable cuda sample binaries
 ```
 root@intel-x86-64:~# cd /usr/local/cuda-11.2/samples
 root@intel-x86-64:/usr/local/cuda-11.2/samples# find . -executable -type f | sort > /tmp/e
@@ -5655,7 +5669,6 @@ Rocks_CompressedSegmentLabels_8Way_512x512_32u succeeded.
 Rocks_SegmentBoundaries_8Way_512x512_8u succeeded.
 Rocks_SegmentsWithContrastingBoundaries_8Way_512x512_8u succeeded.
 root@intel-x86-64:/usr/local/cuda-11.2/samples# 
-
 ```
 ### Issues
 * There are errors in the outputs of few CUDA examples. We'll dig them further if needed.  
