@@ -43,5 +43,4 @@ The baseline input is the black image, i.e., all pixel intensities are zero.
 ## References
 * https://keras.io/examples/vision/integrated_gradients/
 * https://arxiv.org/pdf/1703.01365.pdf
-* ../../4_Toolkit_SDK/TensorFlow/README.md
 
