@@ -41,6 +41,21 @@ Transcribing: 100%|█████████| 1/1 [00:00<00:00,  1.94it/s]
 [NeMo I 2021-06-09 09:21:34 modelPT:434] Model MTEncDecModel was successfully restored from /mnt/sdb/xhou/HOME/.cache/torch/NeMo/NeMo_1.0.1/nmt_zh_en_transformer6x6/eff3792e6f4420ba83436be889e92d79/nmt_zh_en_transformer6x6.nemo.
 ['One day the yellow twilight I walked across a river to a half-hour when the water in the suddenly the river rose up and the water pig door jumped from the river to the half empty. They shouted ink and said, "You']
 ```
+
+#### Notes
+The original Chinese text of the WAV audio were as below.
+```
+一天黄昏我过一条河，走到一半时，突然河里的水沸腾起来，水珠们从河里跳到半空中，它们喊着，莫言莫言，你站住
+```
+The WAVE audio file
+```
+
+```
+The original English translation
+```
+One evening I crossed a river, and when I was halfway there, the water in the river boiled suddenly, and the drops of water jumped into the air, they shouted: Mo Yan Mo Yan, you stop!
+```
+
 ### More Details About NeMo Demo
 #### Technical Background
 
