@@ -44,8 +44,9 @@ def test(ctx):
 $ git am 0001-Update-super_resolution.py.patch
 ```
 ### Train and generate new image
+
+#### Train Model
 ```
-## Training
 $ time python super_resolution.py --epochs 200 --use-gpu
 Namespace(upscale_factor=3, batch_size=4, test_batch_size=100, epochs=200, lr=0.001, use_gpu=True, seed=123, resolve_img=None)
 Directory /mnt/sdb/xhou/HOME/.mxnet/datasets/BSDS500 already exists, skipping.
@@ -61,7 +62,10 @@ validation avg psnr: 23.290054
 real    6m36.315s
 user    15m1.850s
 sys 0m16.327s
-## Trying
+```
+
+#### Generate New Image
+```
 $ python super_resolution.py --resolve_img test.jpeg
 ```
 ### Result
