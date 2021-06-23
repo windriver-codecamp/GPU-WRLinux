@@ -18,8 +18,6 @@ UnrealEngine-release/Engine/Binaries/Linux# ./UE4Editor
 
 <img src="./myfistgame.png" width="600">
 
-### Issues
-
 ## References
 * https://docs.unrealengine.com/4.26/en-US/Basics/GettingStarted/
 
