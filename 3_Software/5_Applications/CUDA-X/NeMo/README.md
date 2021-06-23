@@ -1,5 +1,5 @@
-## Demo Video:
-> None
+## NeMo Demo Introduction:
+This demo is used to recogize Chinese language in (WAV ) audio file to plan text, and translate it into English.
 
 ## Run NeMo Demo Steps
 ### 1. install the nemo toolkit
@@ -29,3 +29,5 @@ Set Encoding on the terminal to Unicode UTF-8
 * https://docs.nvidia.com/deeplearning/nemo/user-guide/docs/en/main/
 
 
+## Demo Video:
+> None
