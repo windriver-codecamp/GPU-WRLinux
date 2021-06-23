@@ -68,15 +68,9 @@ Decoding/Decoder:
 ```
 To facilitate the implementation and domain adaptation of the complete ASR pipeline, we created the Domain Specific – NeMo ASR Application. This application is developed using NeMo and it enables you to train or fine-tune pre-trained (acoustic and language) ASR models with your own data. Through this application, we empower you to train, evaluate and compare ASR models built on your own domain specific audio data. This gives you the ability to progressively create better performing ASR models specifically built for your data.
 
-
-
-## Run NeMo Demo Steps
 ### Run the NeMo demo
 ```
-   # python nemo_demo.py or python3 nemo_demo.py
-```
-### Result
-```
+# python nemo_demo.py or python3 nemo_demo.py
 [NeMo W 2021-06-09 09:21:20 patch_utils:49] torch.stft() signature has been updated for PyTorch 1.7+
     Please update PyTorch to remain compatible with later versions of NeMo.
 Transcribing: 100%|█████████| 1/1 [00:00<00:00,  1.94it/s]
