@@ -57,12 +57,14 @@ per each time step t. For this block we use NVIDIA’s high performing acoustic 
 ```
 Decoding/Decoder:
 
-    Greedy (argmax): Is the simplest strategy for a decoder. The letter with the highest probability (temporal softmax
-    output layer) is chosen at each time-step, without regard to any semantic understanding of what was being communicated. 
-    Then, the repeated characters are removed or collapsed, and blank tokens are discarded.
-    A language model can be used to add contex,t and therefore correct mistakes in the acoustic model.  A beam search decoder 
-    weights the relative probabilities the softmax output against the likelihood of certain words appearing in context and tries 
-    to determine what was spoken by combining both what the acoustic model thinks it heard with what is a likely next word
+    Greedy (argmax): Is the simplest strategy for a decoder. The letter with the highest probability
+    (temporal softmax output layer) is chosen at each time-step, without regard to any semantic 
+    understanding of what was being communicated. Then, the repeated characters are removed or 
+    collapsed, and blank tokens are discarded.
+    A language model can be used to add contex,t and therefore correct mistakes in the acoustic model.  
+    A beam search decoder weights the relative probabilities the softmax output against the likelihood 
+    of certain words appearing in context and tries to determine what was spoken by combining both what 
+    the acoustic model thinks it heard with what is a likely next word
 ```
 To facilitate the implementation and domain adaptation of the complete ASR pipeline, we created the Domain Specific – NeMo ASR Application. This application is developed using NeMo and it enables you to train or fine-tune pre-trained (acoustic and language) ASR models with your own data. Through this application, we empower you to train, evaluate and compare ASR models built on your own domain specific audio data. This gives you the ability to progressively create better performing ASR models specifically built for your data.
 
