@@ -74,7 +74,7 @@
     intel-x86-64:~$ 
 ```
 
-### Check tensorflow running on GPU
+### Check TF running on GPU
 ```
             python3
             import tensorflow as tf
