@@ -38,9 +38,6 @@ The baseline input is the black image, i.e., all pixel intensities are zero.
 /home/test/.local/bin/jupyter-lab keras-elephone.py 
 ```
 ### Results
-
-<img src="./example2/integrated_gradients_3_1.png" width="300">
-
 <img src="./example2/integrated_gradients_9_1.png" width="900">
 
 ### Issues
