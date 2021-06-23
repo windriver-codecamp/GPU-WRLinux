@@ -1,15 +1,8 @@
 ## TensorFlow Installation (tensorflow-gpu 2.5.0)
-    step1: pip3 install tensorflow-gpu
-    setp2: (check whether run by gpu?)
-            python3
-            import tensorflow as tf
-            tf.__version__   
-            tf.test.is_gpu_available()   ---->  physical GPU (device: 0, name: GeForce GTX 1650 SUPER, pci bus id: 0000:01:00.0, compute capability: 7.5) True 
-            
-            
-    intel-x86-64:~$ uname -a
-    Linux intel-x86-64 5.12.0-yoctodev-standard #1 SMP PREEMPT Sat May 8 03:46:47 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
-    intel-x86-64:~$ 
+
+
+### 1. pip3 install tensorflow-gpu
+```
     intel-x86-64:~$ pip3 install tensorflow-gpu
     Defaulting to user installation because normal site-packages is not writeable
     Requirement already satisfied: tensorflow-gpu in /usr/lib64/python3.9/site-packages (2.5.0)
@@ -79,7 +72,21 @@
     Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
     Successfully installed grpcio-1.34.1 h5py-3.1.0 tensorboard-2.5.0 typing-extensions-3.7.4.3
     intel-x86-64:~$ 
+```
 
+### Check tensorflow running on GPU
+```
+            python3
+            import tensorflow as tf
+            tf.__version__   
+            tf.test.is_gpu_available()   ---->  physical GPU (device: 0, name: GeForce GTX 1650 SUPER, pci bus id: 0000:01:00.0, compute capability: 7.5) True 
+            
+            
+    intel-x86-64:~$ uname -a
+    Linux intel-x86-64 5.12.0-yoctodev-standard #1 SMP PREEMPT Sat May 8 03:46:47 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
+    intel-x86-64:~$ 
+```
+```
     intel-x86-64:~$ python3
     Python 3.9.2 (default, May  8 2021, 05:14:08) 
     [GCC 10.2.0] on linux
@@ -124,7 +131,7 @@
     2021-06-18 11:43:23.564469: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1418] Created TensorFlow device (/device:GPU:0 with 2425 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1650 SUPER, pci bus id: 0000:01:00.0, compute capability: 7.5)
     True
     >>> 
-
+```
 
 ## Jupyterlab (1.8.0) Installation
 
