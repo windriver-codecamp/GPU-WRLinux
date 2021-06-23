@@ -1,6 +1,7 @@
 ## NeMo Demo Introduction:
 This demo is used to recogize Chinese language in (WAV ) audio file to plan text, and translate it into English.
-[How NeMo used CUDA-X and GPU?](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/4_Toolkit_SDK/CUDA-X/README.md#how-does-nemo-toolkit-invoke-cuda-and-gpu)
+
+* [How NeMo used CUDA-X and GPU?](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/4_Toolkit_SDK/CUDA-X/README.md#how-does-nemo-toolkit-invoke-cuda-and-gpu)
 
 ### Run the NeMo demo
 ```
