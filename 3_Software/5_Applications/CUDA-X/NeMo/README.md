@@ -6,8 +6,10 @@
 ```
 a. add/install libsndfile1 ffmpeg (already installed by other application parts)
 ```
+```
 b. git clone https://github.com/NVIDIA/NeMo
 cd NeMo
+```
 ```
 c. comment out all uninstall steps in reinstall.sh
 ./reinstall.sh
