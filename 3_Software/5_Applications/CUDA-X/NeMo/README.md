@@ -55,6 +55,9 @@ The original English translation
 One evening I crossed a river, and when I was halfway there, the water in the river boiled suddenly, and the drops of water jumped into the air, they shouted: Mo Yan Mo Yan, you stop!
 ```
 
+<img src="./NeMo_process.JPG" width="600">
+
+
 ### More Details About NeMo Demo
 #### Technical Background
 
