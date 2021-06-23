@@ -1,7 +1,7 @@
 ## TensorFlow Installation (tensorflow-gpu 2.5.0)
 
 
-### 1. pip3 install tensorflow-gpu
+### Install tensorflow-gpu
 ```
     intel-x86-64:~$ pip3 install tensorflow-gpu
     Defaulting to user installation because normal site-packages is not writeable
@@ -134,10 +134,12 @@
 ```
 
 ## Jupyterlab (1.8.0) Installation
+### Install
 
 ```
 test@intel-x86-64:~$ pip3 install jupyterlab
 ```
+### Start
 ```
 test@intel-x86-64:~$ /home/test/.local/bin/jupyter-lab
 [I 2021-06-18 10:16:56.698 ServerApp] jupyterlab | extension was successfully linked.
