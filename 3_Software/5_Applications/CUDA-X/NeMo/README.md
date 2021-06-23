@@ -44,6 +44,20 @@ def text_to_audio(text):
   return audio.to('cpu').numpy()
 audio = text_to_audio(english_text[0])
 ```
+As a result, a CTC (Connectionist Temporal Classification) based ASR pipeline consists of the following blocks, shown below:
+<img src="https://developer-blogs.nvidia.com/wp-content/uploads/2019/12/ASR-Pipeline-1.png">
+```
+Feature extraction: Audio signal preprocessing using normalization, windowing, (log) spectrogram (or mel scale spectrogram, or MFCC).
+```
+```
+Acoustic Model: A CTC-based network that predicts the probability distributions P_t(c) over vocabulary characters c per each time step t. For this block we use NVIDIA’s high performing acoustic models: Jasper and QuartzNet.
+```
+```
+Decoding:
+
+    Greedy (argmax): Is the simplest strategy for a decoder. The letter with the highest probability (temporal softmax output layer) is chosen at each time-step, without regard to any semantic understanding of what was being communicated. Then, the repeated characters are removed or collapsed, and blank tokens are discarded.
+    A language model can be used to add contex,t and therefore correct mistakes in the acoustic model.  A beam search decoder weights the relative probabilities the softmax output against the likelihood of certain words appearing in context and tries to determine what was spoken by combining both what the acoustic model thinks it heard with what is a likely next word
+```
 
 ## Run NeMo Demo Steps
 ### 1. Install the NeMo Toolkit
