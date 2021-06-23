@@ -1,6 +1,6 @@
-# How to install PyTorch and verify?
+## PyTorch Installation
 
-## Setup Steps:
+### Setup Steps:
 1. Installing Anaconda3
 ```
 $ mkdir /mnt/sdb/xhou/HOME
