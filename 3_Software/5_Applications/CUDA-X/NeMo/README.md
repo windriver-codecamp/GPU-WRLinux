@@ -2,7 +2,7 @@
 This demo is used to recogize Chinese language in (WAV ) audio file to plan text, and translate it into English.
 
 ## Run NeMo Demo Steps
-### 1. Install the nemo toolkit
+### 1. Install the NeMo Toolkit
 ```
 a. add/install libsndfile1 ffmpeg (already installed by other application parts)
 ```
