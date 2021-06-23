@@ -1,6 +1,48 @@
 ## NeMo Demo Introduction:
 This demo is used to recogize Chinese language in (WAV ) audio file to plan text, and translate it into English.
 
+A typical conversational AI application uses three subsystems to do the steps of processing and transcribing the audio, understanding (deriving meaning) of the question asked, generating the response (text) and speaking the response back to the human. These steps are achieved by multiple deep learning solutions working together. First, automatic speech recognition (ASR) is used to process the raw audio signal and transcribing text from it. Second, natural language processing (NLP) is used to derive meaning from the transcribed text (ASR output). Last, speech synthesis or text-to-speech (TTS) is used for the artificial production of human speech from text. Optimizing this multi-step process is complicated, as each of these steps requires building and using one or more deep learning models. When developing a deep learning model to achieve the highest performance and accuracy for each of these areas, a developer will encounter several approaches and experiments that can vary by domain application.
+
+Below is the code snippet of Audio Translator application that uses three subsystems to do the steps of processing and transcribing the audio.
+```
+# Import NeMo and it's ASR, NLP and TTS collections
+import nemo
+# Import Speech Recognition collection
+import nemo.collections.asr as nemo_asr
+# Import Natural Language Processing colleciton
+import nemo.collections.nlp as nemo_nlp
+# Import Speech Synthesis collection
+import nemo.collections.tts as nemo_tts
+
+# Next, we instantiate all the necessary models directly from NVIDIA NGC
+# Speech Recognition model - QuartzNet trained on Russian part of MCV 6.0
+quartznet = nemo_asr.models.EncDecCTCModel.from_pretrained(model_name="stt_ru_quartznet15x5").cuda()
+# Neural Machine Translation model
+nmt_model = nemo_nlp.models.MTEncDecModel.from_pretrained(model_name='nmt_ru_en_transformer6x6').cuda()
+# Spectrogram generator which takes text as an input and produces spectrogram
+spectrogram_generator = nemo_tts.models.Tacotron2Model.from_pretrained(model_name="tts_en_tacotron2").cuda()
+# Vocoder model which takes spectrogram and produces actual audio
+vocoder = nemo_tts.models.WaveGlowModel.from_pretrained(model_name="tts_waveglow_88m").cuda()
+# Transcribe an audio file
+# IMPORTANT: The audio must be mono with 16Khz sampling rate
+# Get example from: https://nemo-public.s3.us-east-2.amazonaws.com/mcv-samples-ru/common_voice_ru_19034087.wav
+russian_text = quartznet.transcribe(['Path_to_audio_file'])
+print(russian_text)
+# You should see russian text here. Let's translate it to English
+english_text = nmt_model.translate(russian_text)
+print(english_text)
+# After this you should see English translation
+# Let's convert it into audio
+# A helper function which combines Tacotron2 and WaveGlow to go directly from
+# text to audio
+def text_to_audio(text):
+  parsed = spectrogram_generator.parse(text)
+  spectrogram = spectrogram_generator.generate_spectrogram(tokens=parsed)
+  audio = vocoder.convert_spectrogram_to_audio(spec=spectrogram)
+  return audio.to('cpu').numpy()
+audio = text_to_audio(english_text[0])
+```
+
 ## Run NeMo Demo Steps
 ### 1. Install the NeMo Toolkit
 ```
