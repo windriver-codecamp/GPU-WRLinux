@@ -202,10 +202,10 @@ nemo_asr.models.<MODEL_BASE_CLASS>.list_available_models()
 ## Run NeMo Demo Steps
 ### 1. Install the NeMo Toolkit
 ```
-a. add/install libsndfile1 ffmpeg (already installed by other application parts)
+a. Add/install libsndfile1 ffmpeg (already installed by other application parts)
 b. # git clone https://github.com/NVIDIA/NeMo
    # cd NeMo
-c. comment out all uninstall steps in reinstall.sh
+c. Comment out all uninstall steps in reinstall.sh
    # ./reinstall.sh
 ```
 
