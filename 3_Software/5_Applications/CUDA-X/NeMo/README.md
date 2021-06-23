@@ -68,14 +68,99 @@ Decoding/Decoder:
 ```
 To facilitate the implementation and domain adaptation of the complete ASR pipeline, we created the Domain Specific – NeMo ASR Application. This application is developed using NeMo and it enables you to train or fine-tune pre-trained (acoustic and language) ASR models with your own data. Through this application, we empower you to train, evaluate and compare ASR models built on your own domain specific audio data. This gives you the ability to progressively create better performing ASR models specifically built for your data.
 
-## NGC instruction
 
+
+## Run NeMo Demo Steps
+### 1. Install the NeMo Toolkit
+```
+a. Add/install libsndfile1 ffmpeg (already installed by other application parts)
+b. # git clone https://github.com/NVIDIA/NeMo
+   # cd NeMo
+c. Comment out all uninstall steps in reinstall.sh
+   # ./reinstall.sh
+```
+
+### 2. Run the testdemo
+```
+   # python nemo_demo.py or python3 nemo_demo.py
+```
+### 3. Result
+```
+[NeMo W 2021-06-09 09:21:20 patch_utils:49] torch.stft() signature has been updated for PyTorch 1.7+
+    Please update PyTorch to remain compatible with later versions of NeMo.
+Transcribing: 100%|█████████| 1/1 [00:00<00:00,  1.94it/s]
+['一天黄昏我过一条河走到一半时突然河里的水沸腾起来水猪门从河里跳到半空中他们喊着墨言过言你暂住']
+[NeMo I 2021-06-09 09:21:20 cloud:56] Found existing object /mnt/sdb/xhou/HOME/.cache/torch/NeMo/NeMo_1.0.1/nmt_zh_en_transformer6x6/eff3792e6f4420ba83436be889e92d79/nmt_zh_en_transformer6x6.nemo.
+[NeMo I 2021-06-09 09:21:20 cloud:62] Re-using file from: /mnt/sdb/xhou/HOME/.cache/torch/NeMo/NeMo_1.0.1/nmt_zh_en_transformer6x6/eff3792e6f4420ba83436be889e92d79/nmt_zh_en_transformer6x6.nemo
+[NeMo I 2021-06-09 09:21:20 common:675] Instantiating model from pre-trained checkpoint
+[NeMo I 2021-06-09 09:21:30 tokenizer_utils:129] Getting YouTokenToMeTokenizer with model: /tmp/tmp_zkz0zea/tokenizer.decoder.32000.BPE.model.
+[NeMo I 2021-06-09 09:21:30 tokenizer_utils:129] Getting YouTokenToMeTokenizer with model: /tmp/tmp_zkz0zea/tokenizer.encoder.32000.BPE.model.
+[NeMo W 2021-06-09 09:21:30 modelPT:137] If you intend to do training or fine-tuning, please call the ModelPT.setup_training_data() method and provide a valid configuration file to setup the train data loader.
+    Train config : 
+    src_file_name: /raid/tarred_data_accaligned_16k_tokens_32k_vocab_cov_0.999/batches.tokens.16000._OP_1..144_CL_.tar
+    tgt_file_name: /raid/tarred_data_accaligned_16k_tokens_32k_vocab_cov_0.999/batches.tokens.16000._OP_1..144_CL_.tar
+    tokens_in_batch: 16000
+    clean: true
+    max_seq_length: 512
+    cache_ids: false
+    cache_data_per_node: false
+    use_cache: false
+    shuffle: true
+    num_samples: -1
+    drop_last: false
+    pin_memory: false
+    num_workers: 8
+    load_from_cached_dataset: false
+    reverse_lang_direction: true
+    load_from_tarred_dataset: true
+    metadata_path: /raid/tarred_data_accaligned_16k_tokens_32k_vocab_cov_0.999/metadata.json
+    tar_shuffle_n: 100
+    
+[NeMo W 2021-06-09 09:21:30 modelPT:1198] World size can only be set by PyTorch Lightning Trainer.
+[NeMo I 2021-06-09 09:21:34 modelPT:434] Model MTEncDecModel was successfully restored from /mnt/sdb/xhou/HOME/.cache/torch/NeMo/NeMo_1.0.1/nmt_zh_en_transformer6x6/eff3792e6f4420ba83436be889e92d79/nmt_zh_en_transformer6x6.nemo.
+['One day the yellow twilight I walked across a river to a half-hour when the water in the suddenly the river rose up and the water pig door jumped from the river to the half empty. They shouted ink and said, "You']
+```
+### Note for test demo
+#### Citrinet
+Citrinet is a version of QuartzNet [ASR-MODELS4] that extends ContextNet [ASR-MODELS2], utilizing subword encoding (via Word Piece tokenization) and Squeeze-and-Excitation mechanism [ASR-MODELS3] to obtain highly accurate audio transcripts while utilizing a non-autoregressive CTC based decoding scheme for efficient inference.
+<img src="https://docs.nvidia.com/deeplearning/nemo/user-guide/docs/en/main/_images/citrinet_vertical.png">
+
+And you can find detail descriptions on https://ngc.nvidia.com/catalog/models/nvidia:nemo:stt_zh_citrinet_512.
+
+#### Machine translation
+
+Machine translation is the task of translating text from one language to another. For example, from English to Spanish. Models are based on the Transformer sequence-to-sequence architecture [nlp-machine_translation4].
+
+You can refer to follow codes to translate English to Spanish:
+```python
+from nemo.collections.nlp.models import MTEncDecModel
+
+# To get the list of pre-trained models
+MTEncDecModel.list_available_models()
+
+# Download and load the a pre-trained to translate from English to Spanish
+model = MTEncDecModel.from_pretrained("nmt_en_es_transformer12x2")
+
+# Translate a sentence or list of sentences
+translations = model.translate(["Hello!"], source_lang="en", target_lang="es")
+```
+In the nemo demo, we translate Chinese into English, for more details you can refer to:
+https://ngc.nvidia.com/catalog/models/nvidia:nemo:nmt_zh_en_transformer6x6
+
+### Issues
+* Cannot display Chinese charactors from the terminal
+#### Solution
+Set Encoding on the terminal to Unicode UTF-8
+
+### FQA
+#### How does NeMo Toolkit invoke CUDA and GPU?
+```
 NVIDIA GPU Cloud (NGC) is a software repository that has containers and models optimized for deep learning. NGC hosts many conversational AI models developed with NeMo that have been trained to state-of-the-art accuracy on large datasets. NeMo models on NGC can be automatically downloaded and used for transfer learning tasks. Pretrained models are the quickest way to get started with conversational AI on your own data. NeMo has many example scripts and Jupyter Notebook tutorials showing step-by-step how to fine-tune pretrained NeMo models on your own domain-specific datasets.
 
 For BERT based models, the model weights provided are ready for downstream NLU tasks. For speech models, it can be helpful to start with a pretrained model and then continue pretraining on your own domain-specific data. Jasper and QuartzNet base model pretrained weights have been known to be very efficient when used as base models. For an easy to follow guide on transfer learning and building domain specific ASR models, you can follow this blog. All pre-trained NeMo models can be found on the NGC NeMo Collection. Everything needed to quickly get started with NeMo ASR, NLP, and TTS models is there.
 
 Pre-trained models are packaged as a .nemo file and contain the PyTorch checkpoint along with everything needed to use the model. NeMo models are trained to state-of-the-art accuracy and trained on multiple datasets so that they are robust to small differences in data. NeMo contains a large variety of models such as speaker identification and Megatron BERT and the best models in speech and language are constantly being added as they become available. NeMo is the premier toolkit for conversational AI model building and training.
-
+```
 Following log shows how Nemo can schedule a CUDA/GPU via PyTorch 
 ```
 Instantiating model from pre-trained checkpoint
@@ -197,89 +282,6 @@ If you would like to programatically list the models available for a particular 
 ```
 nemo_asr.models.<MODEL_BASE_CLASS>.list_available_models()
 ```
-
-
-## Run NeMo Demo Steps
-### 1. Install the NeMo Toolkit
-```
-a. Add/install libsndfile1 ffmpeg (already installed by other application parts)
-b. # git clone https://github.com/NVIDIA/NeMo
-   # cd NeMo
-c. Comment out all uninstall steps in reinstall.sh
-   # ./reinstall.sh
-```
-
-### 2. Run the testdemo
-```
-   # python nemo_demo.py or python3 nemo_demo.py
-```
-### 3. Result
-```
-[NeMo W 2021-06-09 09:21:20 patch_utils:49] torch.stft() signature has been updated for PyTorch 1.7+
-    Please update PyTorch to remain compatible with later versions of NeMo.
-Transcribing: 100%|█████████| 1/1 [00:00<00:00,  1.94it/s]
-['一天黄昏我过一条河走到一半时突然河里的水沸腾起来水猪门从河里跳到半空中他们喊着墨言过言你暂住']
-[NeMo I 2021-06-09 09:21:20 cloud:56] Found existing object /mnt/sdb/xhou/HOME/.cache/torch/NeMo/NeMo_1.0.1/nmt_zh_en_transformer6x6/eff3792e6f4420ba83436be889e92d79/nmt_zh_en_transformer6x6.nemo.
-[NeMo I 2021-06-09 09:21:20 cloud:62] Re-using file from: /mnt/sdb/xhou/HOME/.cache/torch/NeMo/NeMo_1.0.1/nmt_zh_en_transformer6x6/eff3792e6f4420ba83436be889e92d79/nmt_zh_en_transformer6x6.nemo
-[NeMo I 2021-06-09 09:21:20 common:675] Instantiating model from pre-trained checkpoint
-[NeMo I 2021-06-09 09:21:30 tokenizer_utils:129] Getting YouTokenToMeTokenizer with model: /tmp/tmp_zkz0zea/tokenizer.decoder.32000.BPE.model.
-[NeMo I 2021-06-09 09:21:30 tokenizer_utils:129] Getting YouTokenToMeTokenizer with model: /tmp/tmp_zkz0zea/tokenizer.encoder.32000.BPE.model.
-[NeMo W 2021-06-09 09:21:30 modelPT:137] If you intend to do training or fine-tuning, please call the ModelPT.setup_training_data() method and provide a valid configuration file to setup the train data loader.
-    Train config : 
-    src_file_name: /raid/tarred_data_accaligned_16k_tokens_32k_vocab_cov_0.999/batches.tokens.16000._OP_1..144_CL_.tar
-    tgt_file_name: /raid/tarred_data_accaligned_16k_tokens_32k_vocab_cov_0.999/batches.tokens.16000._OP_1..144_CL_.tar
-    tokens_in_batch: 16000
-    clean: true
-    max_seq_length: 512
-    cache_ids: false
-    cache_data_per_node: false
-    use_cache: false
-    shuffle: true
-    num_samples: -1
-    drop_last: false
-    pin_memory: false
-    num_workers: 8
-    load_from_cached_dataset: false
-    reverse_lang_direction: true
-    load_from_tarred_dataset: true
-    metadata_path: /raid/tarred_data_accaligned_16k_tokens_32k_vocab_cov_0.999/metadata.json
-    tar_shuffle_n: 100
-    
-[NeMo W 2021-06-09 09:21:30 modelPT:1198] World size can only be set by PyTorch Lightning Trainer.
-[NeMo I 2021-06-09 09:21:34 modelPT:434] Model MTEncDecModel was successfully restored from /mnt/sdb/xhou/HOME/.cache/torch/NeMo/NeMo_1.0.1/nmt_zh_en_transformer6x6/eff3792e6f4420ba83436be889e92d79/nmt_zh_en_transformer6x6.nemo.
-['One day the yellow twilight I walked across a river to a half-hour when the water in the suddenly the river rose up and the water pig door jumped from the river to the half empty. They shouted ink and said, "You']
-```
-### Note for test demo
-#### Citrinet
-Citrinet is a version of QuartzNet [ASR-MODELS4] that extends ContextNet [ASR-MODELS2], utilizing subword encoding (via Word Piece tokenization) and Squeeze-and-Excitation mechanism [ASR-MODELS3] to obtain highly accurate audio transcripts while utilizing a non-autoregressive CTC based decoding scheme for efficient inference.
-<img src="https://docs.nvidia.com/deeplearning/nemo/user-guide/docs/en/main/_images/citrinet_vertical.png">
-
-And you can find detail descriptions on https://ngc.nvidia.com/catalog/models/nvidia:nemo:stt_zh_citrinet_512.
-
-#### Machine translation
-
-Machine translation is the task of translating text from one language to another. For example, from English to Spanish. Models are based on the Transformer sequence-to-sequence architecture [nlp-machine_translation4].
-
-You can refer to follow codes to translate English to Spanish:
-```python
-from nemo.collections.nlp.models import MTEncDecModel
-
-# To get the list of pre-trained models
-MTEncDecModel.list_available_models()
-
-# Download and load the a pre-trained to translate from English to Spanish
-model = MTEncDecModel.from_pretrained("nmt_en_es_transformer12x2")
-
-# Translate a sentence or list of sentences
-translations = model.translate(["Hello!"], source_lang="en", target_lang="es")
-```
-In the nemo demo, we translate Chinese into English, for more details you can refer to:
-https://ngc.nvidia.com/catalog/models/nvidia:nemo:nmt_zh_en_transformer6x6
-
-### Issues
-* Cannot display Chinese charactors from the terminal
-#### Solution
-Set Encoding on the terminal to Unicode UTF-8
 
 
 ## References
