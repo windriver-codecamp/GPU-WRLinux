@@ -1,5 +1,7 @@
 ## Introduction
-TODO
+This example trains a **language module** which can be used by a **NLP**(**Natural Language Processing**) processor. It takes Wikitext-2 dataset and uses nn.RNN module to process the training, the trained model can then be used by the generate script to generate new text.
+
+
 ## Demo Source Codes:
 * https://github.com/pytorch/examples/tree/master/word_language_model
 
@@ -18,14 +20,5 @@ the personal structure . Additionally , the rate of the entire event was often s
 coded balanced " at this point and recorded a primary event played in a US 2 , which was the
 ```
 
-## Issues:
-> None
-
-### Solution:
-> None
-
-## References:
-TODO
-
 ## Demo Video:
-> None
+> TODO
