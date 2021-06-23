@@ -34,9 +34,5 @@ $ chmod a+r /usr/local/cuda/include/nccl* /usr/local/cuda/lib64/libnccl*
 			array([[ 3.,  3.,  3.],
 				[ 3.,  3.,  3.]], dtype=float32)
 ```
-## Issues
-		None
-### Solution
-		None
 ## References
-		None
+* https://mxnet.apache.org
