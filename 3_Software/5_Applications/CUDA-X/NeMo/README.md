@@ -6,7 +6,7 @@ A typical conversational AI application uses three subsystems to do the steps of
 <img src="https://developer-blogs.nvidia.com/wp-content/uploads/2019/12/Conversation_AI_Workflow_v02-625x275.png">
 
 Below is the code snippet of Audio Translator application that uses three subsystems to do the steps of processing and transcribing the audio.
-```
+```python
 # Import NeMo and it's ASR, NLP and TTS collections
 import nemo
 # Import Speech Recognition collection
@@ -181,7 +181,7 @@ You can get the collections with commands:
 wget --content-disposition https://api.ngc.nvidia.com/v2/models/nvidia/nemospeechmodels/versions/1.0.0a5/zip -O nemospeechmodels_1.0.0a5.zip
 ```
 The tables below list the ASR models available from NGC. The models can be accessed via the from_pretrained() method inside the ASR Model class. In general, you can load any of these models with code in the following format:
-```
+```python
 import nemo.collections.asr as nemo_asr
 model = nemo_asr.models.ASRModel.from_pretrained(model_name="<MODEL_NAME>")
 ```
@@ -203,12 +203,8 @@ nemo_asr.models.<MODEL_BASE_CLASS>.list_available_models()
 ### 1. Install the NeMo Toolkit
 ```
 a. add/install libsndfile1 ffmpeg (already installed by other application parts)
-```
-```
 b. # git clone https://github.com/NVIDIA/NeMo
    # cd NeMo
-```
-```
 c. comment out all uninstall steps in reinstall.sh
    # ./reinstall.sh
 ```
@@ -265,7 +261,7 @@ And you can find detail descriptions on https://ngc.nvidia.com/catalog/models/nv
 Machine translation is the task of translating text from one language to another. For example, from English to Spanish. Models are based on the Transformer sequence-to-sequence architecture [nlp-machine_translation4].
 
 You can refer to follow codes to translate English to Spanish:
-```
+```python
 from nemo.collections.nlp.models import MTEncDecModel
 
 # To get the list of pre-trained models
