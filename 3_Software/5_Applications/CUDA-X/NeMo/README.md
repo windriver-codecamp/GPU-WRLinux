@@ -258,6 +258,8 @@ Transcribing: 100%|█████████| 1/1 [00:00<00:00,  1.94it/s]
 Citrinet is a version of QuartzNet [ASR-MODELS4] that extends ContextNet [ASR-MODELS2], utilizing subword encoding (via Word Piece tokenization) and Squeeze-and-Excitation mechanism [ASR-MODELS3] to obtain highly accurate audio transcripts while utilizing a non-autoregressive CTC based decoding scheme for efficient inference.
 <img src="https://docs.nvidia.com/deeplearning/nemo/user-guide/docs/en/main/_images/citrinet_vertical.png">
 
+And you can find detail descriptions on https://ngc.nvidia.com/catalog/models/nvidia:nemo:stt_zh_citrinet_512.
+
 
 
 
