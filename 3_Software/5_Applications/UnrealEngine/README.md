@@ -15,6 +15,9 @@ UnrealEngine-release/Engine/Binaries/Linux# ./UE4Editor
 5. Click "Play" button and enjoy
 
 ```
+
+<img src="./myfirstgame.png" width="600">
+
 ### Issues
 
 ## References
