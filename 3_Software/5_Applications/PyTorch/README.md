@@ -1,11 +1,9 @@
-## Introduction
+## Word-level language modeling RNN
+### Introduction
 This example trains a **language module** which can be used by a **NLP**(**Natural Language Processing**) processor. It takes Wikitext-2 dataset and uses nn.RNN module to process the training, the trained model can then be used by the generate script to generate new text.
-
-
-## Demo Source Codes:
 * https://github.com/pytorch/examples/tree/master/word_language_model
 
-## Setup Steps:
+### Run steps and result:
 ```
 (pytorch-build) $ git clone https://github.com/pytorch/examples.git
 (pytorch-build) $ cd examples/word_language_model
@@ -19,8 +17,8 @@ the personal structure . Additionally , the rate of the entire event was often s
 <unk> " and " <unk> " <unk> ( proper water ) . In 2007 , Pflueger created the " More
 coded balanced " at this point and recorded a primary event played in a US 2 , which was the
 ```
-## Reference
+### Reference
 * https://github.com/pytorch/examples/tree/master/word_language_model
 
-## Demo Video:
+### Demo Video:
 > TODO
