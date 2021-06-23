@@ -21,7 +21,9 @@ the personal structure . Additionally , the rate of the entire event was often s
 coded balanced " at this point and recorded a primary event played in a US 2 , which was the
 ```
 ### Reference
-* https://github.com/pytorch/examples
+* https://github.com/pytorch/examples/blob/master/word_language_model/generate.py
+* https://github.com/pytorch/examples/blob/master/word_language_model/main.py
+* https://github.com/pytorch/examples/blob/master/word_language_model
 
 ### Demo Video:
 > TODO
