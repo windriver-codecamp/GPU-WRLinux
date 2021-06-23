@@ -1,7 +1,7 @@
-## My First Game on Unreal Engine
+## Making My First Game on Unreal Engine
 This demo shows to create the first game on UE4, which is running on Wind River Linux
 
-### Creating My First Game on Unreal Engine
+### Start Unreal Engine and create my first game
 
 ```
 UnrealEngine-release/Engine/Binaries/Linux# ./UE4Editor
