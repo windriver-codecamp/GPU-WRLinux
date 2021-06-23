@@ -11,8 +11,7 @@ This example trains a **convolutional neural network** with BSDS500 dataset to e
 $ git clone --recursive https://github.com/apache/incubator-mxnet.git mxnet
 $ cd mxnet/example/gluon/super_resolution
 ```
-```
-### have an update
+### Updates (written by Xinlong Hou)
 ``` python
 $ cat 0001-Update-super_resolution.py.patch
 From f4305b7944ab61a5b9a18a8bd627578279d9442f Mon Sep 17 00:00:00 2001
