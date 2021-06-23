@@ -174,6 +174,29 @@ Traceback (most recent call last):
 RuntimeError: CUDA out of memory. Tried to allocate 20.00 MiB (GPU 0; 3.79 GiB total capacity; 388.86 MiB already allocated; 7.69 MiB free; 392.00 MiB reserved in total by PyTorch)
 
 ```
+The ASR collection has checkpoints of several models trained on various datasets for a variety of tasks. These checkpoints are obtainable via NGC NeMo Automatic Speech Recognition collection. The model cards on NGC contain more information about each of the checkpoints available.
+
+You can get the collections with commands:
+```
+wget --content-disposition https://api.ngc.nvidia.com/v2/models/nvidia/nemospeechmodels/versions/1.0.0a5/zip -O nemospeechmodels_1.0.0a5.zip
+```
+The tables below list the ASR models available from NGC. The models can be accessed via the from_pretrained() method inside the ASR Model class. In general, you can load any of these models with code in the following format:
+```
+import nemo.collections.asr as nemo_asr
+model = nemo_asr.models.ASRModel.from_pretrained(model_name="<MODEL_NAME>")
+```
+Where the model name is the value under “Model Name” entry in the tables below.
+
+For example, to load the base English QuartzNet model for speech recognition, run:
+```
+model = nemo_asr.models.ASRModel.from_pretrained(model_name="QuartzNet15x5Base-En")
+```
+You can also call from_pretrained() from the specific model class (such as EncDecCTCModel for QuartzNet) if you need to access a specific model functionality.
+
+If you would like to programatically list the models available for a particular base class, you can use the list_available_models() method.
+```
+nemo_asr.models.<MODEL_BASE_CLASS>.list_available_models()
+```
 
 
 ## Run NeMo Demo Steps
@@ -230,6 +253,13 @@ Transcribing: 100%|█████████| 1/1 [00:00<00:00,  1.94it/s]
 [NeMo I 2021-06-09 09:21:34 modelPT:434] Model MTEncDecModel was successfully restored from /mnt/sdb/xhou/HOME/.cache/torch/NeMo/NeMo_1.0.1/nmt_zh_en_transformer6x6/eff3792e6f4420ba83436be889e92d79/nmt_zh_en_transformer6x6.nemo.
 ['One day the yellow twilight I walked across a river to a half-hour when the water in the suddenly the river rose up and the water pig door jumped from the river to the half empty. They shouted ink and said, "You']
 ```
+### Note for test demo
+
+Citrinet is a version of QuartzNet [ASR-MODELS4] that extends ContextNet [ASR-MODELS2], utilizing subword encoding (via Word Piece tokenization) and Squeeze-and-Excitation mechanism [ASR-MODELS3] to obtain highly accurate audio transcripts while utilizing a non-autoregressive CTC based decoding scheme for efficient inference.
+<img src="https://docs.nvidia.com/deeplearning/nemo/user-guide/docs/en/main/_images/citrinet_vertical.png">
+
+
+
 
 ### Issues
 * Cannot display Chinese charactors from the terminal
