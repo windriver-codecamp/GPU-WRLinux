@@ -1,5 +1,5 @@
-## Demo Video:
-> None
+## Introdution
+TODO
 
 ## Demo Source Codes:
 * https://github.com/apache/incubator-mxnet/tree/master/example/gluon/super_resolution
@@ -68,11 +68,9 @@ and the enhanced one:
 
 <img src="./MXNet-test-resolved.png" width="870">
 
-## Issues:
-> None
-
-### Solution:
-> None
 
 ## References:
 * https://github.com/apache/incubator-mxnet/tree/master/example/gluon/super_resolution
+
+## Demo Video:
+> None
