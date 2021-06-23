@@ -16,7 +16,7 @@ UnrealEngine-release/Engine/Binaries/Linux# ./UE4Editor
 
 ```
 
-<img src="./myfirstgame.png" width="600">
+<img src="./myfistgame.png" width="600">
 
 ### Issues
 
