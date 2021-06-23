@@ -15,10 +15,6 @@ First, generate 1000 data points roughly along the line y = 0.5x + 2. Split thes
 ```
 ### Result
 
-#### Before
-<img src="./example1/loss-1-before.png" width="300">
-
-#### After
 <img src="./example1/loss-1-after.png" width="300">
 
 ### Issues
