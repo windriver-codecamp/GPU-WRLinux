@@ -14,10 +14,13 @@ First, generate 1000 data points roughly along the line y = 0.5x + 2. Split thes
 # /home/test/.local/bin/jupyter-lab training.py
 ```
 ### Result
+
 #### Before
 <img src="./example1/loss-1-before.png" width="300">
+
 #### After
 <img src="./example1/loss-1-after.png" width="300">
+
 ### Issues
 ### References
   * https://www.tensorflow.org/tensorboard/scalars_and_keras
@@ -44,5 +47,5 @@ The baseline input is the black image, i.e., all pixel intensities are zero.
 ## References
 * https://keras.io/examples/vision/integrated_gradients/
 * https://arxiv.org/pdf/1703.01365.pdf
-
+* ../../4_Toolkit_SDK/TensorFlow/README.md
 
