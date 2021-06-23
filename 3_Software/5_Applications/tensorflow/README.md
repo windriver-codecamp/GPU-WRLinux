@@ -26,7 +26,14 @@ First, generate 1000 data points roughly along the line y = 0.5x + 2. Split thes
   * https://www.tensorflow.org/tensorboard/scalars_and_keras
 
 ## TensorFlow Example 2
+This demo is applying the integrated gradients technique on image object recognition. 
 
+The object recognition network is trained and built using GoogleNet architecture (Szegedy
+et al., 2014) and ImageNet object recognition dataset (Russakovsky et al., 2015). 
+
+The integrated gradients method to study pixel importance in predictions made by this network. 
+The gradients are computed for the output of the highest-scoring class with respect to pixel of the input image. 
+The baseline input is the black image, i.e., all pixel intensities are zero.
 
 ### Run example 2
 ```
