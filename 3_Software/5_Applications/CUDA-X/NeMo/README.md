@@ -64,6 +64,7 @@ Decoding/Decoder:
     weights the relative probabilities the softmax output against the likelihood of certain words appearing in context and tries 
     to determine what was spoken by combining both what the acoustic model thinks it heard with what is a likely next word
 ```
+To facilitate the implementation and domain adaptation of the complete ASR pipeline, we created the Domain Specific – NeMo ASR Application. This application is developed using NeMo and it enables you to train or fine-tune pre-trained (acoustic and language) ASR models with your own data. Through this application, we empower you to train, evaluate and compare ASR models built on your own domain specific audio data. This gives you the ability to progressively create better performing ASR models specifically built for your data.
 
 ## Run NeMo Demo Steps
 ### 1. Install the NeMo Toolkit
