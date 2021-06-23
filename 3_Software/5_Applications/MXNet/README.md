@@ -6,11 +6,14 @@ This example trains a **convolutional neural network** with BSDS500 dataset to e
 * https://github.com/apache/incubator-mxnet/tree/master/example/gluon/super_resolution
 
 ## Setup Steps:
-1. Getting Source
+### Getting Source
 ```
 $ git clone --recursive https://github.com/apache/incubator-mxnet.git mxnet
 $ cd mxnet/example/gluon/super_resolution
-## have an update
+```
+```
+### have an update
+``` python
 $ cat 0001-Update-super_resolution.py.patch
 From f4305b7944ab61a5b9a18a8bd627578279d9442f Mon Sep 17 00:00:00 2001
 From: test <test@test.com>
@@ -36,10 +39,12 @@ def test(ctx):
 	val_data.reset()
 --
 2.31.1
-
+```
+### Apply the patch
+```
 $ git am 0001-Update-super_resolution.py.patch
 ```
-2. Training and Trying
+### Train and generate new image
 ```
 ## Training
 $ time python super_resolution.py --epochs 200 --use-gpu
@@ -61,13 +66,13 @@ sys 0m16.327s
 $ python super_resolution.py --resolve_img test.jpeg
 ```
 
-The original picture:
+#### The original picture
 
-<img src="./MXNet-test-resolved.png" width="290">
+* <img src="./MXNet-test-resolved.png" width="290">
 
-and the enhanced one:
+#### the new generated resolution increased image
 
-<img src="./MXNet-test-resolved.png" width="870">
+* <img src="./MXNet-test-resolved.png" width="870">
 
-## Demo Video:
+### Demo Video:
 > TODO
