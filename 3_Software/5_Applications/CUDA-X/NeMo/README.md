@@ -1,9 +1,10 @@
-## NeMo Demo Introduction:
+## NeMo Example
+### Introduction:
 This demo is used to recogize Chinese language in (WAV ) audio file to plan text, and translate it into English.
 
 * [How NeMo used CUDA-X and GPU?](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/4_Toolkit_SDK/CUDA-X/README.md#how-does-nemo-toolkit-invoke-cuda-and-gpu)
 
-### Run the NeMo demo
+### Run NeMo Demo
 ```
 # python nemo_demo.py or python3 nemo_demo.py
 [NeMo W 2021-06-09 09:21:20 patch_utils:49] torch.stft() signature has been updated for PyTorch 1.7+
@@ -140,10 +141,9 @@ https://ngc.nvidia.com/catalog/models/nvidia:nemo:nmt_zh_en_transformer6x6
 #### Solution
 Set Encoding on the terminal to Unicode UTF-8
 
-
-## References
+### References
 * https://docs.nvidia.com/deeplearning/nemo/user-guide/docs/en/main/
 
 
-## Demo Video:
+### Demo Video:
 > None
