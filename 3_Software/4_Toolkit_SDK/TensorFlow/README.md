@@ -1,4 +1,4 @@
-# How to install Tensorflow-gpu?   GPU!!!!!
+# TensorFlow Installation (tensorflow-gpu 2.5.0)
     step1: pip3 install tensorflow-gpu
     setp2: (check whether run by gpu?)
             python3
@@ -126,7 +126,7 @@
     >>> 
 
 
-## Setup Steps (jupyterlab)
+## Jupyterlab (1.8.0) Installation
 
 ```
 test@intel-x86-64:~$ pip3 install jupyterlab
