@@ -277,6 +277,8 @@ model = MTEncDecModel.from_pretrained("nmt_en_es_transformer12x2")
 # Translate a sentence or list of sentences
 translations = model.translate(["Hello!"], source_lang="en", target_lang="es")
 ```
+In the nemo demo, we translate Chinese into English, for more details you can refer to:
+https://ngc.nvidia.com/catalog/models/nvidia:nemo:nmt_zh_en_transformer6x6
 
 ### Issues
 * Cannot display Chinese charactors from the terminal
