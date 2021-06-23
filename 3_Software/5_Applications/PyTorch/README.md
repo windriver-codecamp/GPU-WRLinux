@@ -11,7 +11,7 @@ This example trains a **language module** which can be used by a **NLP**(**Natur
 (pytorch-build) $ python generate.py --cuda --words 100
 | Generated 0/100 words
 ```
-### Result
+### Result (Generated new text)
 ```
 (pytorch-build) $ cat generated.txt
 to the present of stabilized fountains , because they did not do so by the time they did contribute to
