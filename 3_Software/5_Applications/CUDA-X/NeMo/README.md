@@ -76,6 +76,104 @@ For BERT based models, the model weights provided are ready for downstream NLU t
 
 Pre-trained models are packaged as a .nemo file and contain the PyTorch checkpoint along with everything needed to use the model. NeMo models are trained to state-of-the-art accuracy and trained on multiple datasets so that they are robust to small differences in data. NeMo contains a large variety of models such as speaker identification and Megatron BERT and the best models in speech and language are constantly being added as they become available. NeMo is the premier toolkit for conversational AI model building and training.
 
+Following log shows how Nemo can schedule a CUDA/GPU via PyTorch 
+```
+Instantiating model from pre-trained checkpoint
+[NeMo I 2021-06-22 05:52:37 tokenizer_utils:129] Getting YouTokenToMeTokenizer with model: /tmp/tmpmr9jstqg/tokenizer.decoder.32000.BPE.model.
+[NeMo I 2021-06-22 05:52:37 tokenizer_utils:129] Getting YouTokenToMeTokenizer with model: /tmp/tmpmr9jstqg/tokenizer.encoder.32000.BPE.model.
+[NeMo W 2021-06-22 05:52:37 modelPT:138] If you intend to do training or fine-tuning, please call the ModelPT.setup_training_data() method and provide a valid configuration file to setup the train data loader.
+    Train config :
+    src_file_name: /raid/tarred_data_accaligned_16k_tokens_32k_vocab_cov_0.999/batches.tokens.16000._OP_1..144_CL_.tar
+    tgt_file_name: /raid/tarred_data_accaligned_16k_tokens_32k_vocab_cov_0.999/batches.tokens.16000._OP_1..144_CL_.tar
+    tokens_in_batch: 16000
+    clean: true
+    max_seq_length: 512
+    cache_ids: false
+    cache_data_per_node: false
+    use_cache: false
+    shuffle: true
+    num_samples: -1
+    drop_last: false
+    pin_memory: false
+    num_workers: 8
+    load_from_cached_dataset: false
+    reverse_lang_direction: true
+    load_from_tarred_dataset: true
+    metadata_path: /raid/tarred_data_accaligned_16k_tokens_32k_vocab_cov_0.999/metadata.json
+    tar_shuffle_n: 100
+
+[NeMo W 2021-06-22 05:52:37 modelPT:145] If you intend to do validation, please call the ModelPT.setup_validation_data() or ModelPT.setup_multiple_validation_data() method and provide a valid configuration file to setup the validation data loader(s).
+    Validation config :
+    src_file_name: /raid/wmt19-zh-en.clean.tok.src
+    tgt_file_name: /raid/wmt19-zh-en.clean.tok.ref
+    tokens_in_batch: 512
+    clean: false
+    max_seq_length: 512
+    cache_ids: false
+    cache_data_per_node: false
+    use_cache: false
+    shuffle: false
+    num_samples: -1
+    drop_last: false
+    pin_memory: false
+    num_workers: 8
+    load_from_cached_dataset: false
+    reverse_lang_direction: false
+    load_from_tarred_dataset: false
+    metadata_path: null
+    tar_shuffle_n: 100
+
+[NeMo W 2021-06-22 05:52:37 modelPT:152] Please call the ModelPT.setup_test_data() or ModelPT.setup_multiple_test_data() method and provide a valid configuration file to setup the test data loader(s).
+    Test config :
+    src_file_name: /raid/wmt20-zh-en.clean.tok.src
+    tgt_file_name: /raid/wmt20-zh-en.clean.tok.src
+    tokens_in_batch: 512
+    clean: false
+    max_seq_length: 512
+    cache_ids: false
+    cache_data_per_node: false
+    use_cache: false
+    shuffle: false
+    num_samples: -1
+    drop_last: false
+    pin_memory: false
+    num_workers: 8
+    load_from_cached_dataset: false
+    reverse_lang_direction: false
+    load_from_tarred_dataset: false
+    metadata_path: null
+    tar_shuffle_n: 100
+
+[NeMo W 2021-06-22 05:52:37 modelPT:1285] World size can only be set by PyTorch Lightning Trainer.
+Traceback (most recent call last):
+  File "/mnt/sdd/renfeiqu/NeMo37/NeMo/nemo_demo.py", line 8, in <module>
+    nmt_model = nemo_nlp.models.MTEncDecModel.from_pretrained(model_name="nmt_zh_en_transformer6x6")
+  File "/mnt/sdd/renfeiqu/NeMo37/NeMo/nemo/core/classes/common.py", line 679, in from_pretrained
+    instance = class_.restore_from(
+  File "/mnt/sdd/renfeiqu/NeMo37/NeMo/nemo/collections/nlp/models/nlp_model.py", line 429, in restore_from
+    return super().restore_from(restore_path, override_config_path, map_location, strict, return_config)
+  File "/mnt/sdd/renfeiqu/NeMo37/NeMo/nemo/core/classes/modelPT.py", line 482, in restore_from
+    return cls._default_restore_from(restore_path, override_config_path, map_location, strict, return_config)
+  File "/mnt/sdd/renfeiqu/NeMo37/NeMo/nemo/core/classes/modelPT.py", line 436, in _default_restore_from
+    instance = instance.to(map_location)
+  File "/home/test/.local/lib/python3.9/site-packages/pytorch_lightning/utilities/device_dtype_mixin.py", line 109, in to
+    return super().to(*args, **kwargs)
+  File "/home/test/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 673, in to
+    return self._apply(convert)
+  File "/home/test/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 387, in _apply
+    module._apply(fn)
+  File "/home/test/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 387, in _apply
+    module._apply(fn)
+  File "/home/test/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 387, in _apply
+    module._apply(fn)
+  [Previous line repeated 3 more times]
+  File "/home/test/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 409, in _apply
+    param_applied = fn(param)
+  File "/home/test/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 671, in convert
+    return t.to(device, dtype if t.is_floating_point() or t.is_complex() else None, non_blocking)
+RuntimeError: CUDA out of memory. Tried to allocate 20.00 MiB (GPU 0; 3.79 GiB total capacity; 388.86 MiB already allocated; 7.69 MiB free; 392.00 MiB reserved in total by PyTorch)
+
+```
 
 
 ## Run NeMo Demo Steps
