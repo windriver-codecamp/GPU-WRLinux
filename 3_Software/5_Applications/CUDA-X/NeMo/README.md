@@ -254,14 +254,29 @@ Transcribing: 100%|█████████| 1/1 [00:00<00:00,  1.94it/s]
 ['One day the yellow twilight I walked across a river to a half-hour when the water in the suddenly the river rose up and the water pig door jumped from the river to the half empty. They shouted ink and said, "You']
 ```
 ### Note for test demo
-
+#### Citrinet
 Citrinet is a version of QuartzNet [ASR-MODELS4] that extends ContextNet [ASR-MODELS2], utilizing subword encoding (via Word Piece tokenization) and Squeeze-and-Excitation mechanism [ASR-MODELS3] to obtain highly accurate audio transcripts while utilizing a non-autoregressive CTC based decoding scheme for efficient inference.
 <img src="https://docs.nvidia.com/deeplearning/nemo/user-guide/docs/en/main/_images/citrinet_vertical.png">
 
 And you can find detail descriptions on https://ngc.nvidia.com/catalog/models/nvidia:nemo:stt_zh_citrinet_512.
 
+#### Machine translation
 
+Machine translation is the task of translating text from one language to another. For example, from English to Spanish. Models are based on the Transformer sequence-to-sequence architecture [nlp-machine_translation4].
 
+You can refer to follow codes to translate English to Spanish:
+```
+from nemo.collections.nlp.models import MTEncDecModel
+
+# To get the list of pre-trained models
+MTEncDecModel.list_available_models()
+
+# Download and load the a pre-trained to translate from English to Spanish
+model = MTEncDecModel.from_pretrained("nmt_en_es_transformer12x2")
+
+# Translate a sentence or list of sentences
+translations = model.translate(["Hello!"], source_lang="en", target_lang="es")
+```
 
 ### Issues
 * Cannot display Chinese charactors from the terminal
