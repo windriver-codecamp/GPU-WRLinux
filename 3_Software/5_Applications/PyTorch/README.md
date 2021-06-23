@@ -1,6 +1,5 @@
-## Demo Video:
-> None
-
+## Introduction
+TODO
 ## Demo Source Codes:
 * https://github.com/pytorch/examples/tree/master/word_language_model
 
@@ -26,4 +25,7 @@ coded balanced " at this point and recorded a primary event played in a US 2 , w
 > None
 
 ## References:
+TODO
+
+## Demo Video:
 > None
