@@ -11,7 +11,7 @@ First, generate 1000 data points roughly along the line y = 0.5x + 2. Split thes
 
 ### Run example 1
 ```
-/home/test/.local/bin/jupyter-lab training.py
+# /home/test/.local/bin/jupyter-lab training.py
 ```
 ### Result
 #### Before
@@ -35,7 +35,7 @@ The baseline input is the black image, i.e., all pixel intensities are zero.
 
 ### Run example 2
 ```
-/home/test/.local/bin/jupyter-lab keras-elephone.py 
+# /home/test/.local/bin/jupyter-lab keras-elephone.py 
 ```
 ### Results
 <img src="./example2/integrated_gradients_9_1.png" width="900">
