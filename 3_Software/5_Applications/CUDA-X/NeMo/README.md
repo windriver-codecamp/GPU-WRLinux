@@ -71,20 +71,11 @@ To facilitate the implementation and domain adaptation of the complete ASR pipel
 
 
 ## Run NeMo Demo Steps
-### 1. Install the NeMo Toolkit
-```
-a. Add/install libsndfile1 ffmpeg (already installed by other application parts)
-b. # git clone https://github.com/NVIDIA/NeMo
-   # cd NeMo
-c. Comment out all uninstall steps in reinstall.sh
-   # ./reinstall.sh
-```
-
-### 2. Run the testdemo
+### Run the NeMo demo
 ```
    # python nemo_demo.py or python3 nemo_demo.py
 ```
-### 3. Result
+### Result
 ```
 [NeMo W 2021-06-09 09:21:20 patch_utils:49] torch.stft() signature has been updated for PyTorch 1.7+
     Please update PyTorch to remain compatible with later versions of NeMo.
@@ -120,14 +111,15 @@ Transcribing: 100%|█████████| 1/1 [00:00<00:00,  1.94it/s]
 [NeMo I 2021-06-09 09:21:34 modelPT:434] Model MTEncDecModel was successfully restored from /mnt/sdb/xhou/HOME/.cache/torch/NeMo/NeMo_1.0.1/nmt_zh_en_transformer6x6/eff3792e6f4420ba83436be889e92d79/nmt_zh_en_transformer6x6.nemo.
 ['One day the yellow twilight I walked across a river to a half-hour when the water in the suddenly the river rose up and the water pig door jumped from the river to the half empty. They shouted ink and said, "You']
 ```
-### Note for test demo
-#### Citrinet
+### Notes
+
+#### Citrinet (Model 1)
 Citrinet is a version of QuartzNet [ASR-MODELS4] that extends ContextNet [ASR-MODELS2], utilizing subword encoding (via Word Piece tokenization) and Squeeze-and-Excitation mechanism [ASR-MODELS3] to obtain highly accurate audio transcripts while utilizing a non-autoregressive CTC based decoding scheme for efficient inference.
 <img src="https://docs.nvidia.com/deeplearning/nemo/user-guide/docs/en/main/_images/citrinet_vertical.png">
 
 And you can find detail descriptions on https://ngc.nvidia.com/catalog/models/nvidia:nemo:stt_zh_citrinet_512.
 
-#### Machine translation
+#### Machine translation (Model 2)
 
 Machine translation is the task of translating text from one language to another. For example, from English to Spanish. Models are based on the Transformer sequence-to-sequence architecture [nlp-machine_translation4].
 
