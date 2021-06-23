@@ -55,7 +55,7 @@ Acoustic Model: A CTC-based network that predicts the probability distributions 
 per each time step t. For this block we use NVIDIA’s high performing acoustic models: Jasper and QuartzNet.
 ```
 ```
-Decoding:
+Decoding/Decoder:
 
     Greedy (argmax): Is the simplest strategy for a decoder. The letter with the highest probability (temporal softmax
     output layer) is chosen at each time-step, without regard to any semantic understanding of what was being communicated. 
