@@ -65,11 +65,11 @@ sys 0m16.327s
 $ python super_resolution.py --resolve_img test.jpeg
 ```
 ### Result
-#### The original picture
+#### Original picture
 
 * <img src="./MXNet-test-resolved.png" width="290">
 
-#### the new generated resolution increased image
+#### New generated resolution increased image
 
 * <img src="./MXNet-test-resolved.png" width="870">
 
