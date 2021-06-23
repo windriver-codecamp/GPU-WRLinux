@@ -1,6 +1,6 @@
-# How to install MXNet?
+## MXNet Installation
 
-## Setup Steps
+### Setup Steps
 1. CUDA&cuDNN
 ```
 They are CUDA 11.2 and cuDNN 8.2, skips installing&setups here
