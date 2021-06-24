@@ -1,4 +1,3 @@
-
 # GPU-WRLinux
 Exploring NVIDIA GPU-Accelerated Ecosystem on Wind River Linux
 
@@ -30,9 +29,9 @@ Exploring NVIDIA GPU-Accelerated Ecosystem on Wind River Linux
 * [TensorFlow Installation](https://github.com/charleshardy/GPU-WRLinux/tree/main/3_Software/4_Toolkit_SDK/TensorFlow#README.md)
 * [PyTorch Installation](https://github.com/charleshardy/GPU-WRLinux/tree/main/3_Software/4_Toolkit_SDK/PyTorch#README.md)
 * [MXNet Installation](https://github.com/charleshardy/GPU-WRLinux/tree/main/3_Software/4_Toolkit_SDK/MXNet#README.md)
-* [Video Codec SDK Installation (TODO)](https://github.com/charleshardy/GPU-WRLinux/tree/main/3_Software/4_Toolkit_SDK/VideoCodecSDK#README.md)
-* [Transfer Learning Toolkit Installation (TODO)](https://github.com/charleshardy/GPU-WRLinux/tree/main/3_Software/4_Toolkit_SDK/TransferLearningToolkit#README.md)
+
 ## Demo
+
 ### CUDA Examples (Execute all executable binaries in samples)
 [![Video](https://user-images.githubusercontent.com/1221587/123249249-59103600-d51b-11eb-856e-440d130a388c.JPG)](https://youtu.be/kpdDg6TjxVo)
 
@@ -56,13 +55,13 @@ Exploring NVIDIA GPU-Accelerated Ecosystem on Wind River Linux
 
 [Details](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/5_Applications/Unity/README.md)
 
-### Tensorflow 
+### Tensorflow (2 examples)
 
-#### Calculate Regression (Tensorboard)
+#### 1. Calculate Regression (Tensorboard)
 
 [![Video](https://user-images.githubusercontent.com/1221587/123260404-1a34ad00-d528-11eb-8006-2c57c5e1558e.JPG)](https://youtu.be/7vXpTxL9sdM)
 
-#### Image Object Recognition 
+#### 2. Image Object Recognition 
 
 [![Video](https://user-images.githubusercontent.com/1221587/123260959-c2e30c80-d528-11eb-9d91-4c20c7a942d5.JPG)](https://youtu.be/iKNUlwXbtpY)
 
