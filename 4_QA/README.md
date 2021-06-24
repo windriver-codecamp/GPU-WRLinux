@@ -3562,9 +3562,9 @@ NVRM: GPU 0000:01:00.0: rm_init_adapter failed, device minor number 0
 * https://www.intel.com/content/dam/www/programmable/us/en/pdfs/literature/ug/ug_s10_pcie_avmm.pdf
 * https://www.intel.com/content/dam/www/programmable/us/en/pdfs/literature/ug/ug_s10_pcie_avmm.pdf
 
-### 3. How to verify the GPU works well on Wind River Linux?
+## 3. How to verify the GPU works well on Wind River Linux?
 
-### 4. Does GTX 1650 Super supports RTX?
+## 4. Does GTX 1650 Super supports RTX?
 
 ```
 The NVIDIA driver allows Pascal and later series to enable RTX features, even if they do not have any RTX-specific hardware. So yes, your 1650S should qualify. Have in mind though, that this was a marketing move to show how useful the RTX-specific hardware is, so you should expect "worse than terrible" RTX performance on your GTX card. 
