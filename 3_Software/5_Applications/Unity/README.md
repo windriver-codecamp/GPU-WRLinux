@@ -1,5 +1,5 @@
 ## Making My First Game on Unity 3D Engine
-This demo shows the scence of Vehicle Physics 5.2, which is running on Wind River Linux
+This demo shows the scene of Vehicle Physics 5.2, which is running on Wind River Linux
 
 ### Start Unity 3D Engine and create my first game
 
