@@ -9,7 +9,7 @@ Editor# ./Unity
 
 ```
 1. Select "3D-test" in the pop up window
-2. Select "unity"  on the Unity version 
+2. Select "unity"  on the Unity version (e.g. 2019.2.61f) 
 3. Click "3D-test" project
 4. After the importing of the project, the Vehicle will show
 
