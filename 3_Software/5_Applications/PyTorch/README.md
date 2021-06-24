@@ -24,6 +24,3 @@ coded balanced " at this point and recorded a primary event played in a US 2 , w
 * https://github.com/pytorch/examples/blob/master/word_language_model/generate.py
 * https://github.com/pytorch/examples/blob/master/word_language_model/main.py
 * https://github.com/pytorch/examples/blob/master/word_language_model
-
-### Demo Video:
-> TODO
