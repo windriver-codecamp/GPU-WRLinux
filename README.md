@@ -82,6 +82,6 @@ Exploring NVIDIA GPU-Accelerated Ecosystem on Wind River Linux
 
 ## FAQ
 * [How about GPU performance comparisons between Wind River Linux and Ubuntu?](https://github.com/charleshardy/GPU-WRLinux/blob/main/4_QA/README.md)
-* [How to verify the GPU works well on Wind River Linux?](https://github.com/charleshardy/GPU-WRLinux/blob/main/4_QA/README.md)
 * [Can NVIDIA GPU run on any ARM based boards?](https://github.com/charleshardy/GPU-WRLinux/blob/main/4_QA/README.md)
+* ...
 
