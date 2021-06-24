@@ -34,9 +34,8 @@ Exploring NVIDIA GPU-Accelerated Ecosystem on Wind River Linux
 * [Transfer Learning Toolkit Installation (TODO)](https://github.com/charleshardy/GPU-WRLinux/tree/main/3_Software/4_Toolkit_SDK/TransferLearningToolkit#README.md)
 ## Demo
 ### CUDA Examples (Execute all executable binaries in samples)
-* https://youtu.be/kpdDg6TjxVo
-* [Details](https://github.com/charleshardy/GPU-WRLinux/tree/main/3_Software/5_Applications/CUDA#README.md)
-* ![CUDA_examples](https://user-images.githubusercontent.com/1221587/123249249-59103600-d51b-11eb-856e-440d130a388c.JPG)
+[![Video](https://user-images.githubusercontent.com/1221587/123249249-59103600-d51b-11eb-856e-440d130a388c.JPG)](https://youtu.be/kpdDg6TjxVo)
+[Details](https://github.com/charleshardy/GPU-WRLinux/tree/main/3_Software/5_Applications/CUDA#README.md)
 
 ### CUDA-X Example (NeMo)
 ```
