@@ -35,13 +35,14 @@ Exploring NVIDIA GPU-Accelerated Ecosystem on Wind River Linux
 ## Demo
 ### CUDA Examples (Execute all executable binaries in samples)
 [![Video](https://user-images.githubusercontent.com/1221587/123249249-59103600-d51b-11eb-856e-440d130a388c.JPG)](https://youtu.be/kpdDg6TjxVo)
+
 [Details](https://github.com/charleshardy/GPU-WRLinux/tree/main/3_Software/5_Applications/CUDA#README.md)
 
 ### CUDA-X Example (NeMo)
-```
-     Demo Video (TODO)
-```
-* [Details](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/5_Applications/CUDA-X/NeMo/README.md)
+
+[![Video](https://user-images.githubusercontent.com/1221587/123251349-adb4b080-d51d-11eb-809b-3c974a1eeb09.JPG)](https://youtu.be/g9PoTi_S1vQ)
+
+[Details](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/5_Applications/CUDA-X/NeMo/README.md)
 
 ### Unreal Engine Demo (First 3D Game)
 ```
