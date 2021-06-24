@@ -25,11 +25,13 @@
 	Projects --> New --> 3D --> create  
 
 ### Issues
-* Failed to login with company website.
+* Failed to login on the "sign in".
 #### Solution
-* Use WIFI from telphone.
+* Manual Activation with file Unity_v2017.x.ulf
 
 ### References
 
+* https://docs.unity3d.com/Manual/UnityManual.html
 * https://blog.csdn.net/qq_30448401/article/details/104576125
+* https://license.unity3d.com/manual
 
