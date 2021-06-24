@@ -25,11 +25,10 @@
 	Projects --> New --> 3D --> create  
 
 ### Issues
-* Unity Editor cannot boot up without "libGLU.so"
+#### 1. Unity Editor cannot boot up without "libGLU.so"
 #### Solution
 > Run "bitbake libglu" and deploy "libglu1-9.0.1-0.corei7_64.rpm" to the host
-
-* Failed to login on the "sign in".
+#### 2. Failed to login on the "sign in".
 #### Solution
 > Manual Activation with file Unity_v2017.x.ulf
 
