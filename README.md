@@ -8,7 +8,7 @@ Exploring NVIDIA GPU-Accelerated Ecosystem on Wind River Linux
 ## Hardware
 <img src="./2_Hardware/Hardware_1.JPG" width="500"><img src="./2_Hardware/Hardware_2.JPG" width="200">
 
-![Hardware Introduce Video](https://user-images.githubusercontent.com/1221587/123237713-7b508680-d510-11eb-8ff5-7571d9103697.mov)
+![About Hardware Video](https://user-images.githubusercontent.com/1221587/123237713-7b508680-d510-11eb-8ff5-7571d9103697.mov)
 
 ## Software
 ### Wind River Linux Kernel and NVIDIA Device Driver
