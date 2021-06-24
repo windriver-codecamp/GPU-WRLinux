@@ -3568,4 +3568,3 @@ NVRM: GPU 0000:01:00.0: rm_init_adapter failed, device minor number 0
 The NVIDIA driver allows Pascal and later series to enable RTX features, even if they do not have any RTX-specific hardware. So yes, your 1650S should qualify. Have in mind though, that this was a marketing move to show how useful the RTX-specific hardware is, so you should expect "worse than terrible" RTX performance on your GTX card. 
 ```
 * https://www.nvidia.com/en-us/geforce/forums/geforce-graphics-cards/5/390041/does-gtx-1650-super-supports-rtx/
-* 
