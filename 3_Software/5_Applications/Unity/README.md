@@ -15,7 +15,7 @@ Editor# ./Unity
 
 ```
 
-<img src="./myfistgame.png" width="600">
+<img src="./unity_demo.png" width="600">
 
 ## References
 * https://docs.unity3d.com/Manual/UnityManual.html
