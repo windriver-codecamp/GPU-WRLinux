@@ -1,4 +1,4 @@
-# How to install UNITY and verify?
+# Unity Installation
 
 ## Setup steps
  1. register an account on unity
