@@ -59,27 +59,26 @@ Exploring NVIDIA GPU-Accelerated Ecosystem on Wind River Linux
 ### Tensorflow 
 
 #### Calculate Regression (Tensorboard)
-```
-     Demo Video (TODO)
-```
-#### Image Object Recognition 
-```
-     Demo Video (TODO)
-```
 
-* [Details](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/5_Applications/tensorflow/README.md)
+[![Video](https://user-images.githubusercontent.com/1221587/123260404-1a34ad00-d528-11eb-8006-2c57c5e1558e.JPG)](https://youtu.be/7vXpTxL9sdM)
+
+#### Image Object Recognition 
+
+[![Video](https://user-images.githubusercontent.com/1221587/123260959-c2e30c80-d528-11eb-9d91-4c20c7a942d5.JPG)](https://youtu.be/iKNUlwXbtpY)
+
+[Details](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/5_Applications/tensorflow/README.md)
 
 ### PyTorch (Text Generation)
-```
-     Demo Video (TODO)
-```
-* [Details](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/5_Applications/PyTorch/README.md)
+
+[![Video](https://user-images.githubusercontent.com/1221587/123261997-02f6bf00-d52a-11eb-9c93-c677ab864588.JPG)](https://youtu.be/JBjVXGfKud8)
+
+[Details](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/5_Applications/PyTorch/README.md)
 
 ### MXNet (Image Superresolution)
-```
-     Demo Video (TODO)
-```
-* [Details](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/5_Applications/MXNet/README.md)
+
+[![Video](https://user-images.githubusercontent.com/1221587/123262073-10ac4480-d52a-11eb-8547-1e20b5d49c5a.JPG)](https://youtu.be/m90ow-zuknA)
+
+[Details](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/5_Applications/MXNet/README.md)
 
 ## FAQ
 * [How about GPU performance comparisons between Wind River Linux and Ubuntu?](https://github.com/charleshardy/GPU-WRLinux/blob/main/4_QA/README.md)
