@@ -8,7 +8,7 @@ Exploring NVIDIA GPU-Accelerated Ecosystem on Wind River Linux
 ## Hardware
 <img src="./2_Hardware/Hardware_1.JPG" width="500"><img src="./2_Hardware/Hardware_2.JPG" width="200">
 
-![Introduce Hardware Video](https://user-images.githubusercontent.com/1221587/123237713-7b508680-d510-11eb-8ff5-7571d9103697.mov)
+![Hardware Introduce Video](https://user-images.githubusercontent.com/1221587/123237713-7b508680-d510-11eb-8ff5-7571d9103697.mov)
 
 ## Software
 ### Wind River Linux Kernel and NVIDIA Device Driver
@@ -33,11 +33,10 @@ Exploring NVIDIA GPU-Accelerated Ecosystem on Wind River Linux
 * [Video Codec SDK Installation (TODO)](https://github.com/charleshardy/GPU-WRLinux/tree/main/3_Software/4_Toolkit_SDK/VideoCodecSDK#README.md)
 * [Transfer Learning Toolkit Installation (TODO)](https://github.com/charleshardy/GPU-WRLinux/tree/main/3_Software/4_Toolkit_SDK/TransferLearningToolkit#README.md)
 ## Demo
-### CUDA Examples
-```
-     Demo Video (TODO)
-```
+### CUDA Examples (Execute all executable binaries in samples)
+* https://youtu.be/kpdDg6TjxVo
 * [Details](https://github.com/charleshardy/GPU-WRLinux/tree/main/3_Software/5_Applications/CUDA#README.md)
+* ![CUDA_examples](https://user-images.githubusercontent.com/1221587/123249249-59103600-d51b-11eb-856e-440d130a388c.JPG)
 
 ### CUDA-X Example (NeMo)
 ```
