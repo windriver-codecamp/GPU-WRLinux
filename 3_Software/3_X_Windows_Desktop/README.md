@@ -860,15 +860,15 @@ sh-5.1#
 ```
 ### Issues
 
-* ERROR: An error occurred while performing the step: "Building kernel modules". See /var/log/nvidia-installer.log for details. 
-#### Solution
+#### ERROR: An error occurred while performing the step: "Building kernel modules". See /var/log/nvidia-installer.log for details. 
+##### Solution
 cat /var/log/nvidia-installer.log and add the following item to the file of "/etc/X11/xorg.conf".
 ```
 Section "Module"
     Load "modesetting"
 EndSection
 ```
-* Failed to build NVIDIA Driver as missing Kernel source code
+#### Failed to build NVIDIA Driver as missing Kernel source code
 ```
 ERROR: Unable to find the kernel source tree for the currently running kernel.  Please make sure you have installed the kernel source files for your kernel and that they are properly configured; on   
          Red Hat Linux systems, for example, be sure you have the 'kernel-source' or 'kernel-devel' RPM installed.  If you know the correct kernel source files are installed, you may specify the kernel 
@@ -930,12 +930,12 @@ Using: nvidia-installer ncurses user interface
     CONFTEST: pde_data
 ```
 
-#### Solution
+##### Solution
 To install kernel source code on the target host
 ```
 root@intel-x86-64:~# rpm -ivh /kernel-devsrc-1.0-r0.intel_x86_64.rpm
 ```
-* X does not start up
+#### X does not start up
 ```
 [lliu2@pek-lpgtest7302 build]$ cat ~/Xorg.0.log 
 [   332.475] 
@@ -1138,7 +1138,7 @@ Please consult the The X.Org Foundation support
 xinit: unable to connect to X server: Connection refused
 xinit: unexpected signal 2
 ```
-#### Solution
+##### Solution
 To add related missing package for the host, as below
 ```
 PACKAGES =+ "${PN}-sdl \
