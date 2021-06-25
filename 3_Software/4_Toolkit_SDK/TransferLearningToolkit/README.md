@@ -1,4 +1,4 @@
-# How to install Transfer Learning Toolkit and verify?
+# Transfer Learning Toolkit Installation
 
 ## Setup steps
 
