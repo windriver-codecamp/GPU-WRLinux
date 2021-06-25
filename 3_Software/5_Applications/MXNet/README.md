@@ -2,16 +2,21 @@
 ## Introdution
 This example trains a **convolutional neural network** with BSDS500 dataset to enhance the resolution of images (also known as **superresolution**)
 
-## Demo Source Codes:
+### Demo Source Codes:
 * https://github.com/apache/incubator-mxnet/tree/master/example/gluon/super_resolution
 
-## Setup Steps:
-### 1. Getting Source
+### MXMet Setup Steps
+
+* [Setup Steps](https://github.com/charleshardy/GPU-WRLinux/tree/main/3_Software/4_Toolkit_SDK/MXNet)
+
+### Demo Setup Steps:
+
+#### 1. Getting Source
 ```
 $ git clone --recursive https://github.com/apache/incubator-mxnet.git mxnet
 $ cd mxnet/example/gluon/super_resolution
 ```
-### 2. Updates (written by Xinlong Hou)
+#### 2. Updates (written by Xinlong Hou)
 ``` python
 $ cat 0001-Update-super_resolution.py.patch
 From f4305b7944ab61a5b9a18a8bd627578279d9442f Mon Sep 17 00:00:00 2001
@@ -39,13 +44,13 @@ def test(ctx):
 --
 2.31.1
 ```
-### 3. Apply the patch
+#### 3. Apply the patch
 ```
 $ git am 0001-Update-super_resolution.py.patch
 ```
-### Train and generate new image
+#### Train and generate new image
 
-#### Train Model
+##### Train Model
 ```
 $ time python super_resolution.py --epochs 200 --use-gpu
 Namespace(upscale_factor=3, batch_size=4, test_batch_size=100, epochs=200, lr=0.001, use_gpu=True, seed=123, resolve_img=None)
@@ -64,18 +69,15 @@ user    15m1.850s
 sys 0m16.327s
 ```
 
-#### Generate New Image
+##### Generate New Image
 ```
 $ python super_resolution.py --resolve_img test.jpeg
 ```
-### Result
-#### Original picture
+#### Result
+##### Original picture
 
 > <img src="./MXNet-test-resolved.png" width="290">
 
-#### New generated resolution increased image
+##### New generated resolution increased image
 
 > <img src="./MXNet-test-resolved.png" width="870">
-
-### Demo Video:
-> TODO
