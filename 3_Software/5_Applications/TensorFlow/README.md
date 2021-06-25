@@ -9,6 +9,10 @@ TensorBoard is used to observe how training and test loss change across epochs. 
 
 First, generate 1000 data points roughly along the line y = 0.5x + 2. Split these data points into training and test sets. The neural net learns this relationship.
 
+### Tensorflow Installation
+
+* [Setup Steps](https://github.com/charleshardy/GPU-WRLinux/tree/main/3_Software/4_Toolkit_SDK/TensorFlow)
+
 ### Run example 1
 ```
 # /home/test/.local/bin/jupyter-lab training.py
