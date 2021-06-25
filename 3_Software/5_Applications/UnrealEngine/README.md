@@ -1,6 +1,10 @@
 ## Making My First Game on Unreal Engine
 This demo shows to create the first game on UE4, which is running on Wind River Linux
 
+### Unreal Engine Installation
+
+* [Setup Steps](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/4_Toolkit_SDK/UnrealEngine/README.md)
+
 ### Start Unreal Engine and create my first game
 
 ```
