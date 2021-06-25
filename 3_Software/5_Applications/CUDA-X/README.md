@@ -1,5 +1,5 @@
 ## CUDA-X AI
-There are multiple features under CUDA-X AI platform as below. We only pick NeMo (including cuDNN) for the demo on NVIDIA Geforce GTX 1650 Supper Graphic Card.
+There are multiple features under CUDA-X AI platform as below. NeMo (including cuDNN) is selected for the demo on NVIDIA Geforce GTX 1650 Supper Graphic Card in this project.
 
 ```
 TensorRT           (TODO)
