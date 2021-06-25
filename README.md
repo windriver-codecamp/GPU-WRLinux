@@ -22,7 +22,7 @@ Exploring NVIDIA GPU-Accelerated Ecosystem on Wind River Linux
 ## Setup Steps
 * [Build and install NVIDIA driver on WR Linux](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/2_Kernel_Device_Driver/README.md)
 * [Start XFCE desktop and check NVIDIA GPU](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/3_X_Windows_Desktop/README.md)
-* [CUDA installation and verification](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/4_Toolkit_SDK/CUDA/README.md)
+* [CUDA Installation](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/4_Toolkit_SDK/CUDA/README.md)
 * [CUDA-X Installation](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/4_Toolkit_SDK/CUDA-X/README.md)
 * [Unreal Engine Installation](https://github.com/charleshardy/GPU-WRLinux/tree/main/3_Software/4_Toolkit_SDK/UnrealEngine#README.md)
 * [Unity Installation](https://github.com/charleshardy/GPU-WRLinux/tree/main/3_Software/4_Toolkit_SDK/Unity#README.md)
