@@ -23,6 +23,8 @@ UnrealEngine-release/Engine/Binaries/Linux# ./UE4Editor
 #### Metahuman Project
 A prject related Metahuman has been created on Wind River Linux. The setup steps will be coming soon.
 
+* [More details](https://www.unrealengine.com/en-US/digital-humans)
+
 ##### Install Quixel Bridge
 ```
 intel-x86-64:~$ ./Bridge.AppImage 
