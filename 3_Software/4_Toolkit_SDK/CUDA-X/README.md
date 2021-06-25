@@ -1,16 +1,75 @@
-# How to install CUDA-X and verify?
+# CUDA-X AI Installation
 
-## TensorRT (TODO)
-### Setup Steps
-## NeMo (TODO)
-### Setup Steps
+There are multiple features under CUDA-X AI platform as below. We only pick few of them (NeMo, cuDNN) for NVIDIA Geforce GTX 1650 Supper Graphic Card in this project.
+
+```
+TensorRT           (TODO)
+NeMo               (Selected)
+cuDNN              (Selected)
+NCCL               (not applicable for NVIDIA Geforce GTX 1650 Supper Graphic Card)
+DALI               (TODO)
+cuBLAS             (already installed in CUDA Toolkit)
+cuSPARSE           (already installed in CUDA Toolkit)
+Optical Flow SDK   (TODO)
+```
+## Setup Steps
+
+### cuDNN (8.2)
+
+
+Go to: [NVIDIA cuDNN home page](https://developer.nvidia.com/cudnn). Click Download.
+
+```
+$ tar -xzvf cudnn-x.x-linux-x64-v8.x.x.x.tgz
+```
+
+Copy the following files into the CUDA Toolkit directory.
+```
+$ sudo cp cuda/include/cudnn*.h /usr/local/cuda/include 
+$ sudo cp -P cuda/lib64/libcudnn* /usr/local/cuda/lib64 
+$ sudo chmod a+r /usr/local/cuda/include/cudnn*.h /usr/local/cuda/lib64/libcudnn*
+```
+*[More details](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html)
+
+### NeMo
 ```
 1. git clone https://github.com/NVIDIA/NeMo
    cd NeMo/
 2. Comment out lines that contain “${PIP} uninstall”
 3. ./reinstall.sh
 ```
-#### How does NeMo Toolkit invoke CUDA and GPU?
+```
+$ conda create --name nemo
+$ conda activate nemo
+```
+
+NeMo Deps
+```
+$ conda install ffmpeg
+$ conda install -c conda-forge libsndfile
+$ conda install Cython
+```
+
+```python
+import nemo
+import nemo.collections.asr as nemo_asr
+import nemo.collections.nlp as nemo_nlp
+ 
+citrinet = nemo_asr.models.EncDecCTCModel.from_pretrained(model_name="stt_zh_citrinet_512")
+mandarin_text = citrinet.transcribe(paths2audio_files=["/mnt/sdb/xhou/run/NeMo_cn_test.wav"])
+print(mandarin_text)
+nmt_model = nemo_nlp.models.MTEncDecModel.from_pretrained(model_name="nmt_zh_en_transformer6x6")
+print(nmt_model.translate(mandarin_text))
+```
+
+Installing NeMo with Source
+```
+$ python -m pip install git+https://github.com/NVIDIA/NeMo.git@v1.0.1#egg=nemo_toolkit[all]
+```
+* [More details](https://confluence.wrs.com/display/~xhou/Install+NeMo+on+WRLCD#InstallNeMoonWRLCD-Setup)
+
+### FAQ
+##### How does NeMo Toolkit invoke CUDA and GPU?
 ```
 NVIDIA GPU Cloud (NGC) is a software repository that has containers and models optimized for deep learning. NGC hosts many conversational AI models developed with NeMo that have been trained to state-of-the-art accuracy on large datasets. NeMo models on NGC can be automatically downloaded and used for transfer learning tasks. Pretrained models are the quickest way to get started with conversational AI on your own data. NeMo has many example scripts and Jupyter Notebook tutorials showing step-by-step how to fine-tune pretrained NeMo models on your own domain-specific datasets.
 
@@ -140,14 +199,6 @@ If you would like to programatically list the models available for a particular 
 nemo_asr.models.<MODEL_BASE_CLASS>.list_available_models()
 ```
 
-## cuDNN (TODO)
-### Setup Steps
-## DALI (Data Loading Library) (TODO)
-## CuBLAS (Installed TODO)
-## cuSPARSE (Installed TODO)
-## Optical Flow SDK (TODO)
-## CUDA Library Samples (TODO)
-## NVIDIA SDK Manager (TODO)
 
 ## References
 * https://developer.nvidia.com/
