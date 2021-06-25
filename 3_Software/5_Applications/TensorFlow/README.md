@@ -1,4 +1,4 @@
-## TensorFlow Example 1
+## TensorFlow Example 1 (Calculate Regression)
 
 ### Introduction
 
@@ -25,7 +25,7 @@ First, generate 1000 data points roughly along the line y = 0.5x + 2. Split thes
 ### References
   * https://www.tensorflow.org/tensorboard/scalars_and_keras
 
-## TensorFlow Example 2
+## TensorFlow Example 2 (Image Object Recognition)
 ### Introduction
 This demo is applying the integrated gradients technique on image object recognition. 
 
