@@ -1,21 +1,28 @@
-# How to build and deploy WR Linux and NVIDIA Driver?
+# Build and install NVIDIA driver on Wind River Linux
 ## Setup steps
-### Build Wind River Linux Kernel and Rootfs
+### 1. Build Wind River Linux Kernel and Rootfs
 
 ```
 $ /lpg-build/cdc/fast_prod/WRLINUX_MASTER_WR/MASTER_WR_GIT/wrlinux-10/setup.sh --machines=intel-x86-64 --distros=wrlinux-graphics --templates=feature/chromium,feature/xfce,feature/linux-yocto-dev,feature/userspace-next,feature/toolchain-next --layers=meta-browser --dl-layers --accept-eula=yes
+```
+```
 $ source environment-setup-x86_64-wrlinuxsdk-linux 
+```
+```
 $ source oe-init-build-env
-
-$ vi conf/local.conf
+```
+```
+$ vi conf/local.conf # append the following contents in the file
+```
 
 IMAGE_INSTALL_append = " libjpeg-turbo v4l-utils apt autoconf autoconf-archive automake binutils bison build-compare ccache chrpath cmake createrepo-c dejagnu desktop-file-utils diffstat distcc dmidecode dnf dosfstools dpkg dwarfsrcfiles e2fsprogs elfutils expect file flex gcc gdb git glide gnu-config go intltool json-c libcomps libdnf libedit libmodulemd librepo libtool m4 make makedevs meson mtools nasm ninja opkg opkg-utils orc patch patchelf perl prelink pseudo quilt rpm rsync ruby run-postinsts squashfs-tools strace subversion unifdef xmlto util-linux python3-pip python3-numpy python3-pkg-resources python3-setuptools libgcc make xz libcrypto libffi liblzma libssl libtirpc libmpc mpfr libunwind kernel-devsrc libmpc-dev gcc-plugins ncurses"
 
 EXTRA_IMAGE_FEATURES ?= "debug-tweaks tools-sdk tools-debug"
 
-$ vi ../layers/oe-core/meta/recipes-graphics/xorg-xserver/xserver-xorg.inc
+```
+$ vi ../layers/oe-core/meta/recipes-graphics/xorg-xserver/xserver-xorg.inc # append the following contents in the file
+```
 
-...
 
 OPENGL_PKGCONFIGS = "dri glx glamor dri3 xshmfence xinerama"
 PACKAGECONFIG ??= "dga dri2 udev ${XORG_CRYPTO} \
@@ -39,18 +46,18 @@ PACKAGECONFIG[systemd-logind] = "--enable-systemd-logind=yes,--enable-systemd-lo
 PACKAGECONFIG[systemd] = "--with-systemd-daemon,--without-systemd-daemon,systemd"
 PACKAGECONFIG[xinerama] = "--enable-xinerama,--disable-xinerama"
 
-
+```
 $ bitbake wrlinux-image-std-sato
 
 ```
 
-## Deploy WR Linux kernel and rootfs to Intel-x86-64 host
+### 2. Deploy Wind River Linux kernel and rootfs to Intel-x86-64 host (Dell PC)
 
-### Deploy Kernel and rootfs to a SSD
+#### a. Deploy Kernel and rootfs to a SSD
 ```
 $ dd if=wrlinux-image-std-sato-intel-x86-64.wic of=/dev/sdd
 ```
-### Resize the partition on the SSD
+#### b. Resize the partition on the SSD
 ```
 $ parted /dev/sdd
 GNU Parted 3.3
@@ -108,35 +115,43 @@ The filesystem on /dev/sdd2 is now 29297777 (4k) blocks long.
 
 ```
 
-### Install the SSD to the Intel-x86-64 host and boot it up 
+#### c. Install the SSD to the Intel-x86-64 host (Dell PC) and boot it up 
 
-## Download and compile NVIDIA Device Drivers on the Intel-x86-64 host
+### 3. Download and compile NVIDIA Device Drivers on the Intel-x86-64 host (Dell PC)
 
-### Prepair kernel build environment
+#### a. SSH to the Intel-x86-64 host (Dell PC) from a Terminal Console on another host
+
+#### b. Prepair kernel build environment on the Intel-x86-64 host (Dell PC)
+
 ```
 $ cd /usr/src/kernel
-
+```
+```
 $ make scripts prepare
-
+```
+```
 root@intel-x86-64:/usr/src/kernel# make scripts prepare
 ...
 scripts/Makefile.build:421: warning: overriding recipe for target 'modules.order'
 Makefile:1451: warning: ignoring old recipe for target 'modules.order'
 warning: Cannot use CONFIG_STACK_VALIDATION=y, please install libelf-dev, libelf-devel or elfutils-libelf-devel
+...
 ```
-### Download NVIDIA Device Driver
+Note: It's fine to skip the WARNING above.
+
+#### c. Download the NVIDIA device driver
 ```
 root@intel-x86-64:/2021cc# wget https://us.download.nvidia.com/XFree86/Linux-x86_64/460.73.01/NVIDIA-Linux-x86_64-460.73.01.run
 ```
-### Install NVIDIA Device Driver
+#### d. Install NVIDIA Device Driver
 ```
 $ systemctl stop lxdm
+```
+Disable default Nvidia driver used in kernel by running ./NVIDIA-Linux-x86_64-460.73.01.run at the first time.
 
-Disable default Nvidia driver used in kernel by running ./NVIDIA-Linux-x86_64-460.73.01.run firstly.
-
-
+```
 $ ./NVIDIA-Linux-x86_64-460.73.01.run --kernel-source-path /usr/src/kernel
-
+...
 ERROR: The Nouveau kernel driver is currently in use by your system.  This driver is incompatible with the NVIDIA driver, and must be disabled before proceeding.  Please consult the NVIDIA driver     
          README and your Linux distribution's documentation for details on how to correctly disable the Nouveau kernel driver.
 
@@ -148,12 +163,12 @@ Select “Yes” and “reboot”
  One or more modprobe configuration files to disable Nouveau have been written.  For some distributions, this may be sufficient to disable Nouveau; other distributions may require modification of the  
   initial ramdisk.  Please reboot your system and attempt NVIDIA driver installation again.  Note if you later wish to re-enable Nouveau, you will need to delete these files:
   /etc/modprobe.d/nvidia-installer-disable-nouveau.conf
-  
+```  
 Run the following commands again
-
+```
 $ systemctl stop lxdm
-
-
+```
+```
 $ ./NVIDIA-Linux-x86_64-460.73.01.run --kernel-source-path /usr/src/kernel
 
 Install NVIDIA's 32-bit compatibility libraries?
@@ -164,9 +179,14 @@ Would you like to run the nvidia-xconfig utility to automatically update your X 
 
 Select “Yes”
 ```
+
+Now we complete the driver installation.
+
+
+
 ## Issues
 
-:bomb: At the first time of running "./NVIDIA-Linux-x86_64-460.73.01.run --kernel-source-path /usr/src/kernel", the following error will occured
+### 1. At the first time of running "./NVIDIA-Linux-x86_64-460.73.01.run --kernel-source-path /usr/src/kernel", the following error will occured
 
 ```
 ERROR: The Nouveau kernel driver is currently in use by your system.  This driver is incompatible with the NVIDIA driver, and must be disabled before proceeding.  Please consult the NVIDIA driver     
@@ -183,9 +203,8 @@ Select “Yes” and “reboot”
   
 ```
 ### Solution
-```
 Run the following commands again
-
+```
 $ systemctl stop lxdm
 $ ./NVIDIA-Linux-x86_64-460.73.01.run --kernel-source-path /usr/src/kernel
 ```
