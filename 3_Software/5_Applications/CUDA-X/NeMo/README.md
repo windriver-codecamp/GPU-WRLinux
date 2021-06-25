@@ -2,9 +2,9 @@
 ### Introduction:
 This demo is used to recogize Chinese language in (WAV) audio file to plan text, and translate it into English.
 
-* [How NeMo used CUDA-X and GPU?](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/4_Toolkit_SDK/CUDA-X/README.md#how-does-nemo-toolkit-invoke-cuda-and-gpu)
+* [How NeMo used CUDA-X and GPU?](https://github.com/windriver-codecamp/GPU-WRLinux/blob/main/3_Software/4_Toolkit_SDK/CUDA-X/README.md#how-does-nemo-toolkit-invoke-cuda-and-gpu)
 
-* [NeMo and cuDNN Installation](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/4_Toolkit_SDK/CUDA-X/README.md)
+* [NeMo and cuDNN Installation](https://github.com/windriver-codecamp/GPU-WRLinux/blob/main/3_Software/4_Toolkit_SDK/CUDA-X/README.md)
 
 ### Run NeMo Demo
 ```
@@ -50,7 +50,7 @@ The original Chinese text of the WAV audio were as below.
 一天黄昏我过一条河，走到一半时，突然河里的水沸腾起来，水珠们从河里跳到半空中，它们喊着，莫言莫言，你站住
 ```
 The WAVE audio file
-* https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/5_Applications/CUDA-X/NeMo/test.wav
+* https://github.com/windriver-codecamp/GPU-WRLinux/blob/main/3_Software/5_Applications/CUDA-X/NeMo/test.wav
 
 The original English translation
 ```

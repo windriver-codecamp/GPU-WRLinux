@@ -11,7 +11,7 @@ First, generate 1000 data points roughly along the line y = 0.5x + 2. Split thes
 
 ### Tensorflow Installation
 
-* [Setup Steps](https://github.com/charleshardy/GPU-WRLinux/tree/main/3_Software/4_Toolkit_SDK/TensorFlow)
+* [Setup Steps](https://github.com/windriver-codecamp/GPU-WRLinux/tree/main/3_Software/4_Toolkit_SDK/TensorFlow)
 
 ### Run example 1
 ```

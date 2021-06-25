@@ -6,7 +6,7 @@ This example trains a **convolutional neural network** with BSDS500 dataset to e
 
 ### MXMet Setup Steps
 
-* [Setup Steps](https://github.com/charleshardy/GPU-WRLinux/tree/main/3_Software/4_Toolkit_SDK/MXNet)
+* [Setup Steps](https://github.com/windriver-codecamp/GPU-WRLinux/tree/main/3_Software/4_Toolkit_SDK/MXNet)
 
 ### Demo Setup Steps:
 

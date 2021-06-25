@@ -3,7 +3,7 @@ This demo shows the scene of Vehicle Physics 5.2, which is running on Wind River
 
 ### Unity Setup Steps
 
-* [Setup Steps](https://github.com/charleshardy/GPU-WRLinux/tree/main/3_Software/4_Toolkit_SDK/Unity)
+* [Setup Steps](https://github.com/windriver-codecamp/GPU-WRLinux/tree/main/3_Software/4_Toolkit_SDK/Unity)
 
 ### Start Unity 3D Engine and create my first game
 

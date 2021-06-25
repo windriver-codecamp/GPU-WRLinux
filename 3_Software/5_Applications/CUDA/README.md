@@ -1,6 +1,6 @@
 ## Run CUDA Examples Steps
 ### 1. Install CUDA Steps
-* [CUDA Installation](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/4_Toolkit_SDK/CUDA/README.md)
+* [CUDA Installation](https://github.com/windriver-codecamp/GPU-WRLinux/blob/main/3_Software/4_Toolkit_SDK/CUDA/README.md)
 
 ### 2. Get CUDA installed information
 ```
@@ -5674,6 +5674,6 @@ root@intel-x86-64:/usr/local/cuda-11.2/samples#
 * There are errors in the outputs of few CUDA examples. We'll dig them further if needed.  
 
 ## References
-* https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/4_Toolkit_SDK/CUDA/README.md
+* https://github.com/windriver-codecamp/GPU-WRLinux/blob/main/3_Software/4_Toolkit_SDK/CUDA/README.md
 
 

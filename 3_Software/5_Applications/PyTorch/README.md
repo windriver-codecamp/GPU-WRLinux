@@ -5,7 +5,7 @@ This example trains a **language module** which can be used by a **NLP**(**Natur
 
 ### PyTorch Setup steps
 
-* [Setup Steps](https://github.com/charleshardy/GPU-WRLinux/tree/main/3_Software/4_Toolkit_SDK/PyTorch) 
+* [Setup Steps](https://github.com/windriver-codecamp/GPU-WRLinux/tree/main/3_Software/4_Toolkit_SDK/PyTorch) 
 
 ### Run example steps:
 ```
