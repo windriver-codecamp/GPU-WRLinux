@@ -164,6 +164,3 @@ Set Encoding on the terminal to Unicode UTF-8
 ### References
 * https://docs.nvidia.com/deeplearning/nemo/user-guide/docs/en/main/
 
-
-### Demo Video:
-> None
