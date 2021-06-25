@@ -380,7 +380,7 @@ python populate_packages_prepend() {
 root@intel-x86-64:/usr/lib64/xorg/modules# scp lliu2@128.224.153.48:/buildarea2/lliu2/2021cc/dell_pc/CDNext_20210508/build/tmp-glibc/work/corei7-64-wrs-linux/xserver-xorg/2_1.20.10-r0/image/usr/lib64/xorg/modules/libwfb.so .
 $ bitbake xserver-xorg
 ```
-## How to verify if NVIDIA GPU working well?
+## Check NVIDIA GPU
 * cat the version of nvidia driver
 ```
 $ cat /proc/driver/nvidia/version
