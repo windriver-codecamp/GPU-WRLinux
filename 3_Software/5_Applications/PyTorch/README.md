@@ -3,6 +3,10 @@
 This example trains a **language module** which can be used by a **NLP**(**Natural Language Processing**) processor. It takes Wikitext-2 dataset and uses nn.RNN module to process the training, the trained model can then be used by the generate script to generate new text.
 * https://github.com/pytorch/examples/tree/master/word_language_model
 
+### PyTorch Setup steps
+
+* [Setup Steps](https://github.com/charleshardy/GPU-WRLinux/tree/main/3_Software/4_Toolkit_SDK/PyTorch) 
+
 ### Run example steps:
 ```
 (pytorch-build) $ git clone https://github.com/pytorch/examples.git
