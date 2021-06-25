@@ -21,8 +21,9 @@ UnrealEngine-release/Engine/Binaries/Linux# ./UE4Editor
 ```
 ### Other Exploring
 #### Metahuman Project
+A prject related Metahuman has been created on Wind River Linux. The setup steps will be coming soon.
 
-#### Install Quixel Bridge
+##### Install Quixel Bridge
 ```
 intel-x86-64:~$ ./Bridge.AppImage 
 dlopen(): error loading libfuse.so.2
