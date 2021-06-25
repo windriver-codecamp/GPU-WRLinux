@@ -24,12 +24,14 @@ $ tar -xzvf cudnn-x.x-linux-x64-v8.x.x.x.tgz
 ```
 
 Copy the following files into the CUDA Toolkit directory.
+
 ```
 $ sudo cp cuda/include/cudnn*.h /usr/local/cuda/include 
 $ sudo cp -P cuda/lib64/libcudnn* /usr/local/cuda/lib64 
 $ sudo chmod a+r /usr/local/cuda/include/cudnn*.h /usr/local/cuda/lib64/libcudnn*
 ```
-*[More details](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html)
+
+* [More details](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html)
 
 ### NeMo
 ```
