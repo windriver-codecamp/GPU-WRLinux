@@ -2,8 +2,7 @@
 ## Introdution
 This example trains a **convolutional neural network** with BSDS500 dataset to enhance the resolution of images (also known as **superresolution**)
 
-### Demo Source Codes:
-* https://github.com/apache/incubator-mxnet/tree/master/example/gluon/super_resolution
+* [Demo Source Codes](https://github.com/apache/incubator-mxnet/tree/master/example/gluon/super_resolution)
 
 ### MXMet Setup Steps
 
