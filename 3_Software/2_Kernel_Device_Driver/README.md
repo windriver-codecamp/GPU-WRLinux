@@ -21,7 +21,7 @@ EXTRA_IMAGE_FEATURES ?= "debug-tweaks tools-sdk tools-debug"
 $ vi ../layers/oe-core/meta/recipes-graphics/xorg-xserver/xserver-xorg.inc # append the following contents in the file
 ```
 
-
+```
 OPENGL_PKGCONFIGS = "dri glx glamor dri3 xshmfence xinerama"
 PACKAGECONFIG ??= "dga dri2 udev ${XORG_CRYPTO} \
                    ${@bb.utils.contains('DISTRO_FEATURES', 'opengl', '${OPENGL_PKGCONFIGS}', '', d)} \
@@ -43,7 +43,7 @@ PACKAGECONFIG[xmlto] = "--with-xmlto, --without-xmlto, xmlto-native docbook-xml-
 PACKAGECONFIG[systemd-logind] = "--enable-systemd-logind=yes,--enable-systemd-logind=no,dbus,"
 PACKAGECONFIG[systemd] = "--with-systemd-daemon,--without-systemd-daemon,systemd"
 PACKAGECONFIG[xinerama] = "--enable-xinerama,--disable-xinerama"
-
+```
 ```
 $ bitbake wrlinux-image-std-sato
 
