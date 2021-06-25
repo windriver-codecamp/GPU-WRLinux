@@ -1,8 +1,8 @@
-## Demo Video:
-> None
-
 ## Run CUDA Examples Steps
-### 1. Get CUDA installed information
+### 1. Install CUDA Steps
+* [CUDA Installation](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/4_Toolkit_SDK/CUDA/README.md)
+
+### 2. Get CUDA installed information
 ```
 root@intel-x86-64:~# /usr/local/cuda/bin/nvcc --version
 nvcc: NVIDIA (R) Cuda compiler driver
