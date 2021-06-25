@@ -12,15 +12,17 @@ $ source oe-init-build-env
 ```
 $ vi conf/local.conf # append the following contents in the file
 ```
-
+```
 IMAGE_INSTALL_append = " libjpeg-turbo v4l-utils apt autoconf autoconf-archive automake binutils bison build-compare ccache chrpath cmake createrepo-c dejagnu desktop-file-utils diffstat distcc dmidecode dnf dosfstools dpkg dwarfsrcfiles e2fsprogs elfutils expect file flex gcc gdb git glide gnu-config go intltool json-c libcomps libdnf libedit libmodulemd librepo libtool m4 make makedevs meson mtools nasm ninja opkg opkg-utils orc patch patchelf perl prelink pseudo quilt rpm rsync ruby run-postinsts squashfs-tools strace subversion unifdef xmlto util-linux python3-pip python3-numpy python3-pkg-resources python3-setuptools libgcc make xz libcrypto libffi liblzma libssl libtirpc libmpc mpfr libunwind kernel-devsrc libmpc-dev gcc-plugins ncurses"
-
+```
+```
 EXTRA_IMAGE_FEATURES ?= "debug-tweaks tools-sdk tools-debug"
 
 ```
-$ vi ../layers/oe-core/meta/recipes-graphics/xorg-xserver/xserver-xorg.inc # append the following contents in the file
 ```
+$ vi ../layers/oe-core/meta/recipes-graphics/xorg-xserver/xserver-xorg.inc # append the following contents in the file
 
+```
 ```
 OPENGL_PKGCONFIGS = "dri glx glamor dri3 xshmfence xinerama"
 PACKAGECONFIG ??= "dga dri2 udev ${XORG_CRYPTO} \
@@ -44,6 +46,7 @@ PACKAGECONFIG[systemd-logind] = "--enable-systemd-logind=yes,--enable-systemd-lo
 PACKAGECONFIG[systemd] = "--with-systemd-daemon,--without-systemd-daemon,systemd"
 PACKAGECONFIG[xinerama] = "--enable-xinerama,--disable-xinerama"
 ```
+
 ```
 $ bitbake wrlinux-image-std-sato
 
@@ -184,7 +187,7 @@ Now we complete the driver installation.
 
 ## Issues
 
-### 1. At the first time of running "./NVIDIA-Linux-x86_64-460.73.01.run --kernel-source-path /usr/src/kernel", the following error will occured
+### At the first time of running "./NVIDIA-Linux-x86_64-460.73.01.run --kernel-source-path /usr/src/kernel", the following error will occured
 
 ```
 ERROR: The Nouveau kernel driver is currently in use by your system.  This driver is incompatible with the NVIDIA driver, and must be disabled before proceeding.  Please consult the NVIDIA driver     
@@ -200,12 +203,18 @@ Select “Yes” and “reboot”
   /etc/modprobe.d/nvidia-installer-disable-nouveau.conf
   
 ```
-### Solution
+#### Solution
 Run the following commands again
 ```
 $ systemctl stop lxdm
 $ ./NVIDIA-Linux-x86_64-460.73.01.run --kernel-source-path /usr/src/kernel
 ```
+
+### There are extra packages required to build NVIDIA driver
+There will be various build errors if missing them.
+
+#### Solution
+Add the packages to the file of "conf/local.conf" during Wind River Linux project is building.
 
 ## FAQ
 * What does the NVIDIA GPU related dmesg look like?
