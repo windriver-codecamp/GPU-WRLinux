@@ -1,4 +1,4 @@
-# How to start XFCE desktop and verify NVIDIA GPU working well?
+# Start XFCE desktop and verify NVIDIA GPU
 
 ## Setup steps
 
