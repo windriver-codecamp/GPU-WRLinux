@@ -4,6 +4,8 @@ This demo is used to recogize Chinese language in (WAV) audio file to plan text,
 
 * [How NeMo used CUDA-X and GPU?](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/4_Toolkit_SDK/CUDA-X/README.md#how-does-nemo-toolkit-invoke-cuda-and-gpu)
 
+* [NeMo and cuDNN Installation](https://github.com/charleshardy/GPU-WRLinux/blob/main/3_Software/4_Toolkit_SDK/CUDA-X/README.md)
+
 ### Run NeMo Demo
 ```
 # python nemo_demo.py or python3 nemo_demo.py
