@@ -1,6 +1,6 @@
-# How to install CUDA and verify?
+# CUDA Installation
 
-## Setup steps (CUDA Toolkit Installation)
+## Setup steps
 ### Download CUDA Toolkit
 ```
 Go to https://developer.nvidia.com/cuda-11.2.2-download-archive?target_os=Linux&target_arch=x86_64&target_distro=Ubuntu&target_version=2004&target_type=runfilelocal
@@ -33,7 +33,7 @@ Logfile is /var/log/cuda-installer.log
 root@intel-x86-64:/#
 ```
 
-### Setup CUDA environment
+### Set CUDA environment
 ```
 root@intel-x86-64:/# vi /var/log/cuda-installer.log 
 root@intel-x86-64:/# vi ~/.bashrc
@@ -289,7 +289,7 @@ Test Summary
 ```
 
 ## FAQ
-* How to uninstall/reinstall CUDA?
+### How to uninstall/reinstall CUDA?
 ```
 Uninstall cuda
 root@wind-OptiPlex-9020:/usr/local/cuda-11.2/bin# ./cuda-uninstaller
@@ -298,7 +298,7 @@ root@wind-OptiPlex-9020:/usr/local/cuda-11.2/bin# ./cuda-uninstaller
 Reinstall cuda
 # sh cuda_11.2.2_460.32.03_linux.run 
 ```
-* How about running CUDA on Ubuntu?
+### How about running CUDA on Ubuntu?
 
 ```
 root@wind-OptiPlex-9020:/home/wind/2021CodingCamp# vi ~/.bashrc 
